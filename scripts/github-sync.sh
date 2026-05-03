@@ -260,7 +260,7 @@ sanitize_generic() {
 
 # 1. 同步顶级文件（排除私有）
 echo "=== Syncing top-level files ==="
-for f in AGENTS.md SOUL.md HEARTBEAT.md IDENTITY.md README.md; do
+for f in AGENTS.md SOUL.md HEARTBEAT.md IDENTITY.md README.md MEMORY.md SAFETY.md TOOLS.md USER.md; do
   if [ -f "$WORKSPACE/$f" ]; then
     if [ ! -f "$REPO/$f" ] || ! diff -q "$WORKSPACE/$f" "$REPO/$f" > /dev/null 2>&1; then
       cp "$WORKSPACE/$f" "$REPO/$f"
