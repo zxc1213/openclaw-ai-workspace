@@ -67,7 +67,7 @@
 ### Context
 - 学习笔记: {workspace}/research/openclaw-usecases-analysis.md
 - 相关配置: {已有配置路径}
-- 环境信息: WSL2, systemd, 代理 192.168.1.100:7890
+- 环境信息: WSL2, systemd, 代理 x.x.x.x:PORT
 
 ### Constraints
 1. 脚本保存到 ~/scripts/，chmod +x

@@ -498,7 +498,7 @@ git config --global core.quotepath false
 git config --global init.defaultBranch main
 
 # 代理设置（如果需要同时使用 GitHub）
-git config --global http.https://github.com.proxy socks5://127.0.0.1:7890
+git config --global http.https://github.com.proxy socks5://127.0.0.1:PORT
 
 # NPM 使用国内镜像
 npm config set registry https://registry.npmmirror.com

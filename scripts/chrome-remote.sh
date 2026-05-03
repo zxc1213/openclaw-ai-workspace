@@ -8,18 +8,20 @@ set -euo pipefail
 CHROME_EXE='C:\Program Files\Google\Chrome\Application\chrome.exe'
 PROFILE_DIR='D:\Temp\chrome-profile-debug'
 CDP_PORT=9222
-WIN_HOST="192.168.1.100"
 URL="${1:-about:blank}"
 
+# CDP URL 使用 localhost（WSL2 内部回环）
+CDP_HOST="localhost"
+
 check_cdp() {
-    curl -s --connect-timeout 2 "http://${WIN_HOST}:${CDP_PORT}/json/version" > /dev/null 2>&1
+    curl -s --connect-timeout 2 "http://${CDP_HOST}:${CDP_PORT}/json/version" > /dev/null 2>&1
 }
 
 # 如果已经在运行，直接导航
 if check_cdp; then
     echo "Chrome CDP already running on port ${CDP_PORT}"
     if [ "$URL" != "about:blank" ]; then
-        python3 - "$WIN_HOST" "$CDP_PORT" "$URL" << 'PYEOF'
+        python3 - "$CDP_HOST" "$CDP_PORT" "$URL" << 'PYEOF'
 import asyncio, json, websockets, urllib.request, sys
 async def nav(host, port, url):
     version = json.loads(urllib.request.urlopen(f'http://{host}:{port}/json/version').read())
@@ -49,7 +51,7 @@ echo -n "Waiting for Chrome CDP"
 for i in $(seq 1 20); do
     if check_cdp; then
         echo ""
-        echo "✅ Chrome CDP ready at http://${WIN_HOST}:${CDP_PORT}"
+        echo "✅ Chrome CDP ready at http://${CDP_HOST}:${CDP_PORT}"
         exit 0
     fi
     echo -n "."

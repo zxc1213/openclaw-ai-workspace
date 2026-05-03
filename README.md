@@ -1,6 +1,6 @@
-# 🌙 OpenClaw AI Agent Workspace
+# 🤖 OpenClaw AI Agent Workspace
 
-> 基于 [OpenClaw](https://github.com/openclaw/openclaw) 构建的个人 AI Agent 生产力系统，集成飞书生态，实现日程管理、智能早报、代码审查、知识库同步等 30+ 自动化场景。
+> 基于 [OpenClaw](https://github.com/openclaw/openclaw) 构建的 AI Agent 生产力系统，集成飞书生态，实现日程管理、智能早报、代码审查、知识库同步等 30+ 自动化场景。
 
 ## 🎯 项目解决的核心痛点
 
@@ -19,7 +19,7 @@
                │
 ┌──────────────▼──────────────────────────────────┐
 │ OpenClaw Gateway                                │
-│ 主 Agent（念念） · 长上下文对话                   │
+│ 主 Agent · 长上下文对话                   │
 │ ┌─────────────────────────────────────┐         │
 │ │ Cron 调度引擎                       │         │
 │ │ 每日早报 · 周报 · 健康检查 · 监控    │         │
@@ -40,7 +40,7 @@
 ## 🤖 核心能力
 
 ### 1. 多 Agent 协作架构
-- **主 Agent（念念）**：负责意图识别、任务调度、上下文管理
+- **主 Agent**：负责意图识别、任务调度、上下文管理
 - **专职 Sub-Agent**：隔离执行编码、审查、爬取等任务，结果自动回收
 - **任务派发模板**：四要素标准化（Goal / Context / Constraints / Done 标准）
 
@@ -143,7 +143,7 @@ Channel: Feishu ✅
 
 ### 每日早报示例
 ```
-🌅 早安 Ray | 2026-05-03 周六
+🌅 早安 | 2026-05-03 周六
 
 🔐 安全简报
 今日无高危安全通告
@@ -159,7 +159,7 @@ Channel: Feishu ✅
 - [2] openclaw/openclaw · OpenClaw 最新版本发布
 - [3] vercel/ai · AI SDK v4 正式发布
 
-🌤 广州天气
+🌤 天气
 28°C 多云 · 短袖即可
 ```
 
@@ -234,9 +234,9 @@ openclaw status
 
 ## 📝 成果描述
 
-> 我基于 OpenClaw 构建了一套完整的个人 AI Agent 生产力系统。通过飞书作为统一交互入口，实现了日程管理、消息检索、文档协作、每日安全情报早报、开源项目版本监控等 30+ 自动化场景。
+> 基于 OpenClaw 构建了一套完整的 AI Agent 生产力系统。通过飞书作为统一交互入口，实现了日程管理、消息检索、文档协作、每日安全情报早报、开源项目版本监控等 30+ 自动化场景。
 >
-> 系统采用多 Agent 协作架构——主 Agent 负责意图识别和任务调度，专职 Sub-Agent 在隔离会话中执行编码审查、网页爬取等任务。配合 OpenViking 向量记忆库实现跨会话知识持久化，通过自研 Skill 机制将 87 个工作流沉淀为可复用插件。
+> 系统采用多 Agent 协作架构——主 Agent 负责意图识别和任务调度，专职 Sub-Agent 在隔离会话中执行编码审查、网页爬取等任务。配合 OpenViking 向量记忆库实现跨会话知识持久化，通过 Skill 机制将 87 个工作流沉淀为可复用插件。
 >
 > 安全方面，建立了 176 条敏感数据脱敏规则，配合自动化同步脚本，确保公开仓库零泄露风险。日常运行 7 个定时任务，覆盖智能早报、周报生成、服务器健康检查等场景，显著降低了重复性事务处理成本。
 
@@ -259,4 +259,4 @@ MIT
 
 ---
 
-Built with 🌙 by 念念 · Powered by [OpenClaw](https://github.com/openclaw/openclaw) + [智谱 GLM](https://bigmodel.cn)
+Built with ❤️ · Powered by [OpenClaw](https://github.com/openclaw/openclaw) + [智谱 GLM](https://bigmodel.cn)

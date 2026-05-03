@@ -7,7 +7,7 @@
 | 项目 | 详情 |
 |------|------|
 | 任务清单 | 💡 成长学习 (tasklist_guid: aabbccdd-eeee-ffff-gggg-hhhhiiiiiiii)
-| 知识空间 | 念念的 AI Agent 实践笔记 (space_id: 7600000000000000000) |
+| 知识空间 | AI Agent 实践笔记 (space_id: xxx) |
 | 多维表格 | 配置速查手册 (5表49记录) |
 
 ## 通讯与协作
@@ -48,7 +48,7 @@
 
 | 能力 | 说明 | 详情 |
 |------|------|------|
-| OpenViking 记忆 | 语义记忆搜索/存储/遗忘 | v0.3.2, :9333 |
+| OpenViking 记忆 | 语义记忆搜索/存储/遗忘 | v0.3.2 |
 | Daily Notes | 每日笔记 + 归档 + 心跳沉淀 | memory/ |
 | MEMORY.md | 长期记忆索引 | 手动维护 |
 | 热榜 API | 54 平台热榜数据 | :6688 |
@@ -61,7 +61,7 @@
 | Tavily | AI 搜索引擎 | API key 已配置 |
 | web_search | Brave Search | 内置 |
 | web_fetch | URL 内容提取 | 内置 |
-| 浏览器自动化 | agent-browser + Chrome CDP | 192.168.1.100:9222 |
+| 浏览器自动化 | agent-browser + Chrome CDP | localhost:PORT |
 
 ## 监控与展示
 

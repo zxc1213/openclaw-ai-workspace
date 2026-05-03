@@ -11,8 +11,8 @@ description: 同步 Claude Code 配置（CLAUDE.md、Skills、Commands、Plugins
 
 | 端 | 配置目录 |
 |----|---------|
-| Windows | `/mnt/c/Users/19944/.claude/` |
-| WSL | `/home/rays/.claude/` |
+| Windows | `/mnt/c/Users/<user>/.claude/` |
+| WSL | `~/.claude/` |
 
 ## 同步范围
 
@@ -28,16 +28,16 @@ description: 同步 Claude Code 配置（CLAUDE.md、Skills、Commands、Plugins
 
 ```bash
 # 1. CLAUDE.md
-cp SOURCE/.claude/CLAUDE.md /mnt/c/Users/19944/.claude/CLAUDE.md
-cp SOURCE/.claude/CLAUDE.md /home/rays/.claude/CLAUDE.md
+cp SOURCE/.claude/CLAUDE.md /mnt/c/Users/<user>/.claude/CLAUDE.md
+cp SOURCE/.claude/CLAUDE.md ~/.claude/CLAUDE.md
 
 # 2. Skills（双向合并，源端覆盖目标端同名 skill）
-rsync -av --delete SOURCE/.claude/skills/ /mnt/c/Users/19944/.claude/skills/
-rsync -av --delete SOURCE/.claude/skills/ /home/rays/.claude/skills/
+rsync -av --delete SOURCE/.claude/skills/ /mnt/c/Users/<user>/.claude/skills/
+rsync -av --delete SOURCE/.claude/skills/ ~/.claude/skills/
 
 # 3. Commands
-rsync -av --delete SOURCE/.claude/commands/ /mnt/c/Users/19944/.claude/commands/
-rsync -av --delete SOURCE/.claude/commands/ /home/rays/.claude/commands/
+rsync -av --delete SOURCE/.claude/commands/ /mnt/c/Users/<user>/.claude/commands/
+rsync -av --delete SOURCE/.claude/commands/ ~/.claude/commands/
 ```
 
 ### 增量同步（单文件 / 单 skill）
@@ -57,8 +57,8 @@ rsync -av --delete SOURCE/.claude/commands/ /home/rays/.claude/commands/
 
 ```bash
 # 两端文件数对比
-diff <(ls /mnt/c/Users/19944/.claude/skills/) <(ls /home/rays/.claude/skills/)
-diff <(ls /mnt/c/Users/19944/.claude/commands/) <(ls /home/rays/.claude/commands/)
+diff <(ls /mnt/c/Users/<user>/.claude/skills/) <(ls ~/.claude/skills/)
+diff <(ls /mnt/c/Users/<user>/.claude/commands/) <(ls ~/.claude/commands/)
 ```
 
 ## 备份
@@ -68,10 +68,10 @@ diff <(ls /mnt/c/Users/19944/.claude/commands/) <(ls /home/rays/.claude/commands
 ```bash
 BACKUP_DIR=~/.claude/backups/$(date +%Y%m%d-%H%M%S)
 mkdir -p "$BACKUP_DIR"
-cp -r /mnt/c/Users/19944/.claude/{CLAUDE.md,skills,commands,settings.json} "$BACKUP_DIR/windows/"
-cp -r /home/rays/.claude/{CLAUDE.md,skills,commands,settings.json} "$BACKUP_DIR/wsl/"
+cp -r /mnt/c/Users/<user>/.claude/{CLAUDE.md,skills,commands,settings.json} "$BACKUP_DIR/windows/"
+cp -r ~/.claude/{CLAUDE.md,skills,commands,settings.json} "$BACKUP_DIR/wsl/"
 ```
 
 ## 飞书版本追踪
 
-知识空间 **Claude Code 配置管理**（Space ID: 7625329723022773427）中维护版本清单和变更记录。
+知识空间 **Claude Code 配置管理** 中维护版本清单和变更记录。

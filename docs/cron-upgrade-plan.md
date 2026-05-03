@@ -308,7 +308,7 @@ payload message 简化为：
 ```
 执行月度资源巡检：
 1. 磁盘使用：df -h / /home /mnt，标记使用率 >80% 的分区
-2. 大文件扫描：du -ah /home/rays 2>/dev/null | sort -rh | head -30
+2. 大文件扫描：du -ah ~ 2>/dev/null | sort -rh | head -30
 3. node_modules 黑洞：find ~/projects -name 'node_modules' -type d -prune | xargs du -sh 2>/dev/null
 4. Docker 清理候选：docker system df（如果 Docker 可用）
 5. npm/pip 缓存：du -sh ~/.npm ~/.cache/pip

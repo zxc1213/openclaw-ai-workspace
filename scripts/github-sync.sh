@@ -3,10 +3,10 @@
 # 用法: bash scripts/github-sync.sh [--dry-run]
 set -uo pipefail
 
-WORKSPACE="/home/rays/.openclaw/workspace"
+WORKSPACE="~/.openclaw/workspace"
 REPO="/tmp/openclaw-ai-workspace"
 DRY_RUN="${1:-}"
-PROXY="http://192.168.1.100:8080"
+PROXY="http://x.x.x.x:8080"
 
 # 需要整体排除的 skill（含私有信息或独立仓库）
 EXCLUDE_SKILLS=(
@@ -60,20 +60,21 @@ sanitize_repo() {
   done < <(grep -rlZ --include='*.md' --include='*.sh' 'tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' $search_dirs 2>/dev/null || true)
 
   # --- 2. 替换真实 IP 地址 ---
-  # WSL2 IP: 192.168.1.100 (Windows host) / 192.168.1.101 (WSL guest)
+  # WSL2 IP: replace private IPs with placeholder
   while IFS= read -r -d '' f; do
-    sed -i 's/172\.25\.192\.1/192.168.1.100/g; s/172\.25\.192\.2/192.168.1.101/g' "$f"
+    sed -i 's/172\.25\.192\.1/x.x.x.x/g; s/172\.25\.192\.2/x.x.x.x/g'
+    sed -i 's/192\.168\.1\.100/x.x.x.x/g; s/192\.168\.1\.101/x.x.x.x/g' "$f"
     echo " ip: $(basename "$f")"
     count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '172\.25\.192\.[12]' $search_dirs 2>/dev/null || true)
+  done < <(grep -rlZ --include='*.md' --include='*.sh' '172\.25\.192\.[12]\|192\.168\.1\.10[01]' $search_dirs 2>/dev/null || true)
 
   # --- 3. 替换飞书标识符 ---
   # space_id
   while IFS= read -r -d '' f; do
-    sed -i 's/7600000000000000000/7600000000000000000/g; s/7600000000000000000/7600000000000000000/g' "$f"
+    sed -i 's/7600000000000000000/xxx/g' "$f"
     echo " space_id: $(basename "$f")"
     count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '7600000000000000000\|7600000000000000000' $search_dirs 2>/dev/null || true)
+  done < <(grep -rlZ --include='*.md' --include='*.sh' '7600000000000000000' $search_dirs 2>/dev/null || true)
 
   # open_id
   while IFS= read -r -d '' f; do
@@ -145,7 +146,7 @@ sanitize_repo() {
 
   # --- 9. 替换 OpenViking 端口 ---
   while IFS= read -r -d '' f; do
-    sed -i 's/:9333/:9333/g' "$f"
+    sed -i 's/:9333/:PORT/g' "$f"
     echo " ov_port: $(basename "$f")"
     count=$((count + 1))
   done < <(grep -rlZ --include='*.md' --include='*.sh' ':9333' $search_dirs 2>/dev/null || true)
@@ -398,7 +399,7 @@ DATE=$(date +%Y-%m-%d)
 git -C "$REPO" commit -m "sync: workspace auto-sync $DATE" --quiet
 
 echo "=== Pushing to GitHub ==="
-https_proxy="$PROXY" git -C "$REPO" push "https://zxc1213:user@example.com/zxc1213/openclaw-ai-workspace.git" main --quiet 2>&1
+https_proxy="$PROXY" git -C "$REPO" push "https://zxc1213:token@github.com/zxc1213/openclaw-ai-workspace.git" main --quiet 2>&1
 EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
   echo "ERROR: Push failed with exit code $EXIT_CODE"

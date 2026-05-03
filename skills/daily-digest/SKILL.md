@@ -48,7 +48,7 @@ sessionTarget: "isolated"
 ### 3. 组装推送
 
 ```
-🌅 早安 Ray | YYYY-MM-DD 周X
+🌅 早安 | YYYY-MM-DD 周X
 
 🔐 安全简报
 [高危漏洞，无则写"今日无高危"]
@@ -62,7 +62,7 @@ sessionTarget: "isolated"
 🔥 热榜速览
 [各平台 Top 3]
 
-🌤 广州天气
+🌤 天气
 [温度/天气/建议]
 
 ---
@@ -79,4 +79,3 @@ sessionTarget: "isolated"
 ## 文件归档
 
 - 每日早报保存到 `memory/daily-digest/` 目录
-- 安全简报仍按原规则保存到 `/mnt/e/安全简报/`
