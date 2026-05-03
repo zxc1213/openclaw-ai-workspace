@@ -63,7 +63,7 @@ POST /open-apis/base/v3/bases/:base_token/workflows
 **Request Body 示例：**
 ```json
 {
-  "client_token": "124131231421312312",
+  "client_token": "124138000000002312",
   "title": "新订单自动通知",
   "steps": [
     {

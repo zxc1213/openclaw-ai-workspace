@@ -95,7 +95,7 @@ lark-cli mail user_mailbox.messages send_status --params '{"user_mailbox_id":"me
 
 ```bash
 # ✅ 推荐：HTML 格式
-lark-cli mail +send --to alice@example.com --subject '周报' \
+lark-cli mail +send --to user@example.com --subject '周报' \
   --body '<p>本周进展：</p><ul><li>完成 A 模块</li><li>修复 3 个 bug</li></ul>'
 
 # ⚠️ 仅在内容极简时使用纯文本

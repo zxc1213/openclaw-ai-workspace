@@ -22,7 +22,7 @@ import base64
 import urllib.request
 import websockets
 
-WIN_HOST = "192.168.1.100"
+WIN_HOST = "172.25.192.1"
 CDP_PORT = 9222
 
 def get_page_url(target_id=None):

@@ -27,7 +27,7 @@ firecrawl scrape "<url>"
 
 # 2. Interact with the page using natural language
 firecrawl interact --prompt "Click the login button"
-firecrawl interact --prompt "Fill in the email field with test@example.com"
+firecrawl interact --prompt "Fill in the email field with user@example.com"
 firecrawl interact --prompt "Extract the pricing table"
 
 # 3. Or use code for precise control

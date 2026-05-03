@@ -73,7 +73,7 @@ lark-cli im reactions create \
     "operator_id": "ou_xxx",
     "operator_type": "user"
   },
-  "action_time": "1663054162546",
+  "action_time": "1380000000046",
   "reaction_type": {
     "emoji_type": "SMILE"
   }
@@ -113,7 +113,7 @@ lark-cli im reactions list --params '{"message_id":"om_xxx","user_id_type":"open
         "operator_id": "ou_xxx",
         "operator_type": "user"
       },
-      "action_time": "1663054162546",
+      "action_time": "1380000000046",
       "reaction_type": {
         "emoji_type": "SMILE"
       }

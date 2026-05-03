@@ -21,27 +21,27 @@
 
 ```bash
 # 创建 HTML 草稿（推荐）
-lark-cli mail +draft-create --to alice@example.com --subject '周报' \
+lark-cli mail +draft-create --to user@example.com --subject '周报' \
   --body '<p>本周进展：</p><ul><li>完成 A 模块</li></ul>'
 
 # 不带收件人的 HTML 草稿（用户之后可自行添加）
 lark-cli mail +draft-create --subject '周报' --body '<p>草稿内容</p>'
 
 # 带附件和内嵌图片的 HTML 草稿（CID 为唯一标识符，可用随机十六进制字符串）
-lark-cli mail +draft-create --to alice@example.com --subject '预览图' --body '<img src="cid:a1b2c3d4e5f6a7b8c9d0">' --attach ./report.pdf --inline '[{"cid":"a1b2c3d4e5f6a7b8c9d0","file_path":"./logo.png"}]'
+lark-cli mail +draft-create --to user@example.com --subject '预览图' --body '<img src="cid:a1b2c3d4e5f6a7b8c9d0">' --attach ./report.pdf --inline '[{"cid":"a1b2c3d4e5f6a7b8c9d0","file_path":"./logo.png"}]'
 
 # 纯文本草稿（仅在内容极简时使用）
-lark-cli mail +draft-create --to alice@example.com --subject '简短通知' --body '收到，谢谢'
+lark-cli mail +draft-create --to user@example.com --subject '简短通知' --body '收到，谢谢'
 
 # Dry Run（仅打印请求，不执行）
-lark-cli mail +draft-create --to alice@example.com --subject '测试' --body 'test' --dry-run
+lark-cli mail +draft-create --to user@example.com --subject '测试' --body 'test' --dry-run
 ```
 
 ## 参数
 
 | 参数 | 必填 | 说明 |
 |------|------|------|
-| `--to <emails>` | 否 | 完整收件人列表，多个用逗号分隔。支持 `Alice <alice@example.com>` 格式。省略时草稿不带收件人（之后可通过 `+draft-edit` 添加） |
+| `--to <emails>` | 否 | 完整收件人列表，多个用逗号分隔。支持 `Alice <user@example.com>` 格式。省略时草稿不带收件人（之后可通过 `+draft-edit` 添加） |
 | `--subject <text>` | 是 | 草稿主题 |
 | `--body <text>` | 是 | 邮件正文。推荐使用 HTML 获得富文本排版；也支持纯文本（自动检测）。使用 `--plain-text` 可强制纯文本模式 |
 | `--from <email>` | 否 | 发件人邮箱地址（作为邮箱选择器）。省略时使用当前登录用户的主邮箱地址 |
@@ -72,7 +72,7 @@ lark-cli mail +draft-create --to alice@example.com --subject '测试' --body 'te
 
 ```bash
 # 1. 创建草稿
-lark-cli mail +draft-create --to alice@example.com --subject 'Q1 报告' --body '请查收附件中的报告。' --attach ./q1-report.pdf --format json
+lark-cli mail +draft-create --to user@example.com --subject 'Q1 报告' --body '请查收附件中的报告。' --attach ./q1-report.pdf --format json
 
 # 2. 在飞书邮件 UI 中预览草稿，或通过 API 获取：
 lark-cli mail user_mailbox.drafts get --params '{"user_mailbox_id":"me","draft_id":"<draft_id>"}'
@@ -86,7 +86,7 @@ lark-cli mail user_mailbox.drafts send --params '{"user_mailbox_id":"me","draft_
 ```bash
 # CID 为唯一标识符，可用随机十六进制字符串
 lark-cli mail +draft-create \
-  --to alice@example.com \
+  --to user@example.com \
   --subject '通讯稿' \
   --body '<h1>你好</h1><img src="cid:c7d8e9f0a1b2c3d4e5f6">' \
   --inline '[{"cid":"c7d8e9f0a1b2c3d4e5f6","file_path":"./banner.png"}]'

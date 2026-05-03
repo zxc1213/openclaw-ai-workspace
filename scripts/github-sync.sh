@@ -6,7 +6,7 @@ set -uo pipefail
 WORKSPACE="/home/rays/.openclaw/workspace"
 REPO="/tmp/openclaw-ai-workspace"
 DRY_RUN="${1:-}"
-PROXY="http://192.168.1.100:7890"
+PROXY="http://192.168.1.100:8080"
 
 # 需要整体排除的 skill（含私有信息或独立仓库）
 EXCLUDE_SKILLS=(
@@ -153,6 +153,111 @@ sanitize_repo() {
   echo " Sanitized $count files"
 }
 
+# ============================================================
+# 通用敏感信息扫描（基于 docs/sanitization-rules.md）
+# 在 sanitize_repo() 之后执行，覆盖项目特定规则未处理的通用模式
+# ============================================================
+sanitize_generic() {
+  echo "=== Running generic sensitive data scan ==="
+  local count=0
+  local file_types="*.md *.sh *.json *.yaml *.yml *.toml *.ini"
+
+  # 构建文件查找参数
+  local include_args=""
+  for ext in md sh json yaml yml toml ini; do
+    include_args+="--include=*.$ext "
+  done
+
+  # --- P0: GitHub Tokens ---
+  # ghp_ (PAT), gho_ (OAuth), ghu_/ghs_ (App), ghr_ (Refresh)
+  while IFS= read -r -d '' f; do
+    sed -i 's/ghp_[a-zA-Z0-9]\{36\}/ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
+    sed -i 's/gho_[a-zA-Z0-9]\{36\}/ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
+    sed -i 's/ghu_[a-zA-Z0-9]\{36\}/ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
+    sed -i 's/ghs_[a-zA-Z0-9]\{36\}/ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
+    sed -i 's/ghr_[a-zA-Z0-9]\{36\}/ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
+    echo " github_token: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args -E 'ghp_[a-zA-Z0-9]{36}|gho_[a-zA-Z0-9]{36}|ghu_[a-zA-Z0-9]{36}|ghs_[a-zA-Z0-9]{36}|ghr_[a-zA-Z0-9]{36}' "$REPO/" 2>/dev/null || true)
+
+  # --- P0: Private Keys (delete entire block from BEGIN to END) ---
+  while IFS= read -r -d '' f; do
+    sed -i '/-----BEGIN.*PRIVATE KEY-----/,/-----END.*PRIVATE KEY-----/d' "$f"
+    sed -i '/-----BEGIN PGP PRIVATE KEY BLOCK-----/,/-----END PGP PRIVATE KEY BLOCK-----/d' "$f"
+    echo " private_key: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args '-----BEGIN.*PRIVATE KEY-----\|-----BEGIN PGP PRIVATE KEY BLOCK-----' "$REPO/" 2>/dev/null || true)
+
+  # --- P0: Database Connection Strings (replace password part with ****) ---
+  # mongodb://user:password@host -> mongodb://user:****@host
+  while IFS= read -r -d '' f; do
+    sed -i 's|\(mongodb\+\?srv\?://[^:]*:\)[^@]*\(@[^ ]*\)|\1****\2|g' "$f"
+    sed -i 's|\(mysql://[^:****@]*\(@[^ ]*\)|\1****\2|g' "$f"
+    sed -i 's|\(postgres\+\?ql\?://[^:]*:\)[^@]*\(@[^ ]*\)|\1****\2|g' "$f"
+    sed -i 's|\(redis://[^:****@]*\(@[^ ]*\)|\1****\2|g' "$f"
+    echo " db_conn: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args -E 'mongodb\\+?srv?://[^:]+:[^@]+@|mysql://[^:****@]+@|postgres\\+?ql?://[^:]+:[^@]+@|redis://[^:****@]+@' "$REPO/" 2>/dev/null || true)
+
+  # --- P0: Authorization: Bearer SANITIZED_TOKEN<token> ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/\(Authorization:[[:space:]]*Bearer[[:space:]]*\)[a-zA-Z0-9_\-\.\+]*/\1SANITIZED_TOKEN/g' "$f"
+    echo " bearer_token: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args 'Authorization:.*Bearer' "$REPO/" 2>/dev/null || true)
+
+  # --- P0: AWS Access Key ID ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/AKIA[A-Z0-9]\{16\}/AKIAAAAAAAAAAAAAAAA/g' "$f"
+    echo " aws_key: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args 'AKIA[A-Z0-9]\{16\}' "$REPO/" 2>/dev/null || true)
+
+  # --- P0: Alibaba Cloud AccessKey ID ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/LTAI[a-zA-Z0-9]\{20\}/LTAIAAAAAAAAAAAAAAAAAAAA/g' "$f"
+    echo " aliyun_key: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args 'LTAI[a-zA-Z0-9]\{20\}' "$REPO/" 2>/dev/null || true)
+
+  # --- P0: JWT Token (eyJ...) ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/eyJ[a-zA-Z0-9_-]\+\.eyJ[a-zA-Z0-9_-]\+\.[a-zA-Z0-9_-]*/SANITIZED_JWT/g' "$f"
+    echo " jwt: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args 'eyJ[a-zA-Z0-9_-]*\.eyJ' "$REPO/" 2>/dev/null || true)
+
+  # --- P1: Email addresses (replace username part) ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/[a-zA-Z0-9._%+\-]\+@\([a-zA-Z0-9.-]\+\.[a-zA-Z]\{2,\}\)/user@example.com/g' "$f"
+    echo " email: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args -E '[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' "$REPO/" 2>/dev/null || true)
+
+  # --- P1: Chinese phone numbers (1[3-9] followed by 9 digits) ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/1[3-9][0-9]\{9\}/13800000000/g' "$f"
+    echo " phone: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args -E '1[3-9][0-9]{9}' "$REPO/" 2>/dev/null || true)
+
+  # --- P1: Chinese ID numbers ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/[1-9][0-9]\{5\}\(19\|20\)[0-9]\{2\}\(0[1-9]\|1[0-2]\)\(0[1-9]\|[12][0-9]\|3[01]\)[0-9]\{3\}[0-9Xx]/110101138000000004/g' "$f"
+    echo " id_number: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ $include_args -E '[1-9][0-9]{5}(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9Xx]' "$REPO/" 2>/dev/null || true)
+
+  # --- P2: Remaining UUIDs (not already replaced by project-specific rules) ---
+  while IFS= read -r -d '' f; do
+    sed -i 's/[a-f0-9]\{8\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{12\}/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/g' "$f"
+    echo " uuid: $(basename "$f")"
+    count=$((count + 1))
+  done < <(grep -rlZ --include='*.md' --include='*.sh' --include='*.json' --include='*.yaml' --include='*.yml' '[a-f0-9]\{8\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{12\}' "$REPO/" 2>/dev/null || true)
+
+  echo " Generic scan: $count files processed"
+}
+
 # 1. 同步顶级文件（排除私有）
 echo "=== Syncing top-level files ==="
 for f in AGENTS.md SOUL.md HEARTBEAT.md IDENTITY.md README.md; do
@@ -275,6 +380,7 @@ fi
 
 # 7. 清洗敏感信息（在 commit 之前）
 sanitize_repo
+sanitize_generic
 
 echo ""
 echo "=== Changes Summary ==="
@@ -292,5 +398,10 @@ DATE=$(date +%Y-%m-%d)
 git -C "$REPO" commit -m "sync: workspace auto-sync $DATE" --quiet
 
 echo "=== Pushing to GitHub ==="
-https_proxy="$PROXY" git -C "$REPO" push origin main --quiet 2>&1
+https_proxy="$PROXY" git -C "$REPO" push "https://zxc1213:user@example.com/zxc1213/openclaw-ai-workspace.git" main --quiet 2>&1
+EXIT_CODE=$?
+if [ $EXIT_CODE -ne 0 ]; then
+  echo "ERROR: Push failed with exit code $EXIT_CODE"
+  exit $EXIT_CODE
+fi
 echo "=== Done ==="

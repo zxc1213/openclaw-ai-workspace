@@ -114,7 +114,7 @@ agent-browser mouse wheel 100         # Scroll wheel
 ```bash
 agent-browser find role button click --name "Submit"
 agent-browser find text "Sign In" click
-agent-browser find label "Email" fill "user@test.com"
+agent-browser find label "Email" fill "user@example.com"
 agent-browser find first ".item" click
 agent-browser find nth 2 "a" text
 ```

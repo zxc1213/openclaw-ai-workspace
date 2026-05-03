@@ -45,7 +45,7 @@
 
 ```bash
 # 编辑草稿元数据（主题、收件人）
-lark-cli mail +draft-edit --draft-id <draft-id> --set-subject '更新后的主题' --set-to alice@example.com,bob@example.com
+lark-cli mail +draft-edit --draft-id <draft-id> --set-subject '更新后的主题' --set-to user@example.com,user@example.com
 
 # 编辑草稿正文（必须通过 patch-file）
 lark-cli mail +draft-edit --draft-id <draft-id> --patch-file ./patch.json
@@ -138,19 +138,19 @@ lark-cli mail +draft-edit --draft-id <draft-id> --set-subject '测试' --dry-run
 `set_recipients`
 
 ```json
-{ "op": "set_recipients", "field": "to", "addresses": [{ "address": "alice@example.com", "name": "Alice" }] }
+{ "op": "set_recipients", "field": "to", "addresses": [{ "address": "user@example.com", "name": "Alice" }] }
 ```
 
 `add_recipient`
 
 ```json
-{ "op": "add_recipient", "field": "cc", "address": "alice@example.com", "name": "Alice" }
+{ "op": "add_recipient", "field": "cc", "address": "user@example.com", "name": "Alice" }
 ```
 
 `remove_recipient`
 
 ```json
-{ "op": "remove_recipient", "field": "cc", "address": "alice@example.com" }
+{ "op": "remove_recipient", "field": "cc", "address": "user@example.com" }
 ```
 
 ### 邮件头
@@ -338,7 +338,7 @@ lark-cli mail +draft-edit --print-patch-template
 cat > ./patch.json << 'EOF'
 {
   "ops": [
-    { "op": "add_recipient", "field": "cc", "address": "carol@example.com", "name": "Carol" },
+    { "op": "add_recipient", "field": "cc", "address": "user@example.com", "name": "Carol" },
     { "op": "remove_attachment", "target": { "part_id": "1.3" } }
   ],
   "options": {}

@@ -14,7 +14,7 @@ lark-cli base +dashboard-block-create \
   --dashboard-id blkxxx \
   --name "订单趋势" \
   --type column \
-  --data-config '{"table_name":"订单表","count_all":true,"group_by":[{"field_name":"金额","mode":"integrated"}],"filter":{"conjunction":"and","conditions":[{"field_name":"金额","operator":"isGreater","value":0},{"field_name":"状态","operator":"is","value":"已完成"},{"field_name":"负责人","operator":"isNotEmpty"},{"field_name":"创建日期","operator":"isGreaterEqual","value":1711209600000}]}}'
+  --data-config '{"table_name":"订单表","count_all":true,"group_by":[{"field_name":"金额","mode":"integrated"}],"filter":{"conjunction":"and","conditions":[{"field_name":"金额","operator":"isGreater","value":0},{"field_name":"状态","operator":"is","value":"已完成"},{"field_name":"负责人","operator":"isNotEmpty"},{"field_name":"创建日期","operator":"isGreaterEqual","value":1380000000000}]}}'
 
 # 创建指标卡（统计数字字段求和）
 lark-cli base +dashboard-block-create \

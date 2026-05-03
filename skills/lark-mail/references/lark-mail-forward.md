@@ -34,22 +34,22 @@ lark-cli mail user_mailbox.drafts send --params '{"user_mailbox_id":"me","draft_
 
 ```bash
 # 转发邮件（默认保存为草稿）— HTML 推荐
-lark-cli mail +forward --message-id <邮件ID> --to alice@example.com --body '<p>FYI，请看下面原邮件。</p>'
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com --body '<p>FYI，请看下面原邮件。</p>'
 
 # 转发并附加说明 + 抄送（草稿）
-lark-cli mail +forward --message-id <邮件ID> --to alice@example.com --cc bob@example.com --body '<b>请参考</b>'
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com --cc user@example.com --body '<b>请参考</b>'
 
 # 转发时插入内嵌图片（CID 为唯一标识符，可用随机字符串）
-lark-cli mail +forward --message-id <邮件ID> --to alice@example.com --body '<img src="cid:a1b2c3d4e5f6a7b8c9d0"> 详见图示。' --inline '[{"cid":"a1b2c3d4e5f6a7b8c9d0","file_path":"./logo.png"}]'
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com --body '<img src="cid:a1b2c3d4e5f6a7b8c9d0"> 详见图示。' --inline '[{"cid":"a1b2c3d4e5f6a7b8c9d0","file_path":"./logo.png"}]'
 
 # 纯文本转发（仅在内容极简时使用）
-lark-cli mail +forward --message-id <邮件ID> --to alice@example.com
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com
 
 # 确认发送（用户明确确认后才可使用）
-lark-cli mail +forward --message-id <邮件ID> --to alice@example.com --confirm-send
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com --confirm-send
 
 # Dry Run（仅打印请求，不发送）
-lark-cli mail +forward --message-id <邮件ID> --to alice@example.com --dry-run
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com --dry-run
 ```
 
 ## 参数
@@ -96,17 +96,17 @@ lark-cli mail +forward --message-id <邮件ID> --to alice@example.com --dry-run
 
 ### 场景 1：用户说"把这封邮件转发给 Bob"（只创建草稿）
 ```bash
-lark-cli mail +forward --message-id <邮件ID> --to bob@example.com --body '<p>FYI</p>'
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com --body '<p>FYI</p>'
 ```
 → 返回 `draft_id`，告诉用户转发草稿已创建。
 
 ### 场景 2：用户说"转发给 Bob 并发送"（需要发送）
 ```bash
 # Step 1: 创建转发草稿
-lark-cli mail +forward --message-id <邮件ID> --to bob@example.com --body '<p>FYI，请查收。</p>'
+lark-cli mail +forward --message-id <邮件ID> --to user@example.com --body '<p>FYI，请查收。</p>'
 # → 返回 draft_id
 
-# Step 2: 向用户确认 "转发草稿已创建：收件人 bob@example.com。确认发送吗？"
+# Step 2: 向用户确认 "转发草稿已创建：收件人 user@example.com。确认发送吗？"
 
 # Step 3: 用户确认后发送
 lark-cli mail user_mailbox.drafts send --params '{"user_mailbox_id":"me","draft_id":"<draft_id>"}'
@@ -124,7 +124,7 @@ lark-cli mail +thread --thread-id <THREAD_ID> --html=false --format json
 #    messages 按时间升序排列，最后一条 = messages[-1].message_id
 
 # 3. 转发该消息
-lark-cli mail +forward --message-id <最后一条的message_id> --to recipient@example.com --body '请过目'
+lark-cli mail +forward --message-id <最后一条的message_id> --to user@example.com --body '请过目'
 ```
 
 ## 实现说明

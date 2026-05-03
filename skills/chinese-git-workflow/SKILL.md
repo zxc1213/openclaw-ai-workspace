@@ -50,7 +50,7 @@ git remote set-url --add --push origin https://github.com/<org>/<repo>.git
 git remote add origin https://e.coding.net/<team>/<project>/<repo>.git
 
 # Coding 支持的 SSH 地址
-git remote add origin git@e.coding.net:<team>/<project>/<repo>.git
+git remote add origin user@example.com:<team>/<project>/<repo>.git
 ```
 
 ### 极狐 GitLab 特有配置
@@ -486,7 +486,7 @@ main:
 ```bash
 # 设置用户信息
 git config --global user.name "张三"
-git config --global user.email "zhangsan@company.com"
+git config --global user.email "user@example.com"
 
 # commit message 编辑器设置为 VS Code
 git config --global core.editor "code --wait"

@@ -33,27 +33,27 @@ lark-cli mail user_mailbox.drafts send --params '{"user_mailbox_id":"me","draft_
 
 ```bash
 # 保存为草稿（默认行为，不发送）— HTML 格式推荐
-lark-cli mail +send --to alice@example.com --subject '周报' \
+lark-cli mail +send --to user@example.com --subject '周报' \
   --body '<p>本周进展：</p><ul><li>完成 A 模块</li><li>修复 3 个 bug</li></ul>'
 
 # 保存为草稿并抄送
-lark-cli mail +send --to alice@example.com --cc bob@example.com --subject '状态更新' --body '<b>已完成</b>'
+lark-cli mail +send --to user@example.com --cc user@example.com --subject '状态更新' --body '<b>已完成</b>'
 
 # 确认发送（仅在用户明确确认后使用）
-lark-cli mail +send --to alice@example.com --subject '周报' \
+lark-cli mail +send --to user@example.com --subject '周报' \
   --body '<p>本周进展如下...</p>' --confirm-send
 
 # 保存带附件的草稿
-lark-cli mail +send --to alice@example.com --subject '请查收' --body '<p>见附件</p>' --attach ./report.pdf,./logs.zip
+lark-cli mail +send --to user@example.com --subject '请查收' --body '<p>见附件</p>' --attach ./report.pdf,./logs.zip
 
 # 保存带内嵌图片的草稿（CID 为唯一标识符，可用随机字符串）
-lark-cli mail +send --to alice@example.com --subject '预览图' --body '<img src="cid:a1b2c3d4e5f6a7b8c9d0">' --inline '[{"cid":"a1b2c3d4e5f6a7b8c9d0","file_path":"./logo.png"}]'
+lark-cli mail +send --to user@example.com --subject '预览图' --body '<img src="cid:a1b2c3d4e5f6a7b8c9d0">' --inline '[{"cid":"a1b2c3d4e5f6a7b8c9d0","file_path":"./logo.png"}]'
 
 # 纯文本邮件（仅在内容极简时使用）
-lark-cli mail +send --to alice@example.com --subject '确认' --body '收到，谢谢'
+lark-cli mail +send --to user@example.com --subject '确认' --body '收到，谢谢'
 
 # Dry Run（仅打印请求，不执行）
-lark-cli mail +send --to alice@example.com --subject '测试' --body '<p>test</p>' --dry-run
+lark-cli mail +send --to user@example.com --subject '测试' --body '<p>test</p>' --dry-run
 ```
 
 ## 参数
@@ -102,17 +102,17 @@ lark-cli mail +send --to alice@example.com --subject '测试' --body '<p>test</p
 
 ### 场景 1：用户说"帮我写一封邮件给 Alice"（只创建草稿）
 ```bash
-lark-cli mail +send --to alice@example.com --subject '周报' --body '<p>本周进展如下...</p>'
+lark-cli mail +send --to user@example.com --subject '周报' --body '<p>本周进展如下...</p>'
 ```
 → 返回 `draft_id`，告诉用户草稿已创建，可在飞书邮件 UI 中预览和编辑。
 
 ### 场景 2：用户说"发邮件给 Alice 说收到了"（需要发送）
 ```bash
 # Step 1: 创建草稿
-lark-cli mail +send --to alice@example.com --subject '收到' --body '<p>已收到，谢谢！</p>'
+lark-cli mail +send --to user@example.com --subject '收到' --body '<p>已收到，谢谢！</p>'
 # → 返回 draft_id
 
-# Step 2: 向用户确认 "邮件草稿已创建：收件人 alice@example.com，主题「收到」。确认发送吗？"
+# Step 2: 向用户确认 "邮件草稿已创建：收件人 user@example.com，主题「收到」。确认发送吗？"
 
 # Step 3: 用户确认后发送
 lark-cli mail user_mailbox.drafts send --params '{"user_mailbox_id":"me","draft_id":"<draft_id>"}'

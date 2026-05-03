@@ -52,8 +52,8 @@ find "$SESSIONS_ROOT" -path '*/sessions/*' \
       fi
 
       # 提取 session UUID
-      # 文件名示例: c2cf1f1a-9db9-4f1c-8881-cca97d7d3643.jsonl.deleted.1713267600
-      # 文件名示例: c2cf1f1a-9db9-4f1c-8881-cca97d7d3643.jsonl.reset.1713267600
+      # 文件名示例: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.jsonl.deleted.1713267600
+      # 文件名示例: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.jsonl.reset.1713267600
       filename=$(basename "$file")
       # 去掉 .deleted.XXX 或 .reset.XXX 后缀，再去掉 .jsonl 后缀，保留 UUID
       session_id=$(echo "$filename" | sed -E 's/\.(deleted|reset)\..+$//' | sed 's/\.jsonl$//')
