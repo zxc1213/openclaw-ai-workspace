@@ -108,7 +108,6 @@ workspace/
 ├── docs/              # 正式文档（19+ 文件）
 │   ├── sanitization-rules.md     # 敏感数据脱敏规则（176条）
 │   ├── openclaw-vs-openharness.md
-│   ├── spring-cloud-k8s-config-refactor-guide.md
 │   ├── teach-claude-code-tier2/  # Claude Code 教程 Tier 2
 │   └── teach-claude-code-tier3/  # Claude Code 教程 Tier 3
 ├── scripts/           # 自动化脚本（5个）
