@@ -1,6 +1,6 @@
 # 🌙 OpenClaw AI Agent Workspace
 
-> 基于 OpenClaw 构建的个人 AI Agent 生产力系统，集成飞书生态，实现日程管理、智能早报、代码审查、知识库同步等 30+ 自动化场景。
+> 基于 [OpenClaw](https://github.com/openclaw/openclaw) 构建的个人 AI Agent 生产力系统，集成飞书生态，实现日程管理、智能早报、代码审查、知识库同步等 30+ 自动化场景。
 
 ## 🎯 项目解决的核心痛点
 
@@ -13,27 +13,27 @@
 
 ```
 ┌─────────────────────────────────────────────────┐
-│                   Feishu (飞书)                   │
-│              统一交互入口 · 消息卡片                │
+│ Feishu (飞书)                                   │
+│ 统一交互入口 · 消息卡片                          │
 └──────────────┬──────────────────────────────────┘
                │
 ┌──────────────▼──────────────────────────────────┐
-│              OpenClaw Gateway                    │
-│         主 Agent（念念） · 长上下文对话            │
-│    ┌─────────────────────────────────────┐      │
-│    │         Cron 调度引擎               │      │
-│    │  每日早报 · 周报 · 健康检查 · 监控   │      │
-│    └──────────┬──────────────────────────┘      │
-│               │ Sub-Agent 派发                   │
-│    ┌──────────▼──────────────────────────┐      │
-│    │      Isolated Sessions              │      │
-│    │  代码审查 · 网页爬取 · 数据处理      │      │
-│    └─────────────────────────────────────┘      │
+│ OpenClaw Gateway                                │
+│ 主 Agent（念念） · 长上下文对话                   │
+│ ┌─────────────────────────────────────┐         │
+│ │ Cron 调度引擎                       │         │
+│ │ 每日早报 · 周报 · 健康检查 · 监控    │         │
+│ └──────────┬──────────────────────────┘         │
+│            │ Sub-Agent 派发                      │
+│ ┌──────────▼──────────────────────────┐         │
+│ │ Isolated Sessions                    │         │
+│ │ 代码审查 · 网页爬取 · 数据处理       │         │
+│ └─────────────────────────────────────┘         │
 └──────────────┬──────────────────────────────────┘
                │
 ┌──────────────▼──────────────────────────────────┐
-│            OpenViking 记忆引擎                    │
-│     向量记忆 · 跨会话持久化 · 语义检索            │
+│ OpenViking 记忆引擎                              │
+│ 向量记忆 · 跨会话持久化 · 语义检索                │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -54,21 +54,29 @@
 | 🔍 开源项目监控 | 周一/四 10:00 | 技术博客更新追踪 |
 | 💚 服务器告警 | 每 15 分钟 | 异常检测 + 飞书即时告警 |
 | 🔧 服务器自动修复 | 每天 03:00 | 磁盘清理 + 服务重启 + 网络刷新 |
-| 💭 记忆梦境 | 每天 03:00 | 短期记忆 → 长期记忆自动沉淀 |
+| 📦 GitHub 同步 | 每天 22:00 | 自动脱敏同步到公开仓库 |
 
-### 3. Skill 插件体系（68+ 技能）
+### 3. Skill 插件体系（87 个技能）
 
 涵盖多个领域：
-- **飞书集成**：日历、任务、多维表格、文档、知识库、云盘
-- **开发工具**：GitHub、PR Review、代码审计（Java/Vue）
-- **信息获取**：网页爬取（Firecrawl）、论文检索（arXiv/HuggingFace）
-- **自动化**：浏览器控制、定时任务、工作流编排
-- **AI 辅助**：Claude Code 联动、MCP 构建器
+
+| 类别 | 数量 | 代表技能 |
+|------|------|----------|
+| **飞书集成** | 22 | 日历、任务、多维表格、文档、知识库、云盘、审批、视频会议 |
+| **网页爬取** | 8 | Firecrawl 爬取/搜索/下载/地图/指令 |
+| **开发工具** | 15 | GitHub、PR Review、代码审计（Java/Vue）、TDD、Git Worktrees |
+| **Agent 架构** | 12 | 任务派发、并行调度、子Agent驱动开发、会话管理 |
+| **安全审计** | 6 | Skill 审计、MCP 审计、Java/Vue 安全扫描、安全简报 |
+| **写作与学习** | 8 | 计划编写、技能创建、学习工作流、研究方法论 |
+| **信息获取** | 4 | arXiv 论文、HuggingFace 论文、Tavily 搜索、热点新闻 |
+| **浏览器** | 4 | Agent Browser、Browser Use、BrowserWing、网站审计 |
+| **自动化** | 5 | 工作流运行器、每日摘要、每日热点、Token 统计 |
+| **其他** | 3 | 头脑风暴、本体论、Web 访问 |
 
 ### 4. 智能记忆系统
 - **分层记忆**：L1 核心事实（compaction 后始终重注入）+ L2 详细内容（按需搜索）
 - **向量检索**：OpenViking 语义记忆，embedding-3 2048 维
-- **自动沉淀**：记忆梦境任务定期将高频短期记忆提升为长期记忆
+- **自动沉淀**：心跳任务定期将高频短期记忆提升为长期记忆
 - **跨会话连续性**：新会话自动加载 MEMORY.md + 当日笔记
 
 ### 5. 飞书深度集成
@@ -78,32 +86,37 @@
 - 知识库文档读写
 - 云空间文件管理
 - 消息检索与回复
+- 审批流程、视频会议
 
 ## 📁 项目结构
 
 ```
 workspace/
-├── AGENTS.md          # Agent 行为规范
+├── AGENTS.md          # Agent 行为规范与目录约定
 ├── SOUL.md            # 人格定义
 ├── USER.md            # 用户画像
-├── MEMORY.md          # 长期记忆索引
+├── MEMORY.md          # 长期记忆索引（分层 L1/L2）
 ├── HEARTBEAT.md       # 心跳任务定义
-├── TOOLS.md           # 工具配置
+├── TOOLS.md           # 工具与环境配置
 ├── IDENTITY.md        # Agent 身份
-├── skills/            # 68+ Skill 插件
-│   ├── lark-*/        # 飞书系列技能
-│   ├── firecrawl-*/   # 网页爬取系列
-│   ├── coding-agent/  # 编码 Agent
+├── SAFETY.md          # 安全操作规范
+├── skills/            # 87 个 Skill 插件
+│   ├── lark-*/        # 飞书系列（22个）
+│   ├── firecrawl-*/   # 网页爬取系列（8个）
+│   ├── *-audit/       # 安全审计系列
 │   └── ...
-├── memory/            # 记忆系统
-│   ├── daily-notes/   # 每日笔记
-│   ├── heartbeat-reflections/  # 心跳反思
-│   └── archive/       # 归档
-├── docs/              # 正式文档
-├── research/          # 研究笔记
-├── projects/          # 项目代码
-│   └── team-dashboard/
-├── scripts/           # 自动化脚本
+├── docs/              # 正式文档（19+ 文件）
+│   ├── sanitization-rules.md     # 敏感数据脱敏规则（176条）
+│   ├── openclaw-vs-openharness.md
+│   ├── spring-cloud-k8s-config-refactor-guide.md
+│   ├── teach-claude-code-tier2/  # Claude Code 教程 Tier 2
+│   └── teach-claude-code-tier3/  # Claude Code 教程 Tier 3
+├── scripts/           # 自动化脚本（5个）
+│   ├── github-sync.sh           # GitHub 自动同步（含脱敏）
+│   ├── cdp-control.py           # Chrome CDP 控制
+│   ├── chrome-remote.sh         # Chrome 远程管理
+│   ├── daily-papers-push.sh     # 每日论文推送
+│   └── subagent-stats.sh        # SubAgent 统计
 └── rules/             # 编码规范
 ```
 
@@ -111,11 +124,11 @@ workspace/
 
 | 组件 | 技术 |
 |------|------|
-| Agent 框架 | [OpenClaw](https://github.com/openclaw/openclaw) v2026.4.21 |
+| Agent 框架 | [OpenClaw](https://github.com/openclaw/openclaw) |
 | 主模型 | GLM-5-Turbo (智谱, 204K context) |
-| 辅助模型 | GLM-5 / GLM-5.1 / GLM-4.7-Flash |
-| 记忆引擎 | [OpenViking](https://openviking.ai) v0.3.2, embedding-3 |
-| 通信渠道 | 飞书 / QQ / Telegram |
+| 辅助模型 | GLM-5 / GLM-5.1 / GLM-4.7-Flash / GLM-5V-Turbo |
+| 记忆引擎 | OpenViking v0.3.2, embedding-3 |
+| 通信渠道 | 飞书 |
 | 运行环境 | WSL2 (Ubuntu) + Windows |
 | 前端 | React (Team Dashboard) |
 | 后端 | Java SpringCloud (集团平台) |
@@ -124,8 +137,8 @@ workspace/
 
 ### 系统状态
 ```
-OpenClaw 2026.4.21 (f788c88)
-68 Skills loaded
+OpenClaw (latest)
+87 Skills loaded
 7 Cron Jobs active
 Model: GLM-5-Turbo
 Channel: Feishu ✅
@@ -133,28 +146,28 @@ Channel: Feishu ✅
 
 ### 每日早报示例
 ```
-🌅 早安 Ray | 2026-04-28 周一
+🌅 早安 Ray | 2026-05-03 周六
 
 🔐 安全简报
 今日无高危安全通告
 
 📅 今日日程
-14:00 技术方案评审
+（无）
 
 📋 待办提醒
-- 完成 Token Plan 申请材料
+- GitHub 仓库脱敏规则完善
 
 🔥 热榜速览
 - [1] anthropic/claude-code · Claude Code 新增 Agent SDK
-- [2] openclaw/openclaw · OpenClaw v2026.4.21 发布
+- [2] openclaw/openclaw · OpenClaw 最新版本发布
 - [3] vercel/ai · AI SDK v4 正式发布
 
 🌤 广州天气
-28°C 多云 · 短袖即可，带伞防阵雨
+28°C 多云 · 短袖即可
 ```
 
 ### Sub-Agent 任务派发
-```
+```markdown
 ## 任务：集团平台安全审计
 
 ### Goal
@@ -177,11 +190,12 @@ Channel: Feishu ✅
 
 ## 📈 运行数据
 
-- **Skill 插件**: 68+ 个
+- **Skill 插件**: 87 个
 - **定时任务**: 7 个（覆盖日常、监控、知识管理）
+- **文档**: 19+ 篇正式文档
+- **自动化脚本**: 5 个
 - **记忆条目**: 200+ 条（OpenViking 向量记忆）
 - **每日早报**: 自动生成并归档到飞书知识库
-- **模型调用**: GLM 系列主力，日均数千次 API 调用
 
 ## 🚀 快速开始
 
@@ -197,10 +211,15 @@ Channel: Feishu ✅
 # 安装 OpenClaw
 npm install -g openclaw
 
-# 克隆配置
-git clone https://github.com/<your-username>/openclaw-ai-workspace.git
+# 克隆本仓库
+git clone https://github.com/zxc1213/openclaw-ai-workspace.git
 cd openclaw-ai-workspace
-cp -r . ~/.openclaw/workspace/
+
+# 复制到 OpenClaw workspace
+cp -r AGENTS.md SOUL.md USER.md MEMORY.md HEARTBEAT.md TOOLS.md IDENTITY.md SAFETY.md ~/.openclaw/workspace/
+cp -r skills/ ~/.openclaw/workspace/
+cp -r scripts/ ~/.openclaw/workspace/
+cp -r docs/ ~/.openclaw/workspace/
 
 # 配置环境变量
 openclaw config edit
@@ -218,7 +237,24 @@ openclaw status
 
 ## 📝 成果描述
 
-> 我基于 OpenClaw 构建了一套完整的个人 AI Agent 生产力系统。通过飞书作为统一交互入口，实现了日程管理、消息检索、文档协作、每日安全情报早报、开源项目版本监控等 30+ 自动化场景。系统采用多 Agent 协作架构——主 Agent 负责意图识别和任务调度，专职 Sub-Agent 在隔离会话中执行编码审查、网页爬取等任务。配合 OpenViking 向量记忆库实现跨会话知识持久化，通过自研 Skill 机制将 68+ 个工作流沉淀为可复用插件。日常运行 7 个定时任务，覆盖智能早报、周报生成、服务器健康检查等场景，显著降低了重复性事务处理成本。
+> 我基于 OpenClaw 构建了一套完整的个人 AI Agent 生产力系统。通过飞书作为统一交互入口，实现了日程管理、消息检索、文档协作、每日安全情报早报、开源项目版本监控等 30+ 自动化场景。
+>
+> 系统采用多 Agent 协作架构——主 Agent 负责意图识别和任务调度，专职 Sub-Agent 在隔离会话中执行编码审查、网页爬取等任务。配合 OpenViking 向量记忆库实现跨会话知识持久化，通过自研 Skill 机制将 87 个工作流沉淀为可复用插件。
+>
+> 安全方面，建立了 176 条敏感数据脱敏规则，配合自动化同步脚本，确保公开仓库零泄露风险。日常运行 7 个定时任务，覆盖智能早报、周报生成、服务器健康检查等场景，显著降低了重复性事务处理成本。
+
+## 📄 文档索引
+
+| 文档 | 说明 |
+|------|------|
+| [AGENTS.md](./AGENTS.md) | Agent 行为规范、目录约定、Sub-Agent 派发规范 |
+| [SOUL.md](./SOUL.md) | 人格定义、价值观、自我进化机制 |
+| [MEMORY.md](./MEMORY.md) | 长期记忆索引（分层 L1 核心事实 + L2 详细内容） |
+| [HEARTBEAT.md](./HEARTBEAT.md) | 心跳任务定义、Memory 管理流程 |
+| [TOOLS.md](./TOOLS.md) | 工具配置（代理、API 等） |
+| [USER.md](./USER.md) | 用户画像与偏好 |
+| [SAFETY.md](./SAFETY.md) | 安全操作规范（操作分级与确认机制） |
+| [脱敏规则](./docs/sanitization-rules.md) | 176 条敏感数据脱敏规则 |
 
 ## License
 
