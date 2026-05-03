@@ -27,7 +27,6 @@ description: "自动整理学习笔记和知识到飞书知识库，维护分类
 │   └── 安全知识/
 ├── 📋 项目文档/
 │   ├── nian-desktop/
-│   ├── Team Dashboard/
 │   └── （其他项目）
 ├── 📊 运维手册/
 │   ├── OpenClaw 配置/

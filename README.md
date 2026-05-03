@@ -130,8 +130,6 @@ workspace/
 | 记忆引擎 | OpenViking v0.3.2, embedding-3 |
 | 通信渠道 | 飞书 |
 | 运行环境 | WSL2 (Ubuntu) + Windows |
-| 前端 | React (Team Dashboard) |
-
 ## 📸 实际运行截图
 
 ### 系统状态

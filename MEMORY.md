@@ -11,9 +11,6 @@
 - Agent: 念念 🌙，OpenClaw main session
 
 ### 项目概览
-| 项目 | 技术栈 | 路径 | 状态 |
-|------|--------|------|------|
-| Team Dashboard | React, 5-tab | projects/team-dashboard | 端口 18788, 自启 |
 ### 基础设施
 - **OpenClaw**: systemd, SIGUSR1 热重启, drop-in 改环境变量
 - **模型**: GLM-5/5.1/5-Turbo/4.7/4.7-Flash/4.7-FlashX/5V-Turbo (智谱, 204K ctx)
