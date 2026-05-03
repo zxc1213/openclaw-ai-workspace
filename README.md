@@ -131,7 +131,6 @@ workspace/
 | 通信渠道 | 飞书 |
 | 运行环境 | WSL2 (Ubuntu) + Windows |
 | 前端 | React (Team Dashboard) |
-| 后端 | Java SpringCloud (集团平台) |
 
 ## 📸 实际运行截图
 
@@ -168,23 +167,23 @@ Channel: Feishu ✅
 
 ### Sub-Agent 任务派发
 ```markdown
-## 任务：集团平台安全审计
+## 任务：代码审查
 
 ### Goal
-扫描 MyBatis XML 中的 SQL 注入风险，输出修复建议
+审查目标仓库的代码质量，输出修复建议
 
 ### Context
-- 项目路径: /mnt/e/todo/集团平台
-- 4 个同构版本, 169 张表
+- 目标: GitHub 开源项目
+- 关注: 安全漏洞、代码规范、性能问题
 
 ### Constraints
-1. 仅扫描 ${} 非预编译参数
-2. 输出 CSV 格式报告
-3. max_turns: 15
+1. 仅扫描核心业务模块
+2. 输出 Markdown 格式报告
+3. max_turns: 10
 
 ### Done 标准
-1. 所有 Mapper XML 已扫描
-2. 风险点按 P0/P1/P2 分级
+1. 所有目标文件已审查
+2. 问题按严重程度分级
 3. 修复建议包含代码示例
 ```
 

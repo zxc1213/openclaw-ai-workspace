@@ -14,7 +14,6 @@
 | 项目 | 技术栈 | 路径 | 状态 |
 |------|--------|------|------|
 | Team Dashboard | React, 5-tab | projects/team-dashboard | 端口 18788, 自启 |
-| 集团平台 | Java SpringCloud | /mnt/e/todo/集团平台 | 4版本, 169表 |
 ### 基础设施
 - **OpenClaw**: systemd, SIGUSR1 热重启, drop-in 改环境变量
 - **模型**: GLM-5/5.1/5-Turbo/4.7/4.7-Flash/4.7-FlashX/5V-Turbo (智谱, 204K ctx)
@@ -52,9 +51,6 @@
 - ~/.opencli/clis/bigmodel/ 4个 YAML (detail/summary/bykey/bill)
 - 踩坑: POST→GET, billingMonth, j.rows, document.cookie 提取 JWT
 
-### 集团平台
-- 4个同构版本: base/lq/kczx/kcsystem
-- PDM 反向工程: 169表/3067字段, 84字段需手动补注释
 
 
 ---

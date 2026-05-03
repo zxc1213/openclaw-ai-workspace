@@ -67,7 +67,6 @@
 - [ ] **gateway 密码迁移到环境变量**（上次审计 🟡）
 
 ### 6. 自建 MCP Server
-- [ ] 封装集团平台 API
 - [ ] 封装 Dashboard API
 - [ ] 考虑接入 filesystem MCP、github MCP
 
