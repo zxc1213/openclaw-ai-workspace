@@ -1,7 +1,7 @@
 # 代码知识工具使用手册
 
 > Zread + Code-Review-Graph + OpenViking  
-> 2026-04-15
+> 2026-04-15 | Ray & 念念
 
 ---
 
@@ -259,7 +259,7 @@ OpenClaw 已内置集成，无需额外安装：
 ```bash
 # 确认运行状态
 openclaw status
-# OpenViking 默认运行在指定端口
+# OpenViking 默认运行在 :9333 端口
 ```
 
 当前配置：v0.3.2，embedding-3 2048 维。
@@ -295,7 +295,7 @@ openclaw status
 
 ```
 用户：我们决定认证模块用 JWT 而不是 Session，因为需要支持微服务间调用
-→ Agent 自动调用 memory_store 存入
+→ 念念自动调用 memory_store 存入
 ```
 
 **检索记忆：**
@@ -337,7 +337,7 @@ zread browse                          # 读 Wiki
 
 # Step 3: OpenViking 记录发现
 # 在对话中自然记录关键发现
-# Agent 自动调用 memory_store 沉淀
+# 念念自动调用 memory_store 沉淀
 ```
 
 ### 场景 2：日常开发中的增量维护
@@ -363,7 +363,7 @@ code-review-graph detect-changes --base main
 cat .zread/wiki/versions/$(cat .zread/wiki/current)/wiki.json
 
 # OpenViking 检索相关历史决策
-# Agent 调用 memory_recall("相关主题")
+# 念念调用 memory_recall("相关主题")
 ```
 
 ### 场景 4：新人 Onboarding

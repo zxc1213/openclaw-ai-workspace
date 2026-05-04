@@ -84,8 +84,8 @@ bash workspace/skills/memory-extract/extract.sh --min-size 20000 --limit 10
 - 每条记忆是独立的、自包含的信息单元
 - 不要把整段对话塞进去，要提炼出知识点
 - 示例：
-  - ❌ `"用户说他的代理是 x.x.x.x:PORT，然后我帮他配了..."`
-  - ✅ `"用户的代理配置：x.x.x.x:PORT（Windows 侧，HTTP/SOCKS5）。记录于 TOOLS.md。"`
+  - ❌ `"用户说他的代理是 192.168.1.100:7890，然后我帮他配了..."`
+  - ✅ `"Ray 的代理配置：192.168.1.100:7890（Windows 侧，HTTP/SOCKS5）。记录于 TOOLS.md。"`
 
 ## 文件清单
 

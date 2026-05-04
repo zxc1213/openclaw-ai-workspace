@@ -7,18 +7,25 @@
 ## L1 — 核心事实（compaction 后始终重注入）
 
 ### 身份
-- 用户: 程序员，夜猫子，偏好中文简洁沟通
+- 用户: Ray，37岁，广州，程序员，夜猫子，偏好中文简洁沟通
+- Agent: 念念 🌙，OpenClaw main session
 
 ### 项目概览
+| 项目 | 技术栈 | 路径 | 状态 |
+|------|--------|------|------|
+| Team Dashboard | React, 5-tab | projects/team-dashboard | 端口 18788, 自启 |
+| 集团平台 | Java SpringCloud | /mnt/e/todo/集团平台 | 4版本, 169表 |
 ### 基础设施
 - **OpenClaw**: systemd, SIGUSR1 热重启, drop-in 改环境变量
 - **模型**: GLM-5/5.1/5-Turbo/4.7/4.7-Flash/4.7-FlashX/5V-Turbo (智谱, 204K ctx)
-- **OpenViking**: v0.3.2, embedding-3 2048维
-- **WSL2**: systemd
-- **浏览器**: agent-browser + Chrome CDP
+- **OpenViking**: v0.3.2, embedding-3 2048维, :9333
+- **WSL2**: 192.168.1.101, systemd
+- **浏览器**: agent-browser + Chrome CDP (192.168.1.100:9222)
 
 ### 飞书
-- 多维表格: 配置速查手册
+- 知识空间 ID: 7600000000000000000
+- 任务清单: 88a75c8d-...
+- 多维表格: 配置速查手册 (5表49记录)
 
 ### 定时任务
 | Job ID | 时间 | 内容 |
@@ -26,7 +33,7 @@
 | 72d10a6c | 每天 09:00 | 每日早报（安全+日程+待办+热榜+天气） |
 | 27581440 | 周日 20:00 | 周报（本周完成+统计+计划） |
 | 19fab771 | 周一/四 10:00 | 团队增强（版本更新检查） |
-| c6cbd07f | 周一/四 10:00 | 开源项目监控 |
+| c6cbd07f | 周一/四 10:00 | 冬奇Lab开源项目监控 |
 | 06993fa8 | 每15分钟 | 服务器健康检查（告警） |
 | d5156146 | 每天 03:00 | 服务器健康检查（自动修复） |
 | 619474e6 | ~~每天 08:30~~ | ❌ AI论文推送（已禁用） |
@@ -45,6 +52,9 @@
 - ~/.opencli/clis/bigmodel/ 4个 YAML (detail/summary/bykey/bill)
 - 踩坑: POST→GET, billingMonth, j.rows, document.cookie 提取 JWT
 
+### 集团平台
+- 4个同构版本: base/lq/kczx/kcsystem
+- PDM 反向工程: 169表/3067字段, 84字段需手动补注释
 
 
 ---
@@ -72,3 +82,5 @@
 - 飞书知识库同步 (2026-04-06): 3 篇在「OpenClaw 使用与配置」下
 - MemPalace 学习 (2026-04-08): 分层加载/Wing隔离/Tunnel 关联, research/mempalace-study.md
 - HarnessKit + OpenClaw Pi 架构 (2026-05-03): 4篇研究文件, 3个新skill, research/harnesskit-*.md research/openclaw-pi-*.md
+
+

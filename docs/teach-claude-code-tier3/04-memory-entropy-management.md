@@ -97,6 +97,7 @@ misplaced = files.filter(f => !f.is_date_named && !f.is_in_subdir)
 **实际效果**：4 个文件归位到 docs/
 - `openclaw-enhancement-backlog.md` → `docs/`
 - `skill-distribution-policy.md` → `docs/`
+- `spring-cloud-k8s-config-refactor-guide.md` → `docs/`
 - `knowledge-sync-plan-2026-04-05.md` → `docs/`
 
 ### 2.4 MEMORY.md 同步

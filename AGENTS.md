@@ -90,6 +90,9 @@ workspace/
 2. [上下文预算：简单<300, 中等300-500, 复杂500-800 token]
 3. [建议 max_turns]
 4. **memory_scope**: coding | research | infra | project:<name> | 省略=全量
+5. **自检清单**：任务完成后必须验证 — 产出文件存在且格式正确、代码可运行（如适用）、未引入新 lint 错误、Done 标准全部满足
+6. **修正循环**：自检发现问题 → 修正 → 再验证（最多 2 轮）
+7. **异常检测**：输出截断用 offset/limit 重读；工具调用连续失败超 2 次记录并报告；上下文 >60% 考虑分批处理
 
 ### Done 标准
 1. [具体可检查的完成条件]
@@ -101,7 +104,7 @@ workspace/
 - **timeout**: [超时秒数]
 ```
 
-**要点**: Goal 必须一句话；Context 只给必要信息；Constraints 最多 5 条；Done 必须可检查
+**要点**: Goal 必须一句话；Context 只给必要信息；Constraints 最多 7 条；Done 必须可检查
 
 ### 任务结果记录（每次必做）
 - 完成后在 `memory/subagent-log.md` 追加：`| 日期 | 类型(coding/review/research/doc/admin/fix) | agent | 结果(✅⚠️❌🔄) | 耗时 | 备注 |`

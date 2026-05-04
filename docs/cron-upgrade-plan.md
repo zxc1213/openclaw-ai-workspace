@@ -16,11 +16,11 @@
 | 5 | `480f17f5` | 竞品周报扫描 | `0 9 * * 1` | agentTurn | ✅ |
 | 6 | `06993fa8` | 服务器告警检查 | `*/15 * * * *` | agentTurn | ✅ |
 | 7 | `d5156146` | 服务器自动修复 | `0 3 * * *` | agentTurn | ✅ |
-| 8 | `c6cbd07f` | 开源项目监控 | `0 10 * * 1,4` | agentTurn | ❌ **缺失** |
+| 8 | `c6cbd07f` | 冬奇Lab开源监控 | `0 10 * * 1,4` | agentTurn | ❌ **缺失** |
 
 **关键发现：**
 - 所有 job 已经是 `agentTurn` 模式（非 systemEvent），说明基础架构已到位
-- **1 个 job 缺少 `lightContext: true`**（开源项目监控），高频/长任务场景下有 overflow 风险
+- **1 个 job 缺少 `lightContext: true`**（冬奇Lab监控），高频/长任务场景下有 overflow 风险
 - 无 disabled jobs，8/8 全部活跃
 - 部分任务 payload 指令偏"写死"，缺乏动态性和容错
 
@@ -203,7 +203,7 @@ payload message 简化为：
 
 ---
 
-### 8. 开源项目监控 `c6cbd07f` — 🔴 必须修复
+### 8. 冬奇Lab开源监控 `c6cbd07f` — 🔴 必须修复
 
 **当前状态：**
 - 模式：agentTurn | **lightContext: 未设置** | timeout: 120s
@@ -308,7 +308,7 @@ payload message 简化为：
 ```
 执行月度资源巡检：
 1. 磁盘使用：df -h / /home /mnt，标记使用率 >80% 的分区
-2. 大文件扫描：du -ah ~ 2>/dev/null | sort -rh | head -30
+2. 大文件扫描：du -ah /home/rays 2>/dev/null | sort -rh | head -30
 3. node_modules 黑洞：find ~/projects -name 'node_modules' -type d -prune | xargs du -sh 2>/dev/null
 4. Docker 清理候选：docker system df（如果 Docker 可用）
 5. npm/pip 缓存：du -sh ~/.npm ~/.cache/pip
@@ -356,7 +356,7 @@ payload message 简化为：
 
 | 优先级 | Job / 新增 | 操作 | 工作量 |
 |--------|-----------|------|--------|
-| 🔴 P0 | 开源项目监控 `c6cbd07f` | 加 lightContext + timeout | 2 min |
+| 🔴 P0 | 冬奇Lab开源监控 `c6cbd07f` | 加 lightContext + timeout | 2 min |
 | ⚡ P1 | daily-ai-papers `619474e6` | timeout 120→300 + model + fallback | 5 min |
 | ⚡ P1 | 竞品周报 `480f17f5` | timeout 120→600 + 去硬编码 | 10 min |
 | 🔄 P2 | 告警检查 `06993fa8` | 加夜间静默 | 2 min |

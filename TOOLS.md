@@ -23,7 +23,7 @@ Things like:
 
 ### SSH
 
-- home-server → x.x.x.x, user: admin
+- home-server → 192.168.1.100, user: admin
 
 ### TTS
 
@@ -33,7 +33,7 @@ Things like:
 
 ## 实际配置
 
-- **代理:** x.x.x.x — HTTP: 8080 / SOCKS5: 8081 / Mixed: 7890
+- **代理:** 192.168.1.100 — HTTP: 8080 / SOCKS5: 8081 / Mixed: 7890
 
 ## API Keys
 

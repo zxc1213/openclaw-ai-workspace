@@ -1,9 +1,9 @@
 # OpenClaw 团队增强备忘录
 
 > 创建时间：2026-04-03
-> 最后检查：2026-05-01
-> 状态：**可推进** — 当前版本 2026.4.21（最新 2026.4.29），自 4.5 以来跨越 16 个版本
-> 背景：要求在不升级 OpenClaw 2026.4.2 的前提下，分步增强团队能力
+> 最后检查：2026-05-04
+> 状态：**已最新** — 当前版本 2026.5.2（最新 2026.5.3-beta），自 4.5 以来跨越 20+ 个版本
+> 背景：Ray 要求在不升级 OpenClaw 2026.4.2 的前提下，分步增强团队能力
 
 ## ✅ 已完成 (2026-04-03)
 
@@ -57,28 +57,34 @@
 
 ## 📋 待执行（可推进）
 
-### 4. 增加 Cron Jobs
+### 4. 增加 Cron Jobs 🟡 可立即推进（平台已成熟）
 - [ ] **每日日程摘要** — 每天 08:30，利用 lark-workflow-standup-report
 - [ ] **项目巡检** — 定期 git status + 检查关键服务健康
 - [ ] **飞书消息摘要** — 每 2-4h 扫描重要未读消息
+> 平台 Cron 已成熟（4.20 jobs-state.json + 5.2 UI/WS 稳定），建议本周启动
 
-### 5. 安全加固
+### 5. 安全加固 🟡 可立即推进
 - [ ] **allowedOrigins `*` → 显式信任来源**（上次审计 🔴）
 - [ ] **gateway 密码迁移到环境变量**（上次审计 🟡）
+> 平台安全持续加强，建议尽快完成这两项
 
-### 6. 自建 MCP Server
+### 6. 自建 MCP Server 🟢 平台已就绪
+- [ ] 封装集团平台 API
 - [ ] 封装 Dashboard API
 - [ ] 考虑接入 filesystem MCP、github MCP
+> Plugin SDK 完善，`openclaw proxy validate` 可用，开发门槛降低
 
-### 7. 补充 SkillHub 技能
+### 7. 补充 SkillHub 技能 🟢 平台已就绪
 - [ ] agent-dashboard — Dashboard 管理增强
-- [ ] mcp — MCP 管理（等升级后）
+- [ ] mcp — MCP 管理
 - [ ] openclaw-dashboard v1.7.3
+> Memory/Active Memory 已稳定，可开始补充
 
-### 8. 完善 Subagent SOUL.md
+### 8. 完善 Subagent SOUL.md 🟢 平台已就绪
 - [ ] 每个 agent 的 AGENTS.md 加入协作协议
 - [ ] 明确"什么时候找 main 帮忙"
 - [ ] 错误处理和自我改进流程标准化
+> `threadBindings` 已替代旧 toggles，heartbeat_respect 结构化工具可用，建议更新
 
 ## 备注
 - Tavily 搜索已可用（替代 Brave Search），API key 已配置
@@ -92,4 +98,19 @@
 - 2026.4.18 新增: Claude Opus 4.7 xhigh reasoning、macOS screen snapshot
 - 2026.4.20 新增: Cron jobs-state.json 分离、Moonshot Kimi K2.6 默认、Session maintenance cap
 - 2026.4.21 新增: OpenAI gpt-image-2 默认、plugin runtime dependency repair
-- **当前版本 2026.4.21，最新 2026.4.29** — 落后 8 个小版本
+- **当前版本 2026.5.2，最新 2026.5.3-beta** — 已最新
+
+### 新版本已覆盖 (2026-05-04 更新，4.21→5.2)
+
+#### 平台侧安全加固（继续加强）
+- File-transfer 插件默认拒绝路径策略、symlink 防穿越、16MB 上限
+- Exec shell command tree-sitter 解释器（审批辅助）
+- BlueBubbles 密码/token 日志脱敏（CWE-532）
+- SSRF 策略继续收紧
+
+#### 新能力降低待办难度
+- **Cron Jobs**（待办 #4）：2026.5.2 Control UI Cron 展示和 WebSocket 更稳定，cron isolated agent delivery 已成熟
+- **MCP Server**（待办 #6）：Plugin SDK 完善，`openclaw proxy validate` 可验证代理配置
+- **SkillHub**（待办 #7）：Memory/Active Memory 稳定化，status 诊断改进（分离本地向量存储 vs 嵌入 provider）
+- **Subagent 协作**（待办 #8）：`threadBindings.spawnSessions` 替代旧 split toggles，heartbeat_respond 结构化工具
+- **安全加固**（待办 #5）：`$include` 指令支持 `OPENCLAW_INCLUDE_ROOTS` 目录白名单

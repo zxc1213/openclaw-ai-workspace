@@ -33,4 +33,4 @@ If you change this file, tell the user.
 ---
 
 _This file is yours to evolve._
-_改进规则的想法先记录到 daily notes，跟用户商量后再改。_
+_改进规则的想法先记录到 daily notes，跟 Ray 商量后再改。_
