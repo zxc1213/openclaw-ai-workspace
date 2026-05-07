@@ -100,17 +100,35 @@
 - 2026.4.21 新增: OpenAI gpt-image-2 默认、plugin runtime dependency repair
 - **当前版本 2026.5.2，最新 2026.5.3-beta** — 已最新
 
-### 新版本已覆盖 (2026-05-04 更新，4.21→5.2)
+### 📢 最新进度检查 (2026-05-07 更新)
 
-#### 平台侧安全加固（继续加强）
-- File-transfer 插件默认拒绝路径策略、symlink 防穿越、16MB 上限
-- Exec shell command tree-sitter 解释器（审批辅助）
-- BlueBubbles 密码/token 日志脱敏（CWE-532）
-- SSRF 策略继续收紧
+**当前版本**: OpenClaw 2026.5.5 (较上次检查 5.2 有显著升级)
 
-#### 新能力降低待办难度
-- **Cron Jobs**（待办 #4）：2026.5.2 Control UI Cron 展示和 WebSocket 更稳定，cron isolated agent delivery 已成熟
-- **MCP Server**（待办 #6）：Plugin SDK 完善，`openclaw proxy validate` 可验证代理配置
-- **SkillHub**（待办 #7）：Memory/Active Memory 稳定化，status 诊断改进（分离本地向量存储 vs 嵌入 provider）
-- **Subagent 协作**（待办 #8）：`threadBindings.spawnSessions` 替代旧 split toggles，heartbeat_respond 结构化工具
-- **安全加固**（待办 #5）：`$include` 指令支持 `OPENCLAW_INCLUDE_ROOTS` 目录白名单
+#### ✅ 重大进展
+- **平台升级**: 已升级至 2026.5.5，跨越多个版本
+- **安全加固大幅加强**:
+  - File-transfer 插件路径策略、symlink 防穿越、16MB 上限
+  - Exec shell command tree-sitter 解释器（审批辅助）
+  - BlueBubbles 密码/token 日志脱敏（CWE-532）
+  - SSRF 策略继续收紧
+  - `$include` 指令支持 `OPENCLAW_INCLUDE_ROOTS` 目录白名单
+- **所有平台基础已成熟**:
+  - Cron Jobs (5.2)：Control UI + WebSocket 稳定
+  - MCP Server：Plugin SDK 完善可用
+  - SkillHub：Memory/Active Memory 稳定化
+  - Subagent 协作：`threadBindings.spawnSessions` 成熟
+
+#### 📋 推荐优先级（按平台成熟度）
+1. **安全加固**（待办 #5）- 🔴 高优先级
+   - allowedOrigins `*` → 显式信任来源
+   - gateway 密码迁移到环境变量
+2. **Cron Jobs**（待办 #4）- 🟡 可立即开始
+   - 每日日程摘要、项目巡检、飞书消息摘要
+3. **MCP Server**（待办 #6）- 🟢 平台已就绪
+4. **SkillHub补充**（待办 #7）- 🟢 平台已就绪
+5. **Subagent SOUL.md**（待办 #8）- 🟢 平台已就绪
+
+#### 💡 关键信息
+- 剩余待办项的平台基础已全部到位
+- 可立即开始具体业务功能实现
+- 无需等待平台升级，重点关注安全加固
