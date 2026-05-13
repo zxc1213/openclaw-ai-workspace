@@ -83,9 +83,3 @@
 - MemPalace 学习 (2026-04-08): 分层加载/Wing隔离/Tunnel 关联, research/mempalace-study.md
 - HarnessKit + OpenClaw Pi 架构 (2026-05-03): 4篇研究文件, 3个新skill, research/harnesskit-*.md research/openclaw-pi-*.md
 
-
-
-## Promoted From Short-Term Memory (2026-05-09)
-
-<!-- openclaw-memory-promotion:memory:memory/archive/2026-04-03.md:1:33 -->
-- # 2026-04-03 Daily Notes ## 小红书 skill 推荐安装 - 两篇小红书笔记推荐了 15+ 个 OpenClaw skill - 新装：daily-hot-news、firecrawl-scrape-cn、bb-browser - 已装原有：tavily-search、self-improving-agent、agent-browser、summarize、skill-vetter - 删除：model-usage-monitor（付费加密，需要 oc-pay-sdk） ## daily-hot-news - 已部署 DailyHotApi 服务（端口 6688，systemd 自启，~32MB 内存） - 源码：~/.openclaw/workspace/skills/daily-hot-api - systemd：dailyhot-api.service（NODE_ENV=development） - 54 个平台热榜，测试微博/百度/知乎均正常 ## firecrawl-scrape-cn - 已装 firecrawl-py（pip），SDK 可用 - 需要 FIRECRAWL_API_KEY 环境变量（Ray 说已配，但 exec shell 里读不到，可能配在 Gateway/systemd 那边） - 等下次确认 key 配置位置 ## bb-browser - CLI v0.11.2 已装，adapter 已拉取（~/.bb-browser/bb-sites） - 问题：依赖 `npx openclaw browser` 接口，WSL2 下超时（30s） - snap 版 Chromium 能跑 headless 但启动慢，dbus 报错多 - agent-browser 直接调 Chromium headless 可以正常工作 - bb-browser 暂时用不了，等 OpenClaw Node（Windows 侧）解决 ## agent-browser - v0.20.13，Rust headless 浏览器 CLI - 测试通过：Chromium headless 正常打开网页和 snapshot - OpenClaw browser 工具接口也会走这个 ## 浏览器自动化问题 - WSL2 snap Chromium 启动慢，OpenClaw browser 接口超时 [score=0.977 recalls=3 avg=1.000 source=memory/archive/2026-04-03.md:1-33]
