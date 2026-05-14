@@ -82,4 +82,5 @@
 - 飞书知识库同步 (2026-04-06): 3 篇在「OpenClaw 使用与配置」下
 - MemPalace 学习 (2026-04-08): 分层加载/Wing隔离/Tunnel 关联, research/mempalace-study.md
 - HarnessKit + OpenClaw Pi 架构 (2026-05-03): 4篇研究文件, 3个新skill, research/harnesskit-*.md research/openclaw-pi-*.md
+- gstack + Ruflo 学习 (2026-05-14): YC CEO的23个slash commands + 多Agent编排平台, research/gstack-skills-deep.md research/ruflo-architecture-deep.md #claude-code #agent-orchestration
 

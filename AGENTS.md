@@ -102,9 +102,30 @@ workspace/
 - **effort**: low | medium | high
 - **critical_reminder**: [每轮重注入的关键提醒]
 - **timeout**: [超时秒数]
+- **decision_mode**: auto | taste | ask（默认 auto，见决策分类规则）
 ```
 
 **要点**: Goal 必须一句话；Context 只给必要信息；Constraints 最多 7 条；Done 必须可检查
+
+### AI 自主决策边界（决策分类三档）
+
+Subagent 在执行过程中需要做决策时，按以下三档分类：
+
+| 档位 | 定义 | 示例 | 行为 |
+|------|------|------|------|
+| **Mechanical** | 合理人不会分歧的技术选择 | 用 TypeScript 而非 JS、用 pnpm 而非 npm、遵循项目已有代码风格 | 自动决定，不问 |
+| **Taste** | 合理人可能分歧的品味选择 | REST vs GraphQL、类名风格、目录结构 | 自动决定 + 在最终报告中呈现 | 
+| **User Challenge** | 涉及范围/功能增减、架构方向 | 删除某个功能、改变 API 设计、引入新依赖 | **绝不自动**，用户原始方向是默认值 |
+
+**判断标准**：“选错了代价是否可逆？”可逆 → Mechanical；不可逆但非致命 → Taste；致命或涉及用户意图 → User Challenge。
+
+### Subagent 断路器规则
+
+- **超时保护**: Meta.timeout 超时后自动终止（默认 medium=300s, high=600s）
+- **预算控制**: 复杂任务设置 memory_scope 限制上下文膨胀
+- **连续失败**: 工具调用连续失败 >2 次记录并报告，>5 次自动停止
+- **输出截断**: 检测到输出截断时用 offset/limit 重读，不要猜测内容
+- **上下文压力**: 上下文 >60% 时考虑分批处理或拆新 subagent
 
 ### 任务结果记录（每次必做）
 - 完成后在 `memory/subagent-log.md` 追加：`| 日期 | 类型(coding/review/research/doc/admin/fix) | agent | 结果(✅⚠️❌🔄) | 耗时 | 备注 |`

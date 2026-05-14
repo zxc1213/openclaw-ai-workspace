@@ -38,6 +38,8 @@ BRAINSTORM MODE:
 
 目的：将选定方案转化为可执行步骤。
 
+**Boil the Lake 原则**：AI 编码成本极低（人类几分钟的代码 AI 几秒完成），因此优先选择**完整方案**而非捷径。70 行代码的差异不值得为"少写"而牺牲完整性、可维护性或安全性。每个 scope decision 主动量化："这 N 行额外代码对 AI 来说只需几秒。"
+
 ```prompt
 PLAN MODE:
 基于 brainstorm 阶段选定的方案，输出施工图：
