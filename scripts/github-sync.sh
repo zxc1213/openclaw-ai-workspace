@@ -6,11 +6,7 @@ set -uo pipefail
 WORKSPACE="/home/rays/.openclaw/workspace"
 REPO="/tmp/openclaw-ai-workspace"
 DRY_RUN="${1:-}"
-<<<<<<< HEAD
 PROXY="http://172.25.192.1:7899"
-=======
-PROXY="http://192.168.1.100:8080"
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 # 需要整体排除的 skill（含私有信息或独立仓库）
 EXCLUDE_SKILLS=(
@@ -43,81 +39,19 @@ SUMMARY=""
 #   2. 替换：IP、端口、飞书 ID（替换为编造示例，加 SANITIZED 标记）
 #   3. 替换：专属举例（替换为通用编造内容，加 SANITIZED 标记）
 # ============================================================
-sanitize_repo() {
-  echo "=== Sanitizing sensitive data ==="
-  local count=0
-  local search_dirs="$REPO/skills/ $REPO/docs/ $REPO/scripts/ $REPO/"
-
   # --- 1. 删除真实 API Key ---
-<<<<<<< HEAD
-  # Firecrawl key: fc-570698e27dcb435199f004f0c94f4f41
-  while IFS= read -r -d '' f; do
-    sed -i 's/fc-570698e27dcb435199f004f0c94f4f41/fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
+  # Firecrawl key
+  while IFS= read -r -d "" f; do
+    sed -i "s/fc-570698e27dcb435199f004f0c94f4f41/fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g" "$f"
     echo " firecrawl_key: $(basename "$f")"
     count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' 'fc-570698e27dcb435199f004f0c94f4f41' $search_dirs 2>/dev/null || true)
-
-  # Tavily key: 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
-  while IFS= read -r -d '' f; do
-    sed -i 's/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/tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
-    echo " tavily_key: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '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' $search_dirs 2>/dev/null || true)
-
-  # --- 2. 替换真实 IP 地址 ---
-  # WSL2 IP: 172.25.192.1 (Windows host) / 172.25.192.2 (WSL guest)
-=======
-  # Firecrawl key: fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  while IFS= read -r -d '' f; do
-    sed -i 's/fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
-    echo " firecrawl_key: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' 'fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' $search_dirs 2>/dev/null || true)
-
-  # Tavily key: tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  while IFS= read -r -d '' f; do
-    sed -i 's/tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/g' "$f"
-    echo " tavily_key: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' 'tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' $search_dirs 2>/dev/null || true)
-
-  # --- 2. 替换真实 IP 地址 ---
-  # WSL2 IP: 192.168.1.100 (Windows host) / 192.168.1.101 (WSL guest)
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
-  while IFS= read -r -d '' f; do
-    sed -i 's/172\.25\.192\.1/192.168.1.100/g; s/172\.25\.192\.2/192.168.1.101/g' "$f"
-    echo " ip: $(basename "$f")"
+  done < <(grep -rlZ --include="*.md" --include="*.sh" "fc-570698e27dcb435199f004f0c94f4f41" $search_dirs 2>/dev/null || true)
     count=$((count + 1))
   done < <(grep -rlZ --include='*.md' --include='*.sh' '172\.25\.192\.[12]' $search_dirs 2>/dev/null || true)
 
   # --- 3. 替换飞书标识符 ---
   # space_id
   while IFS= read -r -d '' f; do
-<<<<<<< HEAD
-    sed -i 's/7624953904228207821/7600000000000000000/g; s/6946843325487906839/7600000000000000000/g' "$f"
-    echo " space_id: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '7624953904228207821\|6946843325487906839' $search_dirs 2>/dev/null || true)
-
-  # open_id
-  while IFS= read -r -d '' f; do
-    sed -i 's/ou_dfe4cec8ab70368885235d951a935ccd/ou_aabbccddeeff00112233445566778899/g' "$f"
-    echo " open_id: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' 'ou_dfe4cec8ab70368885235d951a935ccd' $search_dirs 2>/dev/null || true)
-=======
-    sed -i 's/7600000000000000000/7600000000000000000/g; s/7600000000000000000/7600000000000000000/g' "$f"
-    echo " space_id: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '7600000000000000000\|7600000000000000000' $search_dirs 2>/dev/null || true)
-
-  # open_id
-  while IFS= read -r -d '' f; do
-    sed -i 's/ou_aabbccddeeff00112233445566778899/ou_aabbccddeeff00112233445566778899/g' "$f"
-    echo " open_id: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' 'ou_aabbccddeeff00112233445566778899' $search_dirs 2>/dev/null || true)
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
   # chat_id (oc_ 开头，20+ hex)
   while IFS= read -r -d '' f; do
@@ -141,21 +75,6 @@ sanitize_repo() {
   done < <(grep -rlZ --include='*.md' '[a-f0-9]\{8\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{12\}' "$REPO/skills/" "$REPO/docs/" 2>/dev/null || true)
 
   # --- 4. 删除真实端口（替换为常见端口）---
-<<<<<<< HEAD
-  # OpenClaw 端口 18789 → 18080
-  while IFS= read -r -d '' f; do
-    sed -i 's/18789/18080/g' "$f"
-    echo " port: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '18789' $search_dirs 2>/dev/null || true)
-=======
-  # OpenClaw 端口 18080 → 18080
-  while IFS= read -r -d '' f; do
-    sed -i 's/18080/18080/g' "$f"
-    echo " port: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '18080' $search_dirs 2>/dev/null || true)
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
   # --- 5. 删除行内密码/token 模式 ---
   # 匹配常见密码/secret 暴露模式：password: xxx, token: xxx, secret: xxx (非占位符)
@@ -168,64 +87,6 @@ sanitize_repo() {
   done < <(grep -rlZ --include='*.md' 'password:.*' "$REPO/skills/" "$REPO/docs/" 2>/dev/null || true)
 
   # --- 6. 替换 Telegram 用户 ID ---
-  while IFS= read -r -d '' f; do
-<<<<<<< HEAD
-    sed -i 's/5246148209/1234567890/g' "$f"
-    echo " telegram_id: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '5246148209' $search_dirs 2>/dev/null || true)
-
-  # --- 7. 替换 QQ AppId ---
-  while IFS= read -r -d '' f; do
-    sed -i 's/1903739267/1000000001/g; s/1903748277/1000000002/g; s/1903747429/1000000003/g' "$f"
-    echo " qq_appid: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '1903739267\|1903748277\|1903747429' $search_dirs 2>/dev/null || true)
-
-  # --- 8. 替换代理端口 ---
-  while IFS= read -r -d '' f; do
-    sed -i 's/7899/8080/g; s/7898/8081/g' "$f"
-    # 7890 保持不变（太常见了，Clash 默认端口）
-    echo " proxy_port: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '7899\|7898' $search_dirs 2>/dev/null || true)
-
-  # --- 9. 替换 OpenViking 端口 ---
-  while IFS= read -r -d '' f; do
-    sed -i 's/:1933/:9333/g' "$f"
-    echo " ov_port: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' ':1933' $search_dirs 2>/dev/null || true)
-=======
-    sed -i 's/1234567890/1234567890/g' "$f"
-    echo " telegram_id: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '1234567890' $search_dirs 2>/dev/null || true)
-
-  # --- 7. 替换 QQ AppId ---
-  while IFS= read -r -d '' f; do
-    sed -i 's/1000000001/1000000001/g; s/1000000002/1000000002/g; s/1000000003/1000000003/g' "$f"
-    echo " qq_appid: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '1000000001\|1000000002\|1000000003' $search_dirs 2>/dev/null || true)
-
-  # --- 8. 替换代理端口 ---
-  while IFS= read -r -d '' f; do
-    sed -i 's/8080/8080/g; s/8081/8081/g' "$f"
-    # 7890 保持不变（太常见了，Clash 默认端口）
-    echo " proxy_port: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' '8080\|8081' $search_dirs 2>/dev/null || true)
-
-  # --- 9. 替换 OpenViking 端口 ---
-  while IFS= read -r -d '' f; do
-    sed -i 's/:9333/:9333/g' "$f"
-    echo " ov_port: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ --include='*.md' --include='*.sh' ':9333' $search_dirs 2>/dev/null || true)
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
-
-  echo " Sanitized $count files"
 }
 
 # ============================================================
@@ -267,25 +128,6 @@ sanitize_generic() {
   # mongodb://user:password@host -> mongodb://user:****@host
   while IFS= read -r -d '' f; do
     sed -i 's|\(mongodb\+\?srv\?://[^:]*:\)[^@]*\(@[^ ]*\)|\1****\2|g' "$f"
-<<<<<<< HEAD
-    sed -i 's|\(mysql://[^:]*:\)[^@]*\(@[^ ]*\)|\1****\2|g' "$f"
-    sed -i 's|\(postgres\+\?ql\?://[^:]*:\)[^@]*\(@[^ ]*\)|\1****\2|g' "$f"
-    sed -i 's|\(redis://[^:]*:\)[^@]*\(@[^ ]*\)|\1****\2|g' "$f"
-    echo " db_conn: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ $include_args -E 'mongodb\\+?srv?://[^:]+:[^@]+@|mysql://[^:]+:[^@]+@|postgres\\+?ql?://[^:]+:[^@]+@|redis://[^:]+:[^@]+@' "$REPO/" 2>/dev/null || true)
-
-  # --- P0: Authorization: Bearer <token> ---
-=======
-    sed -i 's|\(mysql://[^:****@]*\(@[^ ]*\)|\1****\2|g' "$f"
-    sed -i 's|\(postgres\+\?ql\?://[^:]*:\)[^@]*\(@[^ ]*\)|\1****\2|g' "$f"
-    sed -i 's|\(redis://[^:****@]*\(@[^ ]*\)|\1****\2|g' "$f"
-    echo " db_conn: $(basename "$f")"
-    count=$((count + 1))
-  done < <(grep -rlZ $include_args -E 'mongodb\\+?srv?://[^:]+:[^@]+@|mysql://[^:****@]+@|postgres\\+?ql?://[^:]+:[^@]+@|redis://[^:****@]+@' "$REPO/" 2>/dev/null || true)
-
-  # --- P0: Authorization: Bearer SANITIZED_TOKEN<token> ---
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
   while IFS= read -r -d '' f; do
     sed -i 's/\(Authorization:[[:space:]]*Bearer[[:space:]]*\)[a-zA-Z0-9_\-\.\+]*/\1SANITIZED_TOKEN/g' "$f"
     echo " bearer_token: $(basename "$f")"
@@ -329,11 +171,6 @@ sanitize_generic() {
 
   # --- P1: Chinese ID numbers ---
   while IFS= read -r -d '' f; do
-<<<<<<< HEAD
-    sed -i 's/[1-9][0-9]\{5\}\(19\|20\)[0-9]\{2\}\(0[1-9]\|1[0-2]\)\(0[1-9]\|[12][0-9]\|3[01]\)[0-9]\{3\}[0-9Xx]/110101199001011234/g' "$f"
-=======
-    sed -i 's/[1-9][0-9]\{5\}\(19\|20\)[0-9]\{2\}\(0[1-9]\|1[0-2]\)\(0[1-9]\|[12][0-9]\|3[01]\)[0-9]\{3\}[0-9Xx]/110101138000000004/g' "$f"
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
     echo " id_number: $(basename "$f")"
     count=$((count + 1))
   done < <(grep -rlZ $include_args -E '[1-9][0-9]{5}(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9Xx]' "$REPO/" 2>/dev/null || true)
@@ -488,11 +325,6 @@ DATE=$(date +%Y-%m-%d)
 git -C "$REPO" commit -m "sync: workspace auto-sync $DATE" --quiet
 
 echo "=== Pushing to GitHub ==="
-<<<<<<< HEAD
-https_proxy="$PROXY" git -C "$REPO" push "https://zxc1213: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@github.com/zxc1213/openclaw-ai-workspace.git" main --quiet 2>&1
-=======
-https_proxy="$PROXY" git -C "$REPO" push "https://zxc1213:user@example.com/zxc1213/openclaw-ai-workspace.git" main --quiet 2>&1
->>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
   echo "ERROR: Push failed with exit code $EXIT_CODE"
