@@ -1,0 +1,69 @@
+site: juejin
+name: article
+description: 掘金文章详情
+domain: juejin.cn
+
+args:
+  article_id:
+    type: str
+    required: true
+    positional: true
+    description: "Article ID (e.g. 7584110439933100078)"
+
+pipeline:
+  - navigate: https://juejin.cn/post/${{ args.article_id }}
+
+  - evaluate: |
+      (async () => {
+        // 从页面标题获取文章名
+        const title = document.title.replace(' - 掘金', '').trim();
+
+        // 从作者链接获取用户名
+        const authorEl = document.querySelector('.author-name');
+        const author = authorEl ? authorEl.textContent.trim() : '';
+
+        // 文章正文（取前 300 字符作为预览）
+        const articleEl = document.querySelector('article') ||
+                          document.querySelector('.article-content') ||
+                          document.querySelector('[class*="article"]');
+        const content = articleEl ? articleEl.innerText.substring(0, 500) : '';
+
+        // 标签
+        const tags = [];
+        document.querySelectorAll('a[href*="/tag/"], a[href*="/tagId/"]').forEach(el => {
+          const text = el.textContent.trim();
+          if (text) tags.push(text);
+        });
+
+        // 统计数据 — 遍历所有带数字的统计元素
+        let views = 0, likes = 0, comments = 0;
+        document.querySelectorAll('[class*="count"], [class*="view"], [class*="digg"], [class*="comment"]').forEach(el => {
+          const text = el.textContent.trim();
+          const num = parseInt(text.replace(/[^\d]/g, '')) || 0;
+          const cls = (el.className || '').toLowerCase();
+          if (cls.includes('view')) views = num;
+          if (cls.includes('digg') || cls.includes('like')) likes = num;
+          if (cls.includes('comment')) comments = num;
+        });
+
+        return {
+          title,
+          author,
+          content_preview: content.substring(0, 300),
+          tags: tags.slice(0, 5).join(', '),
+          views,
+          likes,
+          comments
+        };
+      })()
+
+  - map:
+      title: ${{ item.title }}
+      author: ${{ item.author }}
+      tags: ${{ item.tags }}
+      views: ${{ item.views }}
+      likes: ${{ item.likes }}
+      comments: ${{ item.comments }}
+      content_preview: ${{ item.content_preview }}
+
+columns: [title, author, tags, views, likes, comments, content_preview]

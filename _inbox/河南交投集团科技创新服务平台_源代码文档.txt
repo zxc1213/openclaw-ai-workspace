@@ -1,0 +1,3187 @@
+河南交投集团科技创新服务平台 v1.0
+源代码文档
+============================================================
+
+—— 前部源代码（第1-30页）——
+
+第 1 页 共 60 页
+
+# 文件: pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+    </parent>
+    <groupId>com.comit</groupId>
+    <artifactId>science-innovation-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>kczx-hn</name>
+    <packaging>pom</packaging>
+    <description>科技创新平台聚合项目</description>
+
+    <modules>
+        <module>science-innovation-eureka</module>
+        <module>science-innovation-gateway</module>
+        <module>science-innovation-common</module>
+        <module>science-innovation-service</module>
+        <module>science-innovation-service-api</module>
+        <module>science-innovation-user-oauth</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <argLine>-Dfile.encoding=UTF-8</argLine>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.comit</groupId>
+                <artifactId>science-innovation-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.comit</groupId>
+                <artifactId>science-innovation-user-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.comit</groupId>
+                <artifactId>science-innovation-communication-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.comit</groupId>
+
+第 2 页 共 60 页
+
+                <artifactId>science-innovation-log-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.comit</groupId>
+                <artifactId>science-innovation-system-config-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.comit</groupId>
+                <artifactId>science-innovation-projectManagement-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.comit</groupId>
+                <artifactId>science-innovation-homeSearch-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>5.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.core5</groupId>
+                <artifactId>httpcore5</artifactId>
+                <version>5.3.4</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.14</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>4.4.16</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>4.1.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+
+第 3 页 共 60 页
+
+                <version>1.3.5</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.20.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>1.10</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>33.4.8-jre</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>2.41.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.13.1</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.json/json -->
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>20250517</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>1.15.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jettison</groupId>
+                <artifactId>jettison</artifactId>
+                <version>1.3.7</version>
+
+第 4 页 共 60 页
+
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.squareup.okio/okio -->
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio</artifactId>
+                <version>3.16.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlbeans</groupId>
+                <artifactId>xmlbeans</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-transcoder -->
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>xmlgraphics-commons</artifactId>
+                <version>2.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-css</artifactId>
+                <version>1.19</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-transcoder</artifactId>
+                <version>1.19</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-bridge</artifactId>
+                <version>1.19</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-util</artifactId>
+                <version>1.19</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-awt-util</artifactId>
+                <version>1.19</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-shared-resources</artifactId>
+                <version>1.19</version>
+            </dependency>
+            <dependency>
+                <artifactId>bcpkix-jdk15on</artifactId>
+
+第 5 页 共 60 页
+
+                <groupId>org.bouncycastle</groupId>
+                <version>1.70</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>4.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.5.19</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>2.0.7</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>1.4.18</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-parameter-names</artifactId>
+                <version>2.19.2</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>2.19.2</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+
+第 6 页 共 60 页
+
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>2.19.2</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.19.2</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.19.2</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.19.2</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <addResources>true</addResources>
+                        <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                        <layout>JAR</layout>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--拷贝项目所有依赖jar文件到构建lib目录下-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <executions>
+                        <execution>
+
+第 7 页 共 60 页
+
+                            <id>copy-dependencies-compile</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                <excludeTransitive>false</excludeTransitive>
+                                <stripVersion>false</stripVersion>
+                                <silent>false</silent>
+                                <includeScope>compile</includeScope>
+                                <excludeGroupIds>com.comit</excludeGroupIds>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>copy-dependencies-runtime</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                <excludeTransitive>false</excludeTransitive>
+                                <stripVersion>false</stripVersion>
+                                <silent>false</silent>
+                                <includeScope>runtime</includeScope>
+                                <excludeGroupIds>com.comit</excludeGroupIds>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>copy-dependencies-comit-compile</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib-comit</outputDirectory>
+                                <excludeTransitive>false</excludeTransitive>
+                                <stripVersion>false</stripVersion>
+                                <silent>false</silent>
+                                <includeScope>compile</includeScope>
+                                <includeGroupIds>com.comit</includeGroupIds>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>copy-dependencies-comit-runtime</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+
+第 8 页 共 60 页
+
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib-comit</outputDirectory>
+                                <excludeTransitive>false</excludeTransitive>
+                                <stripVersion>false</stripVersion>
+                                <silent>false</silent>
+                                <includeScope>runtime</includeScope>
+                                <includeGroupIds>com.comit</includeGroupIds>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>
+
+// 文件: science-innovation-gateway/src/main/java/com/comit/GatewayWebApplication.java
+
+package com.comit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+/**
+ * @program: science-innovation-parent
+ * @description: API网关服务启动类，负责请求路由、鉴权过滤、日志记录等网关核心功能
+ * @author: HHP
+ * @create: 2019/12/12
+ */
+@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
+@EnableDiscoveryClient
+public class GatewayWebApplication {
+
+    /**
+     * 网关服务入口方法
+     * @param args 启动参数
+     */
+    public static void main(String[] args) {
+
+第 9 页 共 60 页
+
+        SpringApplication.run(GatewayWebApplication.class, args);
+    }
+}
+
+// 文件: science-innovation-gateway/src/main/java/com/comit/config/CorsConfig.java
+
+package com.comit.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsWebFilter;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import org.springframework.web.util.pattern.PathPatternParser;
+
+/**
+ * @program: science-innovation-parent
+ * @description: 跨域资源配置类，配置网关全局CORS策略，允许所有来源、方法和请求头
+ * @author: comit
+ * @create: 2020/01/01
+ */
+@Configuration
+public class CorsConfig {
+
+    /**
+     * 配置跨域过滤器
+     * @return CorsWebFilter 跨域过滤器实例
+     */
+    // TODO: 当前允许所有来源(*)访问，存在安全风险，生产环境应限制为具体域名
+    @Bean
+    public CorsWebFilter corsFilter() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedMethod("*");
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
+        source.registerCorsConfiguration("/**", config);
+
+        return new CorsWebFilter(source);
+    }
+}
+
+// 文件: science-innovation-gateway/src/main/java/com/comit/config/RestTemplateConfig.java
+
+package com.comit.config;
+
+import java.nio.charset.StandardCharsets;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+
+第 10 页 共 60 页
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
+
+/**
+ * @program: science-innovation-parent
+ * @description: RestTemplate配置类，配置支持负载均衡的REST客户端，统一使用UTF-8编码
+ * @author: HHP
+ * @create: 2025-4-29 13:45
+ */
+@Configuration
+public class RestTemplateConfig {
+
+    /**
+     * 初始化支持负载均衡的RestTemplate实例
+     * @return 配置好UTF-8编码的RestTemplate对象
+     */
+    @Bean
+    @LoadBalanced
+    public RestTemplate initRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return restTemplate;
+    }
+}
+
+// 文件: science-innovation-gateway/src/main/java/com/comit/filter/AuthFilter.java
+
+package com.comit.filter;
+
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+/**
+ * @program: science-innovation-parent
+ * @description: 网关鉴权过滤器，为每个请求添加客户端IP地址、唯一请求ID和请求时间戳等头部信息，
+ *               用于下游服务获取客户端真实地址和请求追踪
+ * @author: 唐嘉
+ * @create: 2020-01-03 10:55
+ */
+// TODO: 当前过滤器未做实际鉴权校验，仅添加请求头信息，如需实现鉴权逻辑请在filter方法中增加Token验证
+@Component
+public class AuthFilter implements GlobalFilter, Ordered {
+
+    // TODO: 每次请求都new IdWorker()，存在性能浪费，建议改为类级别共享实例或使用 @Autowired 注入
+
+第 11 页 共 60 页
+
+    /**
+     * 过滤器核心方法，为请求添加Client-Address、requestId、requestDate头部信息
+     * @param exchange 当前请求上下文，包含请求和响应信息
+     * @param chain 网关过滤器链，用于传递给下一个过滤器
+     * @return Mono<Void> 异步处理结果
+     */
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        //向headers中放文件，记得build
+        IdWorker idWorker = new IdWorker();
+        ServerHttpRequest host = exchange.getRequest().mutate().header("Client-Address", exchange.getRequest().getRemoteAddress().getAddress().getHostAddress())
+            .header("requestId", String.valueOf(idWorker.nextId())).header("requestDate", String.valueOf(System.currentTimeMillis())).build();
+        //将现在的request 变成 change对象
+        ServerWebExchange build = exchange.mutate().request(host).build();
+        return chain.filter(build);
+    }
+
+    /**
+     * 获取过滤器执行顺序，值越小优先级越高
+     * @return 执行顺序值，1表示在日志过滤器之后执行
+     */
+    @Override
+    public int getOrder() {
+        return 1;
+    }
+}
+
+// 文件: science-innovation-gateway/src/main/java/com/comit/filter/GatewayLogFilter.java
+
+package com.comit.filter;
+
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
+import cn.hutool.log.StaticLog;
+import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.reactivestreams.Publisher;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.cloud.gateway.route.Route;
+import org.springframework.cloud.gateway.support.BodyInserterContext;
+import org.springframework.cloud.gateway.support.CachedBodyOutputMessage;
+import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
+import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
+
+第 12 页 共 60 页
+
+import org.springframework.core.io.buffer.DataBufferFactory;
+import org.springframework.core.io.buffer.DataBufferUtils;
+import org.springframework.core.io.buffer.DefaultDataBufferFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ReactiveHttpOutputMessage;
+import org.springframework.http.codec.HttpMessageReader;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
+import org.springframework.util.MultiValueMap;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserter;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.server.HandlerStrategies;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
+
+/**
+ * @program: science-innovation-parent
+ * @description: 网关全局日志过滤器，记录请求和响应的完整信息，包括请求路径、请求头、
+ *               请求体、响应体、执行时间等，支持异步日志写入
+ * @author: comit
+ * @create: 2020/01/01
+ */
+// TODO: @Component被注释，当前过滤器未注册为Spring Bean，如需启用日志记录请取消注释
+//@Component
+public class GatewayLogFilter implements GlobalFilter, Ordered {
+
+    // 支持的响应内容类型
+    private static final String CONTENT_TYPE = "application/json";
+
+    // 字符编码
+    private static final String CHARSET_UTF8 = "UTF-8";
+
+    // 需要删除的自定义请求头列表
+    private static final List<String> CUSTOM_HEADERS = Arrays.asList("sign", "timestamp", "random", "Request-Origin-App");
+
+    // 消息读取器（用于解析请求体）
+    private final List<HttpMessageReader<?>> messageReaders = HandlerStrategies.withDefaults().messageReaders();
+
+    //@Autowired
+    // TODO: restTemplate未注入(@Autowired被注释)，日志远程写入功能不可用
+    private RestTemplate restTemplate;
+
+第 13 页 共 60 页
+
+
+    /**
+     * 网关过滤核心方法，拦截所有请求并记录访问日志
+     * @param exchange 当前请求上下文，包含请求和响应信息
+     * @param chain 网关过滤器链，用于传递给下一个过滤器
+     * @return Mono<Void> 异步处理结果
+     */
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
+        ServerHttpRequest request = exchange.getRequest();
+
+        // 获取请求路径（去除上下文路径）
+        String requestPath = request.getPath().pathWithinApplication().value();
+
+        // 获取路由配置信息
+        Route route = getGatewayRoute(exchange);
+
+        // 获取客户端IP地址
+        InetSocketAddress remoteAddress = request.getRemoteAddress();
+        String ipAddress = remoteAddress != null ? remoteAddress.getAddress().getHostAddress() : null;
+
+        // 构建日志对象
+        Map<String, Object> gatewayLog = new HashMap<>();
+        gatewayLog.put("agreement", request.getURI().getScheme());
+        gatewayLog.put("requestMethod", request.getMethodValue());
+        gatewayLog.put("requestPath", requestPath);
+        gatewayLog.put("targetServer", route.getUri().toString());
+        gatewayLog.put("startTime", System.currentTimeMillis()); // 使用时间戳保证精度
+        gatewayLog.put("ip", ipAddress);
+        gatewayLog.put("routeConfig", route); // 路由配置信息
+
+        // 记录请求头
+        Map<String, Object> headers = new HashMap<>();
+        for (String key : request.getHeaders().keySet()) {
+            headers.put(key, request.getHeaders().getFirst(key));
+        }
+        gatewayLog.put("headers", headers);
+
+        // 获取请求内容类型
+        MediaType mediaType = request.getHeaders().getContentType();
+        if (mediaType != null) {
+            gatewayLog.put("requestContentType", mediaType.toString());
+        }
+
+        // 根据内容类型选择处理方式
+        if (mediaType != null && (MediaType.APPLICATION_FORM_URLENCODED.isCompatibleWith(mediaType)
+            || MediaType.APPLICATION_JSON.isCompatibleWith(mediaType))) {
+            return writeBodyLog(exchange, chain, gatewayLog); // 处理有body的请求
+        } else {
+
+第 14 页 共 60 页
+
+            return writeBasicLog(exchange, chain, gatewayLog); // 处理无body的请求
+        }
+    }
+
+    /**
+     * 获取过滤器执行顺序，值越小优先级越高
+     * @return 执行顺序值，-2保证能获取到响应结果
+     */
+    @Override
+    public int getOrder() {
+        // 必须小于等于-2，否则无法获取响应结果
+        return -2;
+    }
+
+    /**
+     * 获取路由信息
+     *
+     * @param exchange 当前请求上下文
+     * @return 路由配置对象
+     */
+    private Route getGatewayRoute(ServerWebExchange exchange) {
+        return exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
+    }
+
+    /**
+     * 处理基本日志（无请求体的情况），仅记录URL查询参数
+     * @param exchange 当前请求上下文
+     * @param chain 网关过滤器链
+     * @param gatewayLog 日志数据容器
+     * @return Mono<Void> 异步处理结果
+     */
+    private Mono<Void> writeBasicLog(ServerWebExchange exchange, GatewayFilterChain chain, Map<String, Object> gatewayLog) {
+        // 获取URL参数
+        MultiValueMap<String, String> queryParams = exchange.getRequest().getQueryParams();
+        gatewayLog.put("requestBody", getUrlParamsByMap(queryParams));
+
+        // 修改请求头
+        ServerHttpRequest mutableReq = exchange.getRequest().mutate().headers(httpHeaders -> {
+            // 删除自定义header
+            for (String customHeader : CUSTOM_HEADERS) {
+                httpHeaders.remove(customHeader);
+            }
+            // 确保表单请求的编码正确
+            if (httpHeaders.getContentType() != null
+                && httpHeaders.getContentType().isCompatibleWith(MediaType.APPLICATION_FORM_URLENCODED)) {
+                httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                httpHeaders.set(HttpHeaders.CONTENT_TYPE,
+                    MediaType.APPLICATION_FORM_URLENCODED + ";charset=" + CHARSET_UTF8);
+            }
+        }).build();
+
+第 15 页 共 60 页
+
+
+        // 包装响应对象以记录响应日志
+        ServerHttpResponseDecorator decoratedResponse = recordResponseLog(exchange, gatewayLog);
+
+        return chain.filter(exchange.mutate().request(mutableReq).response(decoratedResponse).build())
+            .then(writeAccessLogAsync(gatewayLog)); // 异步记录日志
+    }
+
+    /**
+     * 处理带请求体的日志，解决request body只能读取一次的问题
+     * 参考: org.springframework.cloud.gateway.filter.factory.rewrite.ModifyRequestBodyGatewayFilterFactory
+     * @param exchange 当前请求上下文
+     * @param chain 网关过滤器链
+     * @param gatewayLog 日志数据容器
+     * @return Mono<Void> 异步处理结果
+     */
+    private Mono<Void> writeBodyLog(ServerWebExchange exchange, GatewayFilterChain chain, Map<String, Object> gatewayLog) {
+        ServerRequest serverRequest = ServerRequest.create(exchange, messageReaders);
+
+        // 显式指定UTF-8编码处理请求体
+        Mono<String> modifiedBody = serverRequest.bodyToMono(String.class)
+            .doOnNext(body -> gatewayLog.put("requestBody", body));
+
+        // 通过 BodyInserter 插入 body(支持修改body)
+        BodyInserter<Mono<String>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromPublisher(modifiedBody, String.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.putAll(exchange.getRequest().getHeaders());
+        // 重置内容长度
+        headers.remove(HttpHeaders.CONTENT_LENGTH);
+        // 确保JSON请求编码正确
+        if (headers.getContentType() != null && headers.getContentType().isCompatibleWith(MediaType.APPLICATION_JSON)) {
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON + ";charset=" + CHARSET_UTF8);
+        }
+
+        CachedBodyOutputMessage outputMessage = new CachedBodyOutputMessage(exchange, headers);
+
+        return bodyInserter.insert(outputMessage, new BodyInserterContext())
+            .then(Mono.defer(() -> {
+                // 重新封装请求
+                ServerHttpRequestDecorator decoratedRequest = new ServerHttpRequestDecorator(exchange.getRequest()) {
+                    @Override
+                    public HttpHeaders getHeaders() {
+                        HttpHeaders httpHeaders = new HttpHeaders();
+                        httpHeaders.putAll(headers);
+                        // 删除自定义header
+                        CUSTOM_HEADERS.forEach(httpHeaders::remove);
+                        return httpHeaders;
+                    }
+
+
+第 16 页 共 60 页
+
+                    @Override
+                    public Flux<DataBuffer> getBody() {
+                        return outputMessage.getBody();
+                    }
+                };
+
+                // 记录响应日志
+                ServerHttpResponseDecorator decoratedResponse = recordResponseLog(exchange, gatewayLog);
+
+                return chain.filter(exchange.mutate().request(decoratedRequest).response(decoratedResponse).build())
+                    .then(writeAccessLogAsync(gatewayLog)); // 异步记录日志
+            }));
+    }
+
+    /**
+     * 记录响应日志，通过DataBufferFactory解决响应体分段传输问题
+     * @param exchange 当前请求上下文
+     * @param gatewayLog 日志数据容器
+     * @return 包装后的响应装饰器，用于拦截响应内容
+     */
+    private ServerHttpResponseDecorator recordResponseLog(ServerWebExchange exchange, Map<String, Object> gatewayLog) {
+        ServerHttpResponse originalResponse = exchange.getResponse();
+        DataBufferFactory bufferFactory = originalResponse.bufferFactory();
+
+        return new ServerHttpResponseDecorator(originalResponse) {
+            @Override
+            public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
+                if (body instanceof Flux) {
+                    Flux<? extends DataBuffer> fluxBody = (Flux<? extends DataBuffer>) body;
+                    return super.writeWith(fluxBody.buffer().map(dataBuffers -> {
+                        // 合并多个流集合
+                        DataBufferFactory df = new DefaultDataBufferFactory();
+                        DataBuffer join = df.join(dataBuffers);
+                        byte[] content = new byte[join.readableByteCount()];
+                        join.read(content);
+
+                        // 释放内存
+                        DataBufferUtils.release(join);
+                        // 使用UTF-8解码响应体
+                        String responseBody = new String(content, StandardCharsets.UTF_8);
+                        // 记录响应信息
+                        gatewayLog.put("endTime", System.currentTimeMillis());
+                        gatewayLog.put("executeTime", (Long) gatewayLog.get("endTime") - (Long) gatewayLog.get("startTime"));
+                        gatewayLog.put("status", getStatusCode().value() == HttpStatus.OK.value() ? "success" : "fail");
+                        gatewayLog.put("responseData", responseBody);
+
+                        return bufferFactory.wrap(content);
+                    }));
+                }
+                return super.writeWith(body);
+
+第 17 页 共 60 页
+
+            }
+        };
+    }
+
+    /**
+     * 异步记录访问日志，添加异常处理保证主流程不受影响
+     * @param gatewayLog 包含完整请求响应信息的日志数据
+     * @return Mono<Void> 异步处理结果
+     */
+    // TODO: Schedulers.elastic()已在新版Reactor中弃用，建议迁移为Schedulers.boundedElastic()
+    @SuppressWarnings("deprecation") // 明确处理弃用警告
+    private Mono<Void> writeAccessLogAsync(Map<String, Object> gatewayLog) {
+        return Mono.fromRunnable(() -> {
+                try {
+                    // 生成唯一ID
+                    gatewayLog.put("id", IdUtil.getSnowflakeNextId());
+                    // 转换为JSON字符串
+                    String json = JSONUtil.toJsonStr(gatewayLog);
+                    // 发送日志到服务（这里使用阻塞式RestTemplate）
+                    //restTemplate.postForObject("http://systemConfig-service/sysLog/newAddLog", json, Void.class);
+                    StaticLog.info("网关日志: {}", json);
+                } catch (Exception e) {
+                    StaticLog.error("网关日志异常: {}", e.getMessage());
+                }
+            })
+            .subscribeOn(Schedulers.elastic())
+            .onErrorResume(e -> {
+                StaticLog.error("网关日志失败: {}", e.getMessage());
+                return Mono.empty();
+            })
+            .then();
+    }
+
+    /**
+     * 将URL参数Map转换为查询字符串
+     * @param map URL参数的多值Map
+     * @return 拼接后的查询字符串，如 key1=value1&key2=value2
+     */
+    private String getUrlParamsByMap(MultiValueMap<String, String> map) {
+        if (ObjectUtils.isEmpty(map)) return "";
+        StringBuilder sb = new StringBuilder();
+        map.forEach((key, values) ->
+            sb.append(key).append("=").append(values.get(0)).append("&"));
+        return StrUtil.strip(sb.toString(), "&");
+    }
+}
+
+// 文件: science-innovation-gateway/src/main/java/com/comit/filter/IdWorker.java
+
+package com.comit.filter;
+
+第 18 页 共 60 页
+
+
+import cn.hutool.log.StaticLog;
+import java.lang.management.ManagementFactory;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+
+/**
+ * <p>名称：IdWorker.java</p>
+ * <p>描述：分布式自增长ID</p>
+ * <pre>
+ *     Twitter的 Snowflake JAVA实现方案
+ * </pre>
+ * 核心代码为其IdWorker这个类实现，其原理结构如下，我分别用一个0表示一位，用—分割开部分的作用：
+ * 1||0---0000000000 0000000000 0000000000 0000000000 0 --- 00000 ---00000 ---000000000000
+ * 在上面的字符串中，第一位为未使用（实际上也可作为long的符号位），接下来的41位为毫秒级时间，
+ * 然后5位datacenter标识位，5位机器ID（并不算标识符，实际是为线程标识），
+ * 然后12位该毫秒内的当前毫秒内的计数，加起来刚好64位，为一个Long型。
+ * 这样的好处是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞（由datacenter和机器ID作区分），
+ * 并且效率较高，经测试，snowflake每秒能够产生26万ID左右，完全满足需要。
+ * <p>
+ * 64位ID (42(毫秒)+5(机器ID)+5(业务编码)+12(重复累加))
+ *
+ * @program: science-innovation-parent
+ * @author Polim
+ */
+public class IdWorker {
+
+    // 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）
+    private final static long twepoch = 1288834974657L;
+
+    // 机器标识位数
+    private final static long workerIdBits = 5L;
+
+    // 数据中心标识位数
+    private final static long datacenterIdBits = 5L;
+
+    // 机器ID最大值
+    private final static long maxWorkerId = ~(-1L << workerIdBits);
+
+    // 数据中心ID最大值
+    private final static long maxDatacenterId = ~(-1L << datacenterIdBits);
+
+    // 毫秒内自增位
+    private final static long sequenceBits = 12L;
+
+    // 机器ID偏左移12位
+    private final static long workerIdShift = sequenceBits;
+
+    // 数据中心ID左移17位
+    private final static long datacenterIdShift = sequenceBits + workerIdBits;
+
+第 19 页 共 60 页
+
+
+    // 时间毫秒左移22位
+    private final static long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
+
+    private final static long sequenceMask = ~(-1L << sequenceBits);
+
+    /* 上次生产id时间戳 */
+    private static long lastTimestamp = -1L;
+
+    private final long workerId;
+
+    // 数据标识id部分
+    private final long datacenterId;
+
+    // 0，并发控制
+    private long sequence = 0L;
+
+    /**
+     * 默认构造函数，自动根据MAC地址和JVM PID计算数据中心ID和机器ID
+     */
+    public IdWorker() {
+        this.datacenterId = getDatacenterId(maxDatacenterId);
+        this.workerId = getMaxWorkerId(datacenterId, maxWorkerId);
+    }
+
+    /**
+     * @param workerId     工作机器ID
+     * @param datacenterId 序列号
+     */
+    public IdWorker(long workerId, long datacenterId) {
+        if (workerId > maxWorkerId || workerId < 0) {
+            throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
+        }
+        if (datacenterId > maxDatacenterId || datacenterId < 0) {
+            throw new IllegalArgumentException(String.format("datacenter Id can't be greater than %d or less than 0", maxDatacenterId));
+        }
+        this.workerId = workerId;
+        this.datacenterId = datacenterId;
+    }
+
+    /**
+     * <p>
+     * 获取 maxWorkerId
+     * </p>
+     */
+    protected static long getMaxWorkerId(long datacenterId, long maxWorkerId) {
+        StringBuffer mpid = new StringBuffer();
+        mpid.append(datacenterId);
+        String name = ManagementFactory.getRuntimeMXBean().getName();
+        if (!name.isEmpty()) {
+
+第 20 页 共 60 页
+
+            /*
+             * GET jvmPid
+             */
+            mpid.append(name.split("@")[0]);
+        }
+        /*
+         * MAC + PID 的 hashcode 获取16个低位
+         */
+        return (mpid.toString().hashCode() & 0xffff) % (maxWorkerId + 1);
+    }
+
+    /**
+     * <p>
+     * 数据标识id部分
+     * </p>
+     */
+    protected static long getDatacenterId(long maxDatacenterId) {
+        long id = 0L;
+        try {
+            InetAddress ip = InetAddress.getLocalHost();
+            NetworkInterface network = NetworkInterface.getByInetAddress(ip);
+            if (network == null) {
+                id = 1L;
+            } else {
+                byte[] mac = network.getHardwareAddress();
+                id = ((0x000000FF & (long) mac[mac.length - 1])
+                    | (0x0000FF00 & (((long) mac[mac.length - 2]) << 8))) >> 6;
+                id = id % (maxDatacenterId + 1);
+            }
+        } catch (Exception e) {
+            StaticLog.info(" getDatacenterId: " + e.getMessage());
+        }
+        return id;
+    }
+
+    /**
+     * 获取下一个分布式唯一ID
+     * @return 全局唯一的64位Long型ID
+     */
+    public synchronized long nextId() {
+        long timestamp = timeGen();
+        if (timestamp < lastTimestamp) {
+            throw new RuntimeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
+        }
+
+        if (lastTimestamp == timestamp) {
+            // 当前毫秒内，则+1
+            sequence = (sequence + 1) & sequenceMask;
+            if (sequence == 0) {
+                // 当前毫秒内计数满了，则等待下一秒
+
+第 21 页 共 60 页
+
+                timestamp = tilNextMillis(lastTimestamp);
+            }
+        } else {
+            sequence = 0L;
+        }
+        lastTimestamp = timestamp;
+        // ID偏移组合生成最终的ID，并返回ID
+
+        return ((timestamp - twepoch) << timestampLeftShift)
+            | (datacenterId << datacenterIdShift)
+            | (workerId << workerIdShift) | sequence;
+    }
+
+    /**
+     * 等待至下一毫秒，直到超过上次生成ID的时间戳
+     * @param lastTimestamp 上次生成ID的时间戳
+     * @return 下一毫秒的时间戳
+     */
+    private long tilNextMillis(final long lastTimestamp) {
+        long timestamp = this.timeGen();
+        while (timestamp <= lastTimestamp) {
+            timestamp = this.timeGen();
+        }
+        return timestamp;
+    }
+
+    /**
+     * 获取当前时间戳（毫秒）
+     * @return 当前时间的毫秒值
+     */
+    private long timeGen() {
+        return System.currentTimeMillis();
+    }
+}
+
+# 文件: science-innovation-gateway/src/main/resources/application.yml
+
+server:
+  port: 8866
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启自动路由功能，根据服务名称自动创建routes
+      routes:
+        #资讯微服务
+        - id: information_route
+
+第 22 页 共 60 页
+
+          uri: lb://information-service
+          predicates:
+            - Path=/api/information/**,/api/friendLink/**,/api/nChannel/**,/api/scienceNews/**,/api/supermakertController/**,/api/researchPlatform/**,/api/scientificInstrument/**,/api/labelItem/**,/api/label/**,/api/informationItem/**
+          filters:
+            - StripPrefix=1
+        #附件服务
+        - id: file_route
+          uri: lb://file-service
+          predicates:
+            - Path=/api/file/**
+          filters:
+            - StripPrefix=1
+        #用户服务
+        - id: user_route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/us/**
+          filters:
+            - StripPrefix=2
+        #单点登录服务
+        - id: user_oauth_route
+          uri: lb://user-oauth-service
+          predicates:
+            - Path=/api/uos/login/**,/api/uos/captcha/**,/api/uos/syncEnterprise/**
+          filters:
+            - StripPrefix=2
+          #系统配置微服务
+        - id: systemConfig_route
+          uri: lb://systemConfig-service
+          predicates:
+            - Path=/api/sAttachment/**,/api/sCodeItem/**,/api/sysLog/**,/api/exceptionLog/**,/api/common/**,/api/technosphere/**,/api/configuration/**,/api/opinion/**,/api/version/**
+          filters:
+            - StripPrefix=1
+        #一查通服务
+        - id: homeSearch_route
+          uri: lb://homeSearch-service
+          predicates:
+            - Path=/api/homeSearchAPI/**,/api/hotSearch/**
+          filters:
+            - StripPrefix=1
+        #简单业务微服务
+        - id: simpleBusiness_route
+          uri: lb://simpleBusiness-service
+          predicates:
+            - Path=/api/expert/**,/api/innovationInfo/**,/api/conferenceApply/**,/api/conferenceMember/**,/api/projectInfo/**,/api/demandcollect/**,/api/production/**,/api/patent/**,/api/softwareCopyright/**,/api/buttJoin/**,/api/learningGarden/**,/api/operation/**,/api/prizeInfo/**,/api/lawsRegulations/**,/api/policyInterpretation/**,/api/standardBasic/**,/api/standardCategory/**,/api/standardExpand/**,/api/standardSystem/**,/api/guide/**,/api/works/**,/api/conference/**,/api/feedbackAnswer/**,/api/winningProject/**,/api/specification/**,/api/recommendRoadshow/**,/api/register/**,/api/policy/**,/api/paper/**,/api/workmanshipProcess/**,/api/community/**,/api/suggest/**,/api/statisticsReport/**,/api/resultsStatistics/**,/api/briefReport/**,/api/innovationAchievements/**,/api/innovationAchievementsPromotionDraft/**
+          filters:
+            - StripPrefix=1
+        #项目管理服务
+        - id: projectManagement_route
+          uri: lb://projectManagement-service
+
+第 23 页 共 60 页
+
+          predicates:
+            - Path=/api/projectApproval/**,/api/exportWord/**,/api/pMidExamination/**,/api/pMidExaminationOpinion/**,/api/pOpeningReport/**,/api/pOpeningReportOpinion/**,/api/pPerformReport/**,/api/pPerformReportOpinion/**,/api/projectInfoPublic/**,/api/acceptance/**,/api/documentInfo/**,/api/expectedStandard/**,/api/ConsultinPlanning/**,/api/achievementInfo/**,/api/achievementInfoOpinion/**,/api/achievementInfoOwnership/**,/api/achievementInfoStaff/**,/api/consult/**,/api/consulting/**,/api/questionnaire/**,/api/questionnaireExamination/**,/api/project/**,/api/collection/**,/api/scientificResearchPlatform/**,/api/creditManagement/**,/api/creditManagementRecord/**,/api/dailyReport/**,/api/pDocumentChange/**,/api/unveilCommand/**,/api/infrastructureEngineering/**
+          filters:
+            - StripPrefix=1
+        #消息服务
+        - id: communication_route
+          uri: lb://communication-service
+          predicates:
+            - Path=/api/todo/**,/api/weChat/**,/api/trtc/**
+          filters:
+            - StripPrefix=1
+        #省厅微服务
+        - id: gov_route
+          uri: lb://gov-service
+          predicates:
+            - Path=/api/statistics/**,/api/sql/**,/api/projectChart/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:40086/eureka/
+
+# 线程隔离
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+# 负载均衡
+ribbon:
+  ConnectTimeout: 1000 # 建立连接超时时长
+  ReadTimeout: 2000 # 读取响应数据超时时长
+  MaxAutoRetries: 0 # 当前服务器的重试次数
+  MaxAutoRetriesNextServer: 1 # 重试多少个服务节点
+  OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试(只对查询)
+
+management:
+  endpoint:
+    gateway:
+      enabled: false
+
+// 文件: science-innovation-eureka/src/main/java/com/comit/EurekaApplication.java
+
+package com.comit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+第 24 页 共 60 页
+
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+/**
+ * @program: science-innovation-parent
+ * @description: Eureka服务注册中心启动类，提供服务注册与发现功能
+ * @author: thh
+ * @create: 2019/12/12 23:01
+ */
+@SpringBootApplication
+@EnableEurekaServer
+public class EurekaApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaApplication.class, args);
+    }
+}
+
+# 文件: science-innovation-eureka/src/main/resources/application.yml
+
+server:
+  port: 40086
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false   #是否将自己注册到eureka中
+    fetch-registry: false         #是否从eureka中获取信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/UserOauthApplication.java
+
+package com.comit;
+
+import com.comit.utils.IdWorker;
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+
+/**
+ * @ClassName UserApplication
+ * @Description 专家微服务启动类
+ * @Author thh
+ * @Date 0:06 2019/12/13
+ **/
+
+第 25 页 共 60 页
+
+@SpringBootApplication
+@EnableEurekaClient
+@EnableFeignClients(basePackages = {"com.comit.user.feign", "com.comit.communication.feign", "com.comit.systemConfig.feign"})
+@EnableEncryptableProperties //开启加密注解
+public class UserOauthApplication {
+
+    /**
+     * 应用程序入口方法，启动Spring Boot应用
+     * @param args 启动参数
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(UserOauthApplication.class, args);
+    }
+
+    /**
+     * 初始化分布式ID生成器，用于生成全局唯一ID（如二维码扫描ID等）
+     * @return IdWorker实例
+     * // TODO: workerId和datacenterId硬编码为1，在多实例部署时可能产生ID冲突，应从配置中心读取
+     */
+    @Bean
+    public IdWorker idWorker() {
+        return new IdWorker(1, 1);
+    }
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/config/ApplicationConfig.java
+
+package com.comit.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+/**
+ * @program: science-innovation-parent
+ * @description: 应用全局配置类，读取当前激活的Spring环境profile，供其他组件判断运行环境
+ * @author: unknown
+ * @create: 2019/12/11
+ */
+@Component
+public class ApplicationConfig {
+
+    @Value("${spring.profiles.active}")
+    private String springActive;
+
+    /**
+     * 获取当前激活的Spring环境标识（去除前后空格）
+     * @return 当前环境标识，如 dev、test、pro
+     */
+    public String getSpringActive() {
+        return springActive.trim();
+
+第 26 页 共 60 页
+
+    }
+
+    public void setSpringActive(String springActive) {
+        this.springActive = springActive;
+    }
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/login/controller/LoginController.java
+
+package com.comit.login.controller;
+
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.log.StaticLog;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.antherd.smcrypto.sm2.Sm2;
+import com.comit.annotation.AccessAuthority;
+import com.comit.annotation.RoleEnum;
+import com.comit.communication.utils.SendTemplateSmsUtil;
+import com.comit.config.ApplicationConfig;
+import com.comit.entity.Message;
+import com.comit.log.OperationLogger;
+import com.comit.login.mq.queue.SmsQueue;
+import com.comit.login.mq.send.TopicMessageSender;
+import com.comit.login.service.LoginService;
+import com.comit.mvc.controller.BaseController;
+import com.comit.mvc.response.CommonCode;
+import com.comit.mvc.response.ResultJson;
+import com.comit.sm.GetKeys;
+import com.comit.sm.SM2Encryptor;
+import com.comit.systemConfig.feign.VersionFeign;
+import com.comit.systemConfig.pojo.Version;
+import com.comit.user.feign.MOrganizationFeign;
+import com.comit.user.feign.MUserFeign;
+import com.comit.user.pojo.MOrganization;
+import com.comit.user.pojo.MUser;
+import com.comit.utils.CodeUtil;
+import com.comit.utils.DataValidation;
+import com.comit.utils.HttpClientUtils;
+import com.comit.utils.IdWorker;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+第 27 页 共 60 页
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+/****
+ * @Author:唐嘉
+ * @Description: 用户登录认证控制器，处理PC端/移动端账号密码登录、微信扫码登录、短信验证码登录、密码重置及跨平台单点登录等功能
+ * @Date 2019/12/23 10:15
+ *****/
+@RestController
+@RequestMapping("/login")
+public class LoginController extends BaseController {
+
+    //用户登录次数计数  redisKey 前缀
+    private final String LOGIN_COUNT = "loginCount:";
+
+    //用户登录是否被锁定    15分钟 redisKey 前缀
+    private final String IS_LOCK = "isLock:";
+
+    @Autowired
+    RedisTemplate redisTemplate;
+
+    @Autowired
+    SM2Encryptor sm2Encryptor;
+
+    @Autowired
+    private LoginService loginService;
+
+    @Autowired
+    private MUserFeign mUserFeign;
+
+    @Autowired
+    private IdWorker idWorker;
+
+    @Autowired
+    private TopicMessageSender topicMessageSender;
+
+    @Autowired
+    private VersionFeign versionFeign;
+
+第 28 页 共 60 页
+
+
+    @Autowired
+    private ApplicationConfig applicationConfig;
+
+    @Autowired
+    private MOrganizationFeign organizationFeign;
+
+    /***
+     * MUser 电脑登录
+     * @param jsonObject 包含encryptData字段的请求体，encryptData为SM2加密后的账号;验证码;密码
+     * @param request HTTP请求对象
+     * @return 登录结果，包含用户信息和token
+     */
+    @OperationLogger("PC端登录")
+    @AccessAuthority(type = AccessAuthority.Type.NOT)
+    @PostMapping("/pc")
+    public ResultJson pcLogin(@RequestBody JSONObject jsonObject, HttpServletRequest request) {
+
+        String encryptData = jsonObject.getString("encryptData");
+
+        //前端请求参数解密
+        // TODO: SM2私钥(GetKeys.SM_PRIVATEKEY)为硬编码常量，应迁移到配置中心管理
+        String[] upStr = Sm2.doDecrypt(encryptData, GetKeys.SM_PRIVATEKEY).split(";");
+        if (upStr[0] == null || upStr[0].isEmpty()) {
+            return new ResultJson(CommonCode.INVALID_PARAM);
+        }
+        MUser mUser = new MUser();
+        mUser.setAccount(upStr[0]);
+        mUser.setImgCode(upStr[1]);
+        mUser.setPassword(upStr[2]);
+
+        if (StrUtil.contains(applicationConfig.getSpringActive(), "pro")) {
+            //验证数据
+            if (mUser.getAccount() == null || mUser.getAccount().trim().isEmpty() ||
+                mUser.getPassword() == null || mUser.getPassword().trim().isEmpty() ||
+                mUser.getImgCode() == null || mUser.getImgCode().trim().isEmpty()
+            ) {
+                return new ResultJson(CommonCode.INVALID_PARAM);
+            }
+        }
+        //登录configuration/search
+        ResultJson<MUser> user = loginService.login(mUser, true, getIp());
+
+        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+        if (user == null) {
+            //字符串的值直接转为字节数组
+            redisTemplate.setKeySerializer(new StringRedisSerializer());
+            redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+            opsForValue.increment(LOGIN_COUNT + mUser.getAccount(), 1);
+
+
+第 29 页 共 60 页
+
+            Object count = opsForValue.get(LOGIN_COUNT + mUser.getAccount());
+            //计数大于5时，设置用户被锁定15分钟
+            if (Integer.parseInt(String.valueOf(count)) >= 5) {
+                opsForValue.set(IS_LOCK + mUser.getAccount(), "LOCK", 15, TimeUnit.MINUTES);
+                redisTemplate.expire(LOGIN_COUNT + mUser.getAccount(), 15, TimeUnit.MINUTES);
+                return new ResultJson(CommonCode.LOGIN_FAILURE_COUNTS);
+            }
+            return new ResultJson(CommonCode.LOGIN_FAILURE, "登录失败" + count + "次，请检查用户名或密码");
+        } else {
+            //判断是否有管理员角色，并限制ip登录
+//            for (int i=0;i<user.getData().getmRolesList().size();i++){
+//                if (user.getData().getmRolesList().get(i).getId().equals(RoleEnum.Administrator.getRole())) {
+//                    ResultJson<Integer> configuration = configurationFeign.findByCode(getIp());
+//                    if(configuration.getData() <= 0){
+//                        return new ResultJson(CommonCode.LOGIN_LIMIT_IP);
+//                    }
+//                }
+//            }
+            //计数大于5时,用户被锁定
+            if (opsForValue.get(LOGIN_COUNT + mUser.getAccount()) != null) {
+                Object counts = opsForValue.get(LOGIN_COUNT + mUser.getAccount());
+                if (Integer.parseInt(String.valueOf(counts)) >= 5) {
+                    return new ResultJson(CommonCode.LOGIN_FAILURE_COUNTS);
+                } else {
+                    redisTemplate.opsForValue().set(LOGIN_COUNT + mUser.getAccount(), 0);
+                    redisTemplate.opsForValue().set(IS_LOCK + mUser.getAccount(), "UNLOCK");
+                }
+            } else {
+                redisTemplate.opsForValue().set(LOGIN_COUNT + mUser.getAccount(), 0);
+                redisTemplate.opsForValue().set(IS_LOCK + mUser.getAccount(), "UNLOCK");
+                user.getData().setPassword(null);
+            }
+            return user;
+        }
+    }
+
+    /***
+     * MUser 移动端登录
+     * @param mUser 包含账号和密码的用户信息
+     * @param request HTTP请求对象
+     * @return 登录结果，包含用户信息和token
+     */
+    @OperationLogger("手机端登录")
+    @AccessAuthority(type = AccessAuthority.Type.NOT)
+    @PostMapping("/mobile")
+    public ResultJson mobileLogin(@RequestBody MUser mUser, HttpServletRequest request) {
+        //验证数据
+        if (mUser.getAccount() == null || mUser.getAccount().trim().isEmpty() ||
+            mUser.getPassword() == null || mUser.getPassword().trim().isEmpty()
+        ) {
+
+第 30 页 共 60 页
+
+            return new ResultJson(CommonCode.INVALID_PARAM);
+        }
+        //登录
+        ResultJson<MUser> user = loginService.login(mUser, false, getIp());
+        if (user == null) {
+            return new ResultJson(CommonCode.LOGIN_FAILURE);
+        } else {
+            user.getData().setPassword(null);
+            //user.getData().setId(null);
+            return user;
+        }
+    }
+
+    /***
+     * 手机openID登录，通过微信授权code获取用户信息并登录
+     * @param obj 包含微信授权code的请求体
+     * @param request HTTP请求对象
+     * @return 登录结果，包含用户信息和token
+     */
+    @OperationLogger("微信登录")
+    @PostMapping(value = "/mobile/openid/login")
+    public ResultJson bindOpenid(@RequestBody(required = false) JSONObject obj, HttpServletRequest request) {
+        //参数
+        if (obj == null || obj.get("code") == null) {
+            StaticLog.info("-----------------微信登录code为空!----------------:" + obj.get("code"));
+            return new ResultJson(CommonCode.INVALID_PARAM);
+        }
+
+        //登录
+
+        return loginService.opinidLogin(obj, false, getIp());
+    }
+
+    /***
+     * 转发微信授权code，根据是否携带account参数跳转到不同页面（绑定微信或登录）
+     * @param request HTTP请求对象，包含code和account参数
+     * @param response HTTP响应对象
+     * @return 重定向到对应的前端页面
+     * // TODO: 跳转URL硬编码为生产域名(gdjtkjxtcx.com)，应配置化以便环境切换
+     */
+    @OperationLogger("转发Code")
+    @GetMapping(value = "/codeSkip")
+    public ModelAndView codeSkip(HttpServletRequest request, HttpServletResponse response) {
+        String code = request.getParameter("code");
+        String account = request.getParameter("account");
+        StringBuffer url = new StringBuffer();
+//        url.append("https://www.gdjtkjxtcx.com/m/#/login?");https://www.gdjtkjxtcx.com/m/#/huw
+        //微信登录
+        if (StrUtil.isNotBlank(account)) {
+            url = new StringBuffer();
+
+—— 后部源代码（第31-60页）——
+
+第 31 页 共 60 页
+
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * 构建安标库(anbiaoku)平台跳转URL，生成包含SM2加密token、clientId和MD5签名checkSum的认证参数
+     * @return 包含完整跳转URL的结果
+     * // TODO: clientId、密钥和跳转URL硬编码，应迁移到配置文件
+     */
+    @GetMapping("/jump")
+    public ResultJson jump() {
+        Long userId = getUserId();
+        //获取公钥
+        String token = sm2Encryptor.encryptText(userId.toString());
+
+        // TODO: clientId硬编码，应迁移到配置中心
+        String clientId = "f7ed5c39c6594f5bb4e9dbe617775333";
+
+        long time = new Date().getTime();
+
+        // TODO: 密钥硬编码，应迁移到配置中心
+        String a = "8b8ed38c7e36479eb7d14b989f417881" + time;
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+            md5.update((a).getBytes(StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            // TODO: 异常被吞没，md5可能为null导致后续NPE
+            StaticLog.error(e);
+        }
+        byte[] b = md5.digest();
+
+        int i;
+        StringBuffer buf = new StringBuffer();
+
+        for (byte value : b) {
+            i = value;
+            if (i < 0) {
+                i += 256;
+            }
+            if (i < 16) {
+                buf.append("0");
+            }
+            buf.append(Integer.toHexString(i));
+        }
+
+        String checkSum = buf.toString();
+
+        // TODO: 外部平台URL硬编码，应配置化
+
+第 32 页 共 60 页
+
+        //调用接口
+        String path = "https://gdjt.anbiaoku.com/auth/index?data=" + token
+            + "&clientId=" + clientId + "&checkSum=" + checkSum + "&curTime=" + time;
+        // TODO: System.out.println应替换为日志框架
+        System.out.println(path);
+
+        //HttpClientUtils.httpClientOn(path, null, "GET");
+
+        return new ResultJson(CommonCode.SUCCESS, path);
+    }
+
+    /**
+     * 从外部平台跳转回来，验证签名后重定向到系统首页
+     * @param token SM2加密的用户ID
+     * @param signature 签名标识
+     * @param redirect 重定向目标标识
+     * @param response HTTP响应对象
+     * @return 跳转结果
+     * // TODO: 硬编码的签名验证("ABK")和重定向URL，存在安全隐患和配置耦合
+     */
+    @GetMapping("/jumpFrom/{token}/{signature}/{redirect}")
+    public ResultJson jumpFrom(@PathVariable String token, @PathVariable String signature,
+                               @PathVariable String redirect,
+                               HttpServletResponse response) {
+        // TODO: 硬编码签名值"ABK"，安全性不足，应使用更安全的签名验证机制
+        if (signature.equals("ABK") && redirect.equals("home_index")) {
+            String userId = sm2Encryptor.decryptText(token);
+            //判断该用户是否已经登录
+            Object lowToken = redisTemplate.opsForValue().get("login:" + userId);
+            if (lowToken != null) {
+                try {
+                    // TODO: System.out.println应替换为日志框架
+                    System.out.println("跳转平台");
+                    // TODO: 重定向URL硬编码，应配置化
+                    response.sendRedirect("https://www.gdjtkjxtcx.com/#/home?userId=" + userId);
+                } catch (IOException e) {
+                    StaticLog.error(e);
+                }
+                return new ResultJson(CommonCode.SUCCESS);
+            } else {
+                return new ResultJson(CommonCode.UNAUTHENTICATED);
+            }
+        } else {
+            return new ResultJson(CommonCode.FAIL, "校验失败");
+        }
+    }
+
+    /***
+     * PC端登录（备选方案），先通过Feign获取加密密码解密后再执行登录
+     * @param mUser 包含账号信息的用户对象
+
+第 33 页 共 60 页
+
+     * @param request HTTP请求对象
+     * @return 登录结果
+     */
+    @OperationLogger("PC端登录2")
+    @AccessAuthority(type = AccessAuthority.Type.NOT)
+    @PostMapping("/pc2")
+    public ResultJson pcLogin2(@RequestBody MUser mUser, HttpServletRequest request) {
+        MUser byActor = mUserFeign.findByActor(mUser);
+        String sm2password = byActor.getPassword();
+        String password = sm2Encryptor.decryptText(sm2password);
+        mUser.setPassword(password);
+        //验证数据
+        if (mUser.getAccount() == null || mUser.getAccount().trim().isEmpty() ||
+            mUser.getPassword() == null || mUser.getPassword().trim().isEmpty()
+        ) {
+            return new ResultJson(CommonCode.INVALID_PARAM);
+        }
+        //登录
+        ResultJson<MUser> user = loginService.login(mUser, true, getIp());
+        if (user == null) {
+            return new ResultJson(CommonCode.LOGIN_FAILURE);
+        } else {
+            user.getData().setPassword(null);
+            return user;
+        }
+    }
+
+    /**
+     * 外部平台Token校验接口，验证签名后解密请求数据，返回用户登录状态和基本信息
+     * @param reqdata SM2加密的JSON数据，包含token和timestamp
+     * @param signature 签名标识，用于接口鉴权
+     * @return 用户信息及登录状态
+     * // TODO: 硬编码签名"ABK"安全性不足，System.out.println应替换为日志
+     */
+    @PostMapping("/tokenCheck/{signature}")
+    public ResultJson tokenCheck(@RequestBody(required = false) String reqdata, @PathVariable String signature) {
+        // TODO: 硬编码签名值"ABK"，安全性不足
+        if (signature.equals("ABK")) {
+
+            Map<String, Object> reqdataMap = (Map<String, Object>) JSON.parse(reqdata);
+            String jsonData = sm2Encryptor.decryptText(reqdataMap.get("reqdata").toString());
+            Map<String, Object> map = (Map<String, Object>) JSON.parse(jsonData);
+            // TODO: System.out.println应替换为日志框架
+            System.out.println(map.get("token").toString());
+            System.out.println(map.get("timestamp").toString());
+
+            String userId = sm2Encryptor.decryptText(map.get("token").toString());
+            // TODO: System.out.println应替换为日志框架
+            System.out.println(userId);
+
+
+第 34 页 共 60 页
+
+            MUser user = mUserFeign.findById(Long.valueOf(userId)).getData();
+
+            //判断该用户是否已经登录
+            Object lowToken = redisTemplate.opsForValue().get("login:" + user.getId().toString());
+            int state = -1;
+            Map<String, Object> token = null;
+            if (lowToken != null) {
+                state = 1;
+                token = (Map<String, Object>) lowToken;
+            }
+
+            Map<String, Object> resultMap = new HashMap<>();
+            resultMap.put("userId", user.getId());
+            resultMap.put("token", token == null ? "" : token.get("pcToken"));
+            resultMap.put("state", state);
+            resultMap.put("entId", user.getOrganization());
+            if (user.getOrganization() != null) {
+                MOrganization org = organizationFeign.findById(user.getOrganization()).getData();
+                resultMap.put("entName", org == null ? null : org.getName());
+            }
+            resultMap.put("userName", user.getName());
+            resultMap.put("phone", user.getMobilePhone());
+            resultMap.put("email", user.getEmail());
+            resultMap.put("entAddress", user.getWorkAddress());
+
+            return new ResultJson(CommonCode.SUCCESS, resultMap);
+        } else {
+            return new ResultJson(CommonCode.INVALID_PARAM);
+        }
+    }
+
+    /**
+     * 外部平台密钥同步接口，接收并保存远程密钥到版本配置表
+     * @param remoteKey 包含remoteKey字段的JSON数据
+     * @param signature 签名标识，用于接口鉴权
+     * @return 操作结果
+     * // TODO: 硬编码签名"ABK"和版本ID(1L)，缺乏安全性和灵活性
+     */
+    @PostMapping("/keySync/{signature}")
+    public ResultJson keySync(@RequestBody(required = false) String remoteKey, @PathVariable String signature) {
+        // TODO: 硬编码签名值"ABK"，安全性不足
+        if (signature.equals("ABK")) {
+            Map<String, Object> map = (Map<String, Object>) JSON.parse(remoteKey);
+            Version version = new Version();
+            version.setId(1L);
+            version.setStatus(map.get("remoteKey").toString());
+            versionFeign.update(version, version.getId());
+
+            return new ResultJson(CommonCode.SUCCESS);
+        } else {
+
+第 35 页 共 60 页
+
+            return new ResultJson(CommonCode.INVALID_PARAM);
+        }
+    }
+
+    /**
+     * 向外部平台(KC)同步本系统的SM2公钥
+     * @return 操作结果
+     * // TODO: 目标URL为占位符"xxx"，此接口未完成，需要补充正确的同步地址
+     */
+    @GetMapping("/keySyncFromKC")
+    public ResultJson keySyncFromKC() {
+        // TODO: 目标URL为占位符"xxx"，需要补充正确的外部平台同步地址
+        String path = "xxx&signature=KC";
+        Map<String, Object> map = new HashMap<>();
+        map.put("key", sm2Encryptor.getPublickey());
+        map.put("timestamp", new Date().getTime());
+        map.put("signature", "KC");
+        String jsonStr = JSON.toJSON(map).toString();
+        try {
+            HttpClientUtils.sendPost(path, jsonStr, "UTF-8");
+        } catch (Exception e) {
+            // TODO: 异常被吞没，仅记录日志未返回错误信息给调用方
+            StaticLog.error(e);
+        }
+        return new ResultJson(CommonCode.SUCCESS);
+    }
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/login/controller/SyncEnterpriseController.java
+
+package com.comit.login.controller;
+
+import com.comit.mvc.response.CommonCode;
+import com.comit.mvc.response.ResultJson;
+import com.comit.sm.SM2Encryptor;
+import com.comit.user.feign.MUserFeign;
+import com.comit.user.pojo.MUser;
+import com.comit.utils.DataValidation;
+import com.comit.utils.HttpClientUtils;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+
+第 36 页 共 60 页
+
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @program: science-innovation-parent
+ * @description: 企业同步认证控制器，处理跨系统用户认证、Token获取和验证，实现与集团/黑林系统之间的单点登录互通
+ * @author: unknown
+ * @create: 2020/06/01
+ */
+@RestController
+@RequestMapping("/syncEnterprise")
+public class SyncEnterpriseController {
+
+    // TODO: 所有URL、密钥、Token等硬编码值应迁移到配置中心管理
+    //路径
+    static final Map<String, String> UrlsMap = new HashMap<String, String>() {{
+        put("133eb63e68b2afb9f2775a1a16c62f51", "https://qy.gdjtkjxtcx.com/hlapi/uos/syncBloc/");
+        put("133eb63e68b2afb9f2775a1a16c62f52", "https://hl.gdjtkjxtcx.com/hlapi/uos/syncBloc/");
+    }};
+
+    // TODO: 硬编码的密钥标识，应迁移到配置中心
+    static String KcId = "E80CB7377A72688A35776CC4C9325C3E";
+
+    // TODO: 硬编码的客户端ID，应迁移到配置中心
+    static String JsId = "133eb63e68b2afb9f2775a1a16c62f51";
+
+    // TODO: 硬编码的Token，存在严重安全隐患，应迁移到安全的密钥管理系统
+    static String KcToken = "MIIDQzCCAiugAwIBAgIQAOuZecAQnfKrumH.uF750TANBgkqhkiG9w0B.AQsFADANMQswCQYDVQQDDAJrYzAeFw0yMz.A1MTEwMjU5NTFaFw0yNDA1MTAwMjU5NTFaMA0xCzAJBgNVBAMMAmtjMIIBIj.ANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyG";
+
+    //clientId
+    // TODO: 原始类型List未指定泛型，应改为List<String>
+    static List clientList = new ArrayList(Arrays.asList("133eb63e68b2afb9f2775a1a16c62f51", "133eb63e68b2afb9f2775a1a16c62f52"));
+
+    @Autowired
+    SM2Encryptor sm2Encryptor;
+
+    @Autowired
+    private RedisTemplate<Object, Object> redisTemplate;
+
+    @Autowired
+    private MUserFeign userFeign;
+
+    /**
+     * 获取当前登录用户认证信息，通过HTTP请求远程系统验证用户身份
+     * @param token 用户认证Token
+     * @param signature 签名信息
+     * @param xtt 时间戳
+     * @param xtn 随机数
+
+第 37 页 共 60 页
+
+     * @param clientId 客户端标识
+     * @return 远程系统返回的用户信息JSON字符串，失败时返回空字符串
+     */
+    public static String GetUserInfo(String token, String signature, String xtt, String xtn, String clientId) {
+        String pass = "";
+        try {
+            String url = UrlsMap.get(clientId) + "/verifyUser";
+            Map<String, String> paramMap = new HashMap<>();
+            Map<String, String> header = new HashMap<>();
+            header.put("kc-sy-paasid", KcId);
+            header.put("kc-sy-signature", signature);
+            header.put("kc-sy-timestamp", xtt);
+            header.put("kc-sy-nonce", xtn);
+            header.put("Authorization", token);
+
+            pass = HttpClientUtils.sendGet(url, paramMap, header, "UTF-8");
+        } catch (Exception e) {
+            // TODO: 异常被吞没，仅打印到控制台，应使用日志框架并返回有意义的错误信息
+            System.out.println("获取用户信息报错");
+        }
+
+        return pass;
+    }
+
+    /**
+     * 获取当前时间的Unix时间戳（秒级）
+     * @return 10位时间戳字符串
+     */
+    public static String GetTimeStamp() {
+        return String.valueOf(new Date().getTime() / 1000);
+    }
+
+    /**
+     * 生成10位随机数字字符串
+     * @return 10位随机数字字符串
+     */
+    public static String GenerateNumber() {
+        Random random = new Random();
+        String r = "";
+        int i;
+        for (i = 1; i < 11; i++) {
+            r += random.nextInt(9);
+        }
+        return r;
+    }
+
+    /**
+     * 获取跨系统访问Token，验证客户端合法性后生成加密Token存入Redis
+     * @param clientId 客户端标识
+     * @param curTime 当前时间，用于时间戳校验
+
+第 38 页 共 60 页
+
+     * @param request HTTP请求对象，包含kc-sy-request头（SM2加密的date:userId）
+     * @return 包含Token的结果
+     */
+    @GetMapping("/getToken")
+    public ResultJson getToken(String clientId, String curTime, HttpServletRequest request) {
+        String token = request.getHeader("kc-sy-request");
+        if (clientList.contains(clientId) && DataValidation.ValidationIsNotEmpty(token)) {
+            String[] split = sm2Encryptor.decryptText(token).split(":");
+            String date = split[0];
+            String userId = split[1];
+
+            MUser mUser = userFeign.findById(Long.parseLong(userId)).getData();//获取用户信息
+            if (!(DataValidation.ValidationIsNotEmpty(mUser) && curTime.equals(date))) {
+                return new ResultJson(CommonCode.CHECK_FAILURE);
+            }
+
+            String uuid = UUID.randomUUID().toString().replace("-", "");
+            String kcToken = sm2Encryptor.encryptText(uuid + ":" + userId);
+            uuid = sm2Encryptor.encryptText(userId);
+            redisTemplate.opsForValue().set("sync:" + userId, uuid, 2, TimeUnit.HOURS);
+            ResultJson resultJson = new ResultJson(CommonCode.SUCCESS);
+            resultJson.setToken(uuid);
+            return resultJson;
+        } else {
+            return new ResultJson(CommonCode.CHECK_FAILURE);
+        }
+    }
+
+    /**
+     * 验证跨系统用户身份，校验请求头中的签名、时间戳、随机数和Token是否合法
+     * @param request HTTP请求对象，包含kc-sy-paasid、kc-sy-signature、kc-sy-timestamp、kc-sy-nonce、Authorization头
+     * @return 验证结果，合法用户返回SUCCESS，未登录用户返回UNAUTHENTICATED
+     */
+    @GetMapping("/verifyUser")
+    public ResultJson verifyUser(HttpServletRequest request) {
+        String jsId = request.getHeader("kc-sy-paasid");
+        String signature = request.getHeader("kc-sy-signature");
+        String time = request.getHeader("kc-sy-timestamp");
+        String number = request.getHeader("kc-sy-nonce");
+        String token = request.getHeader("Authorization");
+
+        if (!DataValidation.ValidationIsNotEmpty(jsId)) {
+            return new ResultJson(CommonCode.FAIL);
+        }
+        if (!DataValidation.ValidationIsNotEmpty(signature)) {
+            return new ResultJson(CommonCode.FAIL);
+        }
+        if (!DataValidation.ValidationIsNotEmpty(time)) {
+            return new ResultJson(CommonCode.FAIL);
+        }
+
+第 39 页 共 60 页
+
+        if (!DataValidation.ValidationIsNotEmpty(number)) {
+            return new ResultJson(CommonCode.FAIL);
+        }
+        if (!DataValidation.ValidationIsNotEmpty(token)) {
+            return new ResultJson(CommonCode.FAIL);
+        }
+        String sin = sm2Encryptor.decryptText(signature);
+
+        // TODO: 签名验证逻辑过于简单（拼接time+KcToken+number+time），应使用更安全的签名算法
+        if (sin.equals(time + KcToken + number + time) && JsId.equals(jsId)) {
+            String[] split = sm2Encryptor.decryptText(token).split(":");
+            String uuid = split[0];
+            String userId = split[1];
+            String syncToken = sm2Encryptor.encryptText(uuid);
+            //判断该用户是否已经登录
+            Object lowToken = redisTemplate.opsForValue().get("login:" + userId);
+            if (lowToken != null) {
+                redisTemplate.opsForValue().set("sync:" + userId, syncToken, 2, TimeUnit.HOURS);
+                return new ResultJson(CommonCode.SUCCESS);
+            } else {
+                return new ResultJson(CommonCode.UNAUTHENTICATED);
+            }
+        } else {
+            return new ResultJson(CommonCode.FAIL);
+        }
+    }
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/login/mq/queue/SmsQueue.java
+
+package com.comit.login.mq.queue;
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @program: science-innovation-parent
+ * @description: 短信发送RabbitMQ队列配置类，定义短信队列、交换机及绑定关系（Topic模式）
+ * @author: unknown
+ * @create: 2019/12/23
+ */
+@Configuration
+public class SmsQueue {
+
+    /** 短信发送队列名称 */
+    public static final String QUEUE_SEND_SMS = "queue.send.sms";
+
+第 40 页 共 60 页
+
+
+    /** 短信发送交换机名称 */
+    public static final String EXCHANGE_SEND_SMS = "exchange.send.sms";
+
+    /** 短信发送路由键 */
+    public static final String ROUTEKEY_SEND_SMS = "routekey.send.sms";
+
+    /**
+     * 创建短信发送队列
+     * @return 短信队列实例
+     */
+    @Bean
+    public Queue topicQueueSpu() {
+        return new Queue(QUEUE_SEND_SMS);
+    }
+
+    /**
+     * 创建短信发送交换机（Topic模式）
+     * @return 短信交换机实例
+     */
+    @Bean
+    public TopicExchange topicSpuExchange() {
+        return new TopicExchange(EXCHANGE_SEND_SMS);
+    }
+
+    /**
+     * 将短信队列绑定到交换机，使用指定的路由键
+     * @return 绑定关系
+     */
+    @Bean
+    public Binding topicBinding() {
+        return BindingBuilder.bind(topicQueueSpu()).to(topicSpuExchange()).with(ROUTEKEY_SEND_SMS);
+    }
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/login/mq/send/TopicMessageSender.java
+
+package com.comit.login.mq.send;
+
+import cn.hutool.log.StaticLog;
+import com.alibaba.fastjson.JSON;
+import com.comit.entity.Message;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+/**
+ * @program: science-innovation-parent
+ * @description: RabbitMQ Topic模式消息发送器，用于发送短信通知等异步消息到消息队列
+ * @author: unknown
+
+第 41 页 共 60 页
+
+ * @create: 2019/12/23
+ */
+@Component
+public class TopicMessageSender {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    /***
+     * 发送Topic模式消息到RabbitMQ
+     * @param message 消息对象，包含模板参数列表、路由键和交换机名称
+     */
+    public void sendMessage(Message message) {
+        StaticLog.info("消息推送", JSON.toJSONString(message));
+        // TODO: 缺少消息发送失败的处理机制（如重试、死信队列、回调确认），可能导致消息丢失
+        rabbitTemplate.convertAndSend(message.getExechange(), message.getRoutekey(), JSON.toJSONString(message));
+    }
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/login/service/LoginService.java
+
+package com.comit.login.service;
+
+import com.alibaba.fastjson.JSONObject;
+import com.comit.mvc.response.ResultJson;
+import com.comit.user.pojo.MUser;
+
+/****
+ * @Author:唐嘉
+ * @Description:MUser业务层接口
+ * @Date 2019/12/11 14:39
+ *****/
+public interface LoginService {
+
+    /***
+     * MUser 账号密码登录，验证密码后将用户信息和token保存到Redis
+     * @param mUser 包含账号和密码的用户对象
+     * @param isPc 是否为PC端登录
+     * @param ip 登录IP地址
+     * @return 登录结果，包含用户信息和token
+     */
+    ResultJson<MUser> login(MUser mUser, boolean isPc, String ip);
+
+    /***
+     * MUser 通过微信OPENID登录，获取微信用户信息后匹配系统用户
+     * @param obj 包含微信授权code的JSON对象
+     * @param isPc 是否为PC端登录
+     * @param ip 登录IP地址
+     * @return 登录结果，包含用户信息和token
+     */
+
+第 42 页 共 60 页
+
+    ResultJson<MUser> opinidLogin(JSONObject obj, boolean isPc, String ip);
+
+    /***
+     * MUser 短信验证码登录，无需密码直接通过手机号和验证码登录
+     * @param mUser 包含账号信息的用户对象
+     * @param isPc 是否为PC端登录
+     * @param ip 登录IP地址
+     * @return 登录结果，包含用户信息和token
+     */
+    ResultJson SendSmsLogin(MUser mUser, boolean isPc, String ip);
+
+    /***
+     * 更新Redis中已登录用户的权限数据，用于角色变更后刷新用户会话
+     * @param userId 用户ID
+     * @param isPc 是否为PC端
+     * @return 更新后的用户信息
+     */
+    ResultJson updateLoginUser(Long userId, boolean isPc);
+
+    /**
+     * 退出登录，清除Redis中对应设备的token
+     * @param userId 用户ID
+     * @param isPc 是否为PC端
+     * @return 退出结果
+     */
+    ResultJson logOut(Long userId, boolean isPc);
+
+    /**
+     * 根据账号查询用户的解密密码及登录时间（调试用）
+     * @param mUser 包含账号信息的用户对象
+     * @return 密码及登录时间信息字符串
+     */
+    String getPassWord(MUser mUser);
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/login/service/impl/LoginServiceImpl.java
+
+package com.comit.login.service.impl;
+
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.log.StaticLog;
+import com.alibaba.fastjson.JSONObject;
+import com.comit.communication.feign.WeChatFeign;
+import com.comit.communication.pojo.WeChatUserInfo;
+import com.comit.config.ApplicationConfig;
+import com.comit.login.service.LoginService;
+import com.comit.mvc.response.CommonCode;
+import com.comit.mvc.response.ResultJson;
+import com.comit.sm.SM2Encryptor;
+import com.comit.user.feign.MUserFeign;
+
+第 43 页 共 60 页
+
+import com.comit.user.pojo.MRole;
+import com.comit.user.pojo.MUser;
+import com.comit.utils.DataValidation;
+import com.comit.utils.DateUtils;
+import com.comit.utils.PasswordCheckUtil;
+import com.comit.utils.TypeConversionUtils;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+/****
+ * @Author:唐嘉
+ * @Description: 用户登录服务实现类，处理账号密码登录、短信验证码登录、微信OPENID登录、用户登出等核心认证逻辑，通过Redis管理用户会话
+ * @Date 2019/12/11 14:39
+ *****/
+@Service
+public class LoginServiceImpl implements LoginService {
+
+    //k-v都是对象的
+    // TODO: RedisTemplate未指定泛型参数，建议改为RedisTemplate<String, Object>
+    @Autowired
+    RedisTemplate redisTemplate;
+
+    @Autowired
+    SM2Encryptor sm2Encryptor;
+
+    @Autowired
+    ApplicationConfig applicationConfig;
+
+    @Autowired
+    private MUserFeign mUserFeign;
+
+    @Autowired
+    private WeChatFeign weChatFeign;
+
+    /**
+     * 账号密码登录，验证密码后将用户信息和加密token保存到Redis
+     * 生产环境额外校验：弱密码检测、简单密码拦截
+     *
+     * @param mUser 包含账号和密码的用户对象
+     * @param isPc 是否为PC端登录
+     * @param ip 登录IP地址
+     * @return 登录结果，包含用户信息和token；登录失败返回null
+     */
+
+第 44 页 共 60 页
+
+    @Override
+    public ResultJson<MUser> login(MUser mUser, boolean isPc, String ip) {
+        //保存当前的 id 对应 用户信息
+        Map<String, Object> map;
+        //根据账号获取用户信息
+        MUser privateUser = mUserFeign.findByActor(mUser);
+        if (StrUtil.contains(applicationConfig.getSpringActive(), "pro")) {
+            if (!DataValidation.ValidationIsNotEmpty(privateUser)) {
+                return new ResultJson(CommonCode.LOGIN_FAILURE, "账号或密码错误！");
+            }
+            // TODO: 硬编码的弱密码检测，应提取到配置文件或数据库
+            if ("comit2021".equals(privateUser.getPassword())) {
+                return new ResultJson(CommonCode.FAIL, "因密码过于简单，已被系统重置，请使用手机号登录后修改密码！");
+            }
+        }
+        MUser user = new MUser();
+
+        //解密数据库的用户密码
+        String privatePassword = "";
+        if (privateUser != null) {
+            user.setId(privateUser.getId());
+            privatePassword = sm2Encryptor.decryptText(privateUser.getPassword());
+            if (StrUtil.contains(applicationConfig.getSpringActive(), "pro")) {
+                if (!PasswordCheckUtil.evalPassword(privatePassword)) {
+                    return new ResultJson(CommonCode.PASSWORD_So_EASY, "因密码过于简单，请使用手机号重置密码！");
+                }
+            }
+        } else {
+            // TODO: 返回null而非错误ResultJson，调用方无法区分"用户不存在"和"密码错误"
+            return null;
+        }
+
+        if (privateUser.getDelType() != 0) {
+            // TODO: 返回null而非错误ResultJson，调用方无法区分"用户已删除"和其他错误
+            return null;
+        }
+
+        //对比密码
+        if (!(mUser.getPassword() != null &&
+            !mUser.getPassword().trim().isEmpty() &&
+            privatePassword != null &&
+            !privatePassword.trim().isEmpty() &&
+            privatePassword.equals(mUser.getPassword())) && applicationConfig.getSpringActive().equals("pro")) {
+            return null;
+        } else {
+
+            //遍历保存权限
+            List<Long> list = new LinkedList<>();
+            if (privateUser.getmRolesList() != null) {
+                for (MRole mRole : privateUser.getmRolesList()) {
+
+第 45 页 共 60 页
+
+                    if (mRole != null) {
+                        list.add(mRole.getId());
+                    }
+                }
+            }
+
+            //密码正确创建返回给前端的加密token
+            String token = sm2Encryptor.encryptText(privateUser.getId().toString());
+
+            //判断该用户是否已经登录
+            Object lowToken = redisTemplate.opsForValue().get("login:" + privateUser.getId().toString());
+
+            //实列化redis用户信息
+            if (lowToken == null) {
+                map = new HashMap<>();
+            } else {
+                map = (Map<String, Object>) lowToken;
+            }
+
+            //重复登录推送消息
+            // TODO: 重复登录仅记录日志，未实际推送消息给已登录设备，需补充推送逻辑
+            if (isPc && map.get("pcToken") != null) {
+                StaticLog.info(String.format("%nPC端重复登录: %s", map.get("pcToken")));
+                //推送消息
+            } else if (!isPc && map.get("mobileToken") != null) {
+                StaticLog.info(String.format("%n移动端重复登录: %s", map.get("mobileToken")));
+                //推送消息
+            }
+
+            //判断登录设备保存到redis
+            if (isPc) {
+                map.put("data", list);
+                map.put("pcToken", token);
+                // TODO: Redis过期时间硬编码为1天，应提取到配置文件
+                redisTemplate.opsForValue().set("login:" + privateUser.getId().toString(), map, 1, TimeUnit.DAYS);
+                //记录登录时间以及IP
+                user.setLastPcLoginDate(privateUser.getPcLoginDate());
+                user.setLastPcLoginIp(privateUser.getPcLoginIp());
+                user.setPcLoginDate(new Date());
+                user.setPcLoginIp(ip);
+
+                privateUser.setLastPcLoginDate(user.getLastPcLoginDate());
+                privateUser.setLastPcLoginIp(user.getLastPcLoginIp());
+                privateUser.setPcLoginDate(user.getPcLoginDate());
+                privateUser.setPcLoginIp(user.getPcLoginIp());
+            } else {
+                map.put("data", list);
+                map.put("mobileToken", token);
+//                手机端登录redis保存用户信息，为了在手机端详情页面绑定openId作铺垫（因为绑定openId跳转页面后，user信息丢失了）
+//                map.put("mobileUser:"+privateUser.getId(),privateUser);暂时不存，因为可以通过openId可以获取到用户信息，
+
+第 46 页 共 60 页
+
+                //保存信息到redis
+                redisTemplate.opsForValue().set("login:" + privateUser.getId().toString(), map, 1, TimeUnit.DAYS);
+                //记录登录时间以及IP
+                user.setLastMobileLoginDate(privateUser.getMobileLoginDate());
+                user.setLastMobileLoginIp(privateUser.getMobileLoginIp());
+                user.setMobileLoginDate(new Date());
+                user.setMobileLoginIp(ip);
+
+                privateUser.setLastMobileLoginDate(user.getLastMobileLoginDate());
+                privateUser.setLastMobileLoginIp(user.getLastMobileLoginIp());
+                privateUser.setMobileLoginDate(user.getMobileLoginDate());
+                privateUser.setMobileLoginIp(user.getMobileLoginIp());
+            }
+            //更新用户
+            mUserFeign.update(user, user.getId(), "login");
+            return new ResultJson<>(CommonCode.LOGIN_SUCCESS, privateUser, token);
+        }
+    }
+
+    /**
+     * 短信验证码登录，通过手机号查询用户后直接登录，无需密码验证
+     * @param mUser 包含账号信息的用户对象
+     * @param isPc 是否为PC端登录
+     * @param ip 登录IP地址
+     * @return 登录结果，包含用户信息和token
+     * // TODO: 方法名SendSmsLogin不符合Java命名规范，应以小写字母开头
+     */
+    @Override
+    public ResultJson SendSmsLogin(MUser mUser, boolean isPc, String ip) {
+        //保存当前的 id 对应 用户信息
+        Map<String, Object> map;
+        //根据账号获取用户信息
+        MUser privateUser = mUserFeign.findByActor(mUser);
+        MUser user = new MUser();
+        //遍历保存权限
+        List<Long> list = new LinkedList<>();
+        if (privateUser.getmRolesList() != null) {
+            for (MRole mRole : privateUser.getmRolesList()) {
+                if (mRole != null) {
+                    list.add(mRole.getId());
+                }
+            }
+        }
+        //密码正确创建返回给前端的加密token
+        String token = sm2Encryptor.encryptText(privateUser.getId().toString());
+
+        //判断该用户是否已经登录
+        Object lowToken = redisTemplate.opsForValue().get("login:" + privateUser.getId().toString());
+
+        //实列化redis用户信息
+
+第 47 页 共 60 页
+
+        if (lowToken == null) {
+            map = new HashMap<>();
+        } else {
+            map = (Map<String, Object>) lowToken;
+        }
+
+        //重复登录推送消息
+        if (isPc && map.get("pcToken") != null) {
+            StaticLog.info(String.format("%nPC端重复登录: %s", map.get("pcToken")));
+            //推送消息
+        } else if (!isPc && map.get("mobileToken") != null) {
+            StaticLog.info(String.format("%n移动端重复登录: %s", map.get("mobileToken")));
+            //推送消息
+        }
+
+        //判断登录设备保存到redis
+        if (isPc) {
+            map.put("data", list);
+            map.put("pcToken", token);
+            redisTemplate.opsForValue().set("login:" + privateUser.getId().toString(), map, 1, TimeUnit.DAYS);
+            //记录登录时间以及IP
+            user.setLastPcLoginDate(privateUser.getPcLoginDate());
+            user.setLastPcLoginIp(privateUser.getPcLoginIp());
+            user.setPcLoginDate(new Date());
+            user.setPcLoginIp(ip);
+
+            privateUser.setLastPcLoginDate(user.getLastPcLoginDate());
+            privateUser.setLastPcLoginIp(user.getLastPcLoginIp());
+            privateUser.setPcLoginDate(user.getPcLoginDate());
+            privateUser.setPcLoginIp(user.getPcLoginIp());
+        } else {
+            map.put("data", list);
+            map.put("mobileToken", token);
+            //保存信息到redis
+            redisTemplate.opsForValue().set("login:" + privateUser.getId().toString(), map, 1, TimeUnit.DAYS);
+            //记录登录时间以及IP
+            user.setLastMobileLoginDate(privateUser.getMobileLoginDate());
+            user.setLastMobileLoginIp(privateUser.getMobileLoginIp());
+            user.setMobileLoginDate(new Date());
+            user.setMobileLoginIp(ip);
+
+            privateUser.setLastMobileLoginDate(user.getLastMobileLoginDate());
+            privateUser.setLastMobileLoginIp(user.getLastMobileLoginIp());
+            privateUser.setMobileLoginDate(user.getMobileLoginDate());
+            privateUser.setMobileLoginIp(user.getMobileLoginIp());
+        }
+        //更新用户
+        mUserFeign.update(user, privateUser.getId(), "login");
+        return new ResultJson(CommonCode.LOGIN_SUCCESS, privateUser, token);
+    }
+
+第 48 页 共 60 页
+
+
+    /**
+     * 更新Redis中已登录用户的权限数据，用于角色变更后刷新用户会话
+     * @param userId 用户ID
+     * @param isPc 是否为PC端
+     * @return 更新后的用户信息及token
+     */
+    @Override
+    public ResultJson updateLoginUser(Long userId, boolean isPc) {
+        //获取redis数据
+        Map<String, Object> map = (Map<String, Object>) redisTemplate.opsForValue().get("login:" + userId);
+        if (map == null || map.isEmpty()) {
+            return new ResultJson(CommonCode.NORESULT);
+        }
+        //根据账号获取用户信息
+        MUser user = mUserFeign.findByLoginId(userId);
+        if (user == null || user.getId() == null) {
+            return new ResultJson(CommonCode.NORESULT);
+        }
+        //遍历保存权限
+        List<Long> list = new LinkedList<>();
+        if (user.getmRolesList() != null) {
+            for (MRole mRole : user.getmRolesList()) {
+                if (mRole != null) {
+                    list.add(mRole.getId());
+                }
+            }
+        }
+        //更新保存redis
+        map.put("data", list);
+        //保存数据到redis中
+        redisTemplate.opsForValue().set("login:" + user.getId().toString(), map, 1, TimeUnit.DAYS);
+
+        String token = "";
+        if (isPc) {
+            token = TypeConversionUtils.ObjectToString(map.get("pcToken"));
+        } else {
+            token = TypeConversionUtils.ObjectToString(map.get("mobileToken"));
+        }
+        return new ResultJson<>(CommonCode.SUCCESS, user, token);
+    }
+
+    /**
+     * 退出登录，清除Redis中对应设备(PC/移动端)的token，双端均已退出时删除整个登录记录
+     * @param userId 用户ID
+     * @param isPc 是否为PC端
+     * @return 退出结果
+     */
+    @Override
+    public ResultJson logOut(Long userId, boolean isPc) {
+
+第 49 页 共 60 页
+
+        //判断该用户是否已经登录
+        Object lowToken = redisTemplate.opsForValue().get("login:" + userId.toString());
+
+        //实列化redis用户信息
+        if (lowToken == null) {
+            return new ResultJson(CommonCode.FAIL, "未登录");
+        }
+
+        Map map = (Map<String, Object>) lowToken;
+        if (isPc) {
+            map.put("pcToken", null);
+            redisTemplate.opsForValue().set("login:" + userId, map, 1, TimeUnit.DAYS);
+        } else {
+            map.put("mobileToken", null);
+            redisTemplate.opsForValue().set("login:" + userId, map, 1, TimeUnit.DAYS);
+        }
+
+        if (map.get("mobileToken") == null && map.get("pcToken") == null) {
+            redisTemplate.delete("login:" + userId);
+        }
+        return new ResultJson(CommonCode.SUCCESS, "退出登录成功！");
+    }
+
+    /***
+     * 通过微信OPENID登录，获取微信用户信息后匹配系统用户，更新头像和UnionID后保存登录状态到Redis
+     * @param obj 包含微信授权code的JSON对象
+     * @param isPc 是否为PC端登录
+     * @param ip 登录IP地址
+     * @return 登录结果，包含用户信息和token
+     */
+    @Override
+    public ResultJson<MUser> opinidLogin(JSONObject obj, boolean isPc, String ip) {
+
+        //保存当前的 id 对应 用户信息
+        Map<String, Object> map;
+
+        //获取openid
+        WeChatUserInfo weChatUserInfo = weChatFeign.getWeChatUserInfo(obj.get("code").toString());
+        StaticLog.info("获取的用户数据为：——————————————————————————" + weChatUserInfo.toString());
+        //如果为null或者为空，则返回null
+        if (StrUtil.isBlank(weChatUserInfo.getOpenid())) {
+            return new ResultJson<>(CommonCode.OPENID_NULL);
+        }
+        //传入code跟account
+//        if(obj.get("account")!=null){
+//            //获取用户名
+//            String account=obj.get("account").toString();
+//            //判断用户名是否为空，不为空则为绑定微信openId
+//            if(StringUtils.isNotBlank(account)){
+//                MUser accountUser=mUserFeign.selectUserByAccount(account).getData();
+
+第 50 页 共 60 页
+
+//                if (accountUser.getId() == null){
+//                    StaticLog.info("-----------------获取到的用户唯一标识为空!----------------:"+account);
+//                    return new ResultJson(CommonCode.LOGIN_ERR);
+//                }
+//                //修改用户数据，保存openId
+//                MUser updateUser = new MUser();
+//                updateUser.setOpenid(openid);
+//                updateUser.setId(accountUser.getId());
+//                mUserFeign.update(updateUser,updateUser.getId());
+//
+//            }
+//        }
+
+        //通过openid获取用户信息
+        MUser user = mUserFeign.findByOpenid(weChatUserInfo.getOpenid()).getData();
+        if (user == null) {
+            StaticLog.info("-----------------获取到的用户为空!----------------");
+            return new ResultJson<>(CommonCode.LOGIN_ERR);
+        }
+        user.setUnionid(weChatUserInfo.getUnionid());
+        user.setWechatHeadPortrait(weChatUserInfo.getHeadimgurl());
+
+        //遍历保存权限
+        List<Long> list = new LinkedList<>();
+        if (user.getmRolesList() != null) {
+            for (MRole mRole : user.getmRolesList()) {
+                if (mRole != null) {
+                    list.add(mRole.getId());
+                }
+            }
+        }
+        //判断用户是否有角色
+//        if(list.size()==0){
+//            return null;
+//        }
+
+        //密码正确创建返回给前端的加密token
+        String token = sm2Encryptor.encryptText(user.getId().toString());
+
+        //判断该用户是否已经登录
+        Object lowToken = redisTemplate.opsForValue().get("login:" + user.getId().toString());
+
+        //实列化redis用户信息
+        if (lowToken == null) {
+            map = new HashMap<>();
+        } else {
+            map = (Map<String, Object>) lowToken;
+        }
+
+        //重复登录推送消息
+
+第 51 页 共 60 页
+
+        if (isPc && map.get("pcToken") != null) {
+            StaticLog.info(String.format("%nPC端重复登录: %s", map.get("pcToken")));
+            //推送消息
+        } else if (!isPc && map.get("mobileToken") != null) {
+            StaticLog.info(String.format("%n移动端重复登录: %s", map.get("mobileToken")));
+            //推送消息
+        }
+
+        //判断登录设备保存到redis
+        if (isPc) {
+            map.put("data", list);
+            map.put("pcToken", token);
+            redisTemplate.opsForValue().set("login:" + user.getId().toString(), map, 1, TimeUnit.DAYS);
+            //记录登录时间以及IP
+            user.setLastPcLoginDate(user.getPcLoginDate());
+            user.setLastPcLoginIp(user.getPcLoginIp());
+            user.setPcLoginDate(new Date());
+            user.setPcLoginIp(ip);
+
+            user.setLastPcLoginDate(user.getLastPcLoginDate());
+            user.setLastPcLoginIp(user.getLastPcLoginIp());
+            user.setPcLoginDate(user.getPcLoginDate());
+            user.setPcLoginIp(user.getPcLoginIp());
+        } else {
+            map.put("data", list);
+            map.put("mobileToken", token);
+            redisTemplate.opsForValue().set("login:" + user.getId().toString(), map, 1, TimeUnit.DAYS);
+            //记录登录时间以及IP
+            user.setLastMobileLoginDate(user.getMobileLoginDate());
+            user.setLastMobileLoginIp(user.getMobileLoginIp());
+            user.setMobileLoginDate(new Date());
+            user.setMobileLoginIp(ip);
+
+            user.setLastMobileLoginDate(user.getLastMobileLoginDate());
+            user.setLastMobileLoginIp(user.getLastMobileLoginIp());
+            user.setMobileLoginDate(user.getMobileLoginDate());
+            user.setMobileLoginIp(user.getMobileLoginIp());
+        }
+        //更新用户
+        mUserFeign.update(user, user.getId(), "login");
+        StaticLog.info("-----------------微信通过openId登录成功----------------:" + user.getName());
+        return new ResultJson<>(CommonCode.LOGIN_SUCCESS, user, token);
+    }
+
+    /**
+     * 根据账号查询用户的解密密码及PC端/移动端最近登录时间（调试用接口）
+     * @param mUser 包含账号信息的用户对象
+     * @return 格式化的密码和登录时间信息字符串
+     * // TODO: 此方法将密码明文返回，存在严重安全隐患，生产环境应禁用
+     */
+
+第 52 页 共 60 页
+
+    @Override
+    public String getPassWord(MUser mUser) {
+        //根据账号获取用户信息
+        MUser privateUser = mUserFeign.findByActor(mUser);
+        //解密数据库的用户密码
+        String privatePassword = sm2Encryptor.decryptText(privateUser.getPassword());
+        return privatePassword + " - PcLoginDate:" + DateUtils.dateToString(privateUser.getPcLoginDate(), "yyyy年MM月dd日 HH:mm:ss") + " - MobileLoginDate:" + DateUtils.dateToString(privateUser.getMobileLoginDate(), "yyyy年MM月dd日 HH:mm:ss");
+    }
+}
+
+// 文件: science-innovation-user-oauth/src/main/java/com/comit/mybatis/MainDataSourceConfiguration.java
+
+package com.comit.mybatis;
+
+import javax.sql.DataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
+/**
+ * @program: science-innovation-parent
+ * @description: 主数据源MyBatis配置类，配置SqlSessionFactory、事务管理器和SqlSessionTemplate，作为系统默认数据源
+ * @author: unknown
+ * @create: 2019/12/11
+ */
+@Configuration
+public class MainDataSourceConfiguration {
+
+    /**
+     * 创建主数据源的SqlSessionFactory，扫描classpath下所有mappers目录中的XML映射文件
+     * @param dataSource 主数据源，通过@Qualifier("mainSource")注入
+     * @return SqlSessionFactory实例
+     * @throws Exception 配置异常
+     */
+    @Bean(name = "mainSqlSessionFactory")
+    @Primary
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("mainSource") DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+        bean.setDataSource(dataSource);
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mappers/**/*.xml"));
+        return bean.getObject();
+    }
+
+    /**
+
+第 53 页 共 60 页
+
+     * 创建主数据源的事务管理器
+     * @param dataSource 主数据源
+     * @return DataSourceTransactionManager实例
+     */
+    @Bean(name = "mainTransactionManager")
+    @Primary
+    public DataSourceTransactionManager transactionManager(@Qualifier("mainSource") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
+    /**
+     * 创建主数据源的SqlSessionTemplate，线程安全的MyBatis操作模板
+     * @param sqlSessionFactory 主数据源的SqlSessionFactory
+     * @return SqlSessionTemplate实例
+     */
+    @Bean(name = "mainSqlSessionTemplate")
+    @Primary
+    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("mainSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory);
+    }
+}
+
+# 文件: science-innovation-user-oauth/src/main/resources/logback-spring.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <contextName>${APP_NAME}</contextName>
+
+    <springProperty name="APP_NAME" scope="context" source="spring.application.name"/>
+    <springProperty name="LOG_FILE" scope="context" source="logging.file" defaultValue="./logs/${APP_NAME}"/>
+    <springProperty name="LOG_POINT_FILE" scope="context" source="logging.file" defaultValue="./logs/point"/>
+    <springProperty name="LOG_MAXFILESIZE" scope="context" source="logback.filesize" defaultValue="50MB"/>
+    <springProperty name="LOG_FILEMAXDAY" scope="context" source="logback.filemaxday" defaultValue="7"/>
+    <springProperty name="ServerIP" scope="context" source="spring.cloud.client.ip-address" defaultValue="0.0.0.0"/>
+    <springProperty name="ServerPort" scope="context" source="server.port" defaultValue="0000"/>
+
+    <!-- 彩色日志 -->
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="[${APP_NAME}:${ServerIP}:${ServerPort}] [%clr(%X{traceid}){yellow},%clr(%X{X-B3-TraceId}){yellow}] %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%level){blue} %clr(${PID}){magenta} %clr([%thread]){orange} %clr(%logger){cyan} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="CONSOLE_LOG_PATTERN_NO_COLOR"
+              value="[${APP_NAME}:${ServerIP}:${ServerPort}] [%X{traceid},%X{X-B3-TraceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} %level ${PID} [%thread] %logger %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+
+第 54 页 共 60 页
+
+
+    <!-- 控制台日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 按照每天生成常规日志文件 -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}/${APP_NAME}-error.log</file>
+        <!-- 基于时间的分包策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}/${APP_NAME}-error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <!--保留时间,单位:天-->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN_NO_COLOR}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>100MB</MaxFileSize>
+        </triggeringPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 按照每天生成常规日志文件 -->
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}/${APP_NAME}-info.log</file>
+        <!-- 基于时间的分包策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}/${APP_NAME}-info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <!--保留时间,单位:天-->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN_NO_COLOR}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+
+第 55 页 共 60 页
+
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="INFO"/>
+    </root>
+
+</configuration>
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-common-eureka.yml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:40086/eureka
+  instance:
+    prefer-ip-address: true
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-common-hystrix.yml
+
+# feign 配置
+feign:
+  hystrix:
+    enabled: true #是否开启hystrix，默认false
+#hystrix 配置
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true #是否开启超时，默认true
+        metrics:
+          rollingStats:
+            timeInMilliseconds: 30000 #滚动窗口时间，默认10000ms
+            bucketSize: 10 #滚动窗口时间内，统计的样本数，默认10
+        logging:
+          enabled: true #是否开启日志，默认false
+        isolation:
+          strategy: SEMAPHORE #隔离策略，THREAD线程池隔离，SEMAPHORE信号量隔离，默认THREAD
+          thread:
+            timeoutInMilliseconds: 120000 #超时时间2分钟，默认1000ms
+          semaphore:
+            maxConcurrentRequests: 1000 #并发执行的最大线程数，默认100
+      circuitBreaker:
+        sleepWindowInMilliseconds: 5000 #断路器打开后，多少时间内拒绝请求，默认5000ms
+        errorThresholdPercentage: 50      # 错误率超过50%触发熔断
+
+第 56 页 共 60 页
+
+        requestVolumeThreshold: 200       # 10秒内至少20个请求才启用熔断
+        forceOpen: false                 # 禁止强制打开
+        forceClosed: false               # 禁止强制关闭
+  threadpool:
+    default:
+      coreSize: 32                      # 建议设置为CPU核心数*2-4倍
+      maxQueueSize: 500                 # 缩小队列容量，加快拒绝速度
+      queueSizeRejectionThreshold: 400  # 队列阈值设为maxQueueSize的80%
+      keepAliveTimeMinutes: 2           # 空闲线程存活时间
+# ribbon 配置
+ribbon:
+  MaxAutoRetries: 0 #重试次数，默认1
+  ReadTimeout: 60000 #读取超时时间，默认60000ms
+  ConnectTimeout: 10000 #连接超时时间，默认1000ms
+  MaxConnectionsPerHost: 3000 #每个主机最大连接数，默认200
+  MaxTotalConnections: 3000 #总连接数，默认2000
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-common.yml
+
+spring:
+  profiles:
+    include:
+      - common-hystrix
+      - common-eureka
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-dev-database.yml
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource   #配置当前要使用的数据源的操作类型那个
+    main:
+      driver-class-name: com.mysql.jdbc.Driver
+      name: kczx
+      url: "jdbc:mysql://rm-wz9ol2fb0e400y65l.mysql.rds.aliyuncs.com:33306/kczx_hn?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+      username: comit
+      password: ENC(7VEthO8xzWHpzzZHAUz2Yei2WwDWtcOtvKJpPjG+NTI=)
+      filters: stat,wall,slf4j     #druid监控配置
+      dbcp2:
+        min-idle: 5         #数据库连接池的最小维持连接数
+        initial-size: 5     #初始化提供的连接数
+        max-total: 50          #最大的连接数
+        max-wait-millis: 200        #等待连接获取的最大超时时间
+    hualu:
+      driver-class-name: com.mysql.jdbc.Driver
+      name: kczx
+      url: "jdbc:mysql://rm-wz9ol2fb0e400y65l.mysql.rds.aliyuncs.com:33306/kczx_hn?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+      username: comit
+      password: ENC(7VEthO8xzWHpzzZHAUz2Yei2WwDWtcOtvKJpPjG+NTI=)
+      filters: stat,wall,slf4j     #druid监控配置
+      dbcp2:
+
+第 57 页 共 60 页
+
+        min-idle: 5         #数据库连接池的最小维持连接数
+        initial-size: 5     #初始化提供的连接数
+        max-total: 50          #最大的连接数
+        max-wait-millis: 200        #等待连接获取的最大超时时间
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-dev-rabbitmq.yml
+
+spring:
+  rabbitmq:
+    host: 192.168.0.244
+    port: 5672
+    username: guest
+    password: guest
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-dev-redis.yml
+
+spring:
+  redis:
+    host: 192.168.0.244
+    port: 6379
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-dev.yml
+
+spring:
+  profiles:
+    include:
+      - pro-database
+      - pro-redis
+      - pro-rabbitmq
+
+jasypt:
+  encryptor:
+    password: comit  #秘钥
+#swagger
+mconfig:
+  swagger-ui-open: false #是否开启swagger接口文档
+
+sm2:
+  publickey: 040117600C07A715E277789BBD47D3A8592F5AE66F2054E048067BEAA86D3154AC8F6D13B0F576D354E20542F6DE94BD3DD02147700E179DE80DB650A516F91F69
+  privatekey: 00E741EEA71C9F93172CCF0E923F8807DD3052EF5477FC026D2FA5404D966715EC
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-pro-database.yml
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource   #配置当前要使用的数据源的操作类型那个
+    main:
+      driver-class-name: com.mysql.jdbc.Driver
+      name: kczx
+      url: "jdbc:mysql://rm-wz9ol2fb0e400y65l.mysql.rds.aliyuncs.com:33306/kczx_hn?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+
+第 58 页 共 60 页
+
+      username: comit
+      password: ENC(7VEthO8xzWHpzzZHAUz2Yei2WwDWtcOtvKJpPjG+NTI=)
+      filters: stat,wall,slf4j     #druid监控配置
+      dbcp2:
+        min-idle: 5         #数据库连接池的最小维持连接数
+        initial-size: 5     #初始化提供的连接数
+        max-total: 50          #最大的连接数
+        max-wait-millis: 200        #等待连接获取的最大超时时间
+    hualu:
+      driver-class-name: com.mysql.jdbc.Driver
+      name: kczx
+      url: "jdbc:mysql://rm-wz9ol2fb0e400y65l.mysql.rds.aliyuncs.com:33306/kczx_hn?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+      username: comit
+      password: ENC(7VEthO8xzWHpzzZHAUz2Yei2WwDWtcOtvKJpPjG+NTI=)
+      filters: stat,wall,slf4j     #druid监控配置
+      dbcp2:
+        min-idle: 5         #数据库连接池的最小维持连接数
+        initial-size: 5     #初始化提供的连接数
+        max-total: 50          #最大的连接数
+        max-wait-millis: 200        #等待连接获取的最大超时时间
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-pro-rabbitmq.yml
+
+spring:
+  rabbitmq:
+    host: 172.20.21.197
+    port: 5672
+    username: kczx
+    password: comit@kczx20240629
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-pro-redis.yml
+
+spring:
+  redis:
+    host: 172.20.21.197
+    database: 4     #省厅是0；企业是1；路桥是2；河南是4
+    port: 6379
+    password: comit@kczx20240629
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-pro.yml
+
+spring:
+  profiles:
+    include:
+      - pro-database
+      - pro-redis
+      - pro-rabbitmq
+
+jasypt:
+  encryptor:
+
+第 59 页 共 60 页
+
+    password: comit  #秘钥
+#swagger
+mconfig:
+  swagger-ui-open: false #是否开启swagger接口文档
+
+sm2:
+  publickey: 040117600C07A715E277789BBD47D3A8592F5AE66F2054E048067BEAA86D3154AC8F6D13B0F576D354E20542F6DE94BD3DD02147700E179DE80DB650A516F91F69
+  privatekey: 00E741EEA71C9F93172CCF0E923F8807DD3052EF5477FC026D2FA5404D966715EC
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-test-database.yml
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource   #配置当前要使用的数据源的操作类型那个
+    main:
+      driver-class-name: com.mysql.jdbc.Driver
+      name: kczx
+      url: "jdbc:mysql://192.168.0.244:13306/kczx_hn?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+      username: ENC(jb3DvZjkklccQqCol+OxGw==)
+      password: ENC(bb5jt7xd0ornxrN/rNBZpInsnMTHuE8i)
+      filters: stat,wall,slf4j     #druid监控配置
+      dbcp2:
+        min-idle: 5         #数据库连接池的最小维持连接数
+        initial-size: 5     #初始化提供的连接数
+        max-total: 50          #最大的连接数
+        max-wait-millis: 200        #等待连接获取的最大超时时间
+    hualu:
+      driver-class-name: com.mysql.jdbc.Driver
+      name: kczx
+      url: "jdbc:mysql://192.168.0.244:13306/kczx_hn?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+      username: ENC(jb3DvZjkklccQqCol+OxGw==)
+      password: ENC(bb5jt7xd0ornxrN/rNBZpInsnMTHuE8i)
+      filters: stat,wall,slf4j     #druid监控配置
+      dbcp2:
+        min-idle: 5         #数据库连接池的最小维持连接数
+        initial-size: 5     #初始化提供的连接数
+        max-total: 50          #最大的连接数
+        max-wait-millis: 200        #等待连接获取的最大超时时间
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-test-rabbitmq.yml
+
+spring:
+  rabbitmq:
+    host: 192.168.0.244
+    port: 5672
+    username: guest
+    password: guest
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-test-redis.yml
+
+
+第 60 页 共 60 页
+
+spring:
+  redis:
+    host: 192.168.0.244
+    database: 4     #省厅是0；企业是1；路桥是2；河南是4
+    port: 6379
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application-test.yml
+
+spring:
+  profiles:
+    include:
+      - test-database
+      - test-redis
+      - test-rabbitmq
+
+jasypt:
+  encryptor:
+    password: comitKc  #秘钥
+
+#swagger
+mconfig:
+  swagger-ui-open: true #是否开启swagger接口文档
+
+sm2:
+  publickey: 040117600C07A715E277789BBD47D3A8592F5AE66F2054E048067BEAA86D3154AC8F6D13B0F576D354E20542F6DE94BD3DD02147700E179DE80DB650A516F91F69
+  privatekey: 00E741EEA71C9F93172CCF0E923F8807DD3052EF5477FC026D2FA5404D966715EC
+
+# 文件: science-innovation-user-oauth/src/main/resources/config/application.yml
+
+server:
+  port: ${custom-port:48889}
+spring:
+  application:
+    name: user-oauth-service
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    # 本地环境 test
+    # 本地连正式数据库处理问题 dev
+    # 正式环境 pro
+    # 正式环境负载均衡 loadBalance-pro
+    active: ${active:pro},common
+
+management:
+  endpoints:
+    enabled-by-default: false
+  health:
+    defaults:
+      enabled: false
+

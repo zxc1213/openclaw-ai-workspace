@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(done:*)",
+      "mcp__plugin_everything-claude-code_memory__search_nodes",
+      "mcp__openviking-memory__memory_recall"
+    ]
+  }
+}

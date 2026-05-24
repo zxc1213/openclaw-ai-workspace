@@ -1,0 +1,66 @@
+{
+  "zai-coding-plugins": {
+    "source": {
+      "source": "directory",
+      "path": "/home/rays/.npm/_npx/2f024689b4d0d3b0/node_modules/@z_ai/coding-helper/zai-coding-plugins"
+    },
+    "installLocation": "/home/rays/.npm/_npx/2f024689b4d0d3b0/node_modules/@z_ai/coding-helper/zai-coding-plugins",
+    "lastUpdated": "2026-02-08T15:51:56.644Z"
+  },
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/home/rays/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-02-08T15:57:27.732Z"
+  },
+  "superpowers-marketplace": {
+    "source": {
+      "source": "github",
+      "repo": "obra/superpowers-marketplace"
+    },
+    "installLocation": "/home/rays/.claude/plugins/marketplaces/superpowers-marketplace",
+    "lastUpdated": "2026-02-08T15:58:21.910Z"
+  },
+  "anthropic-agent-skills": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/skills"
+    },
+    "installLocation": "/home/rays/.claude/plugins/marketplaces/anthropic-agent-skills",
+    "lastUpdated": "2026-02-08T16:12:23.839Z"
+  },
+  "planning-with-files": {
+    "source": {
+      "source": "github",
+      "repo": "OthmanAdi/planning-with-files"
+    },
+    "installLocation": "/home/rays/.claude/plugins/marketplaces/planning-with-files",
+    "lastUpdated": "2026-02-08T16:19:50.400Z"
+  },
+  "openviking-plugin": {
+    "source": {
+      "source": "github",
+      "repo": "Castor6/openviking-plugins"
+    },
+    "installLocation": "/home/rays/.claude/plugins/marketplaces/openviking-plugin",
+    "lastUpdated": "2026-04-02T15:15:09.414Z"
+  },
+  "openai-codex": {
+    "source": {
+      "source": "github",
+      "repo": "openai/codex-plugin-cc"
+    },
+    "installLocation": "/home/rays/.claude/plugins/marketplaces/openai-codex",
+    "lastUpdated": "2026-04-05T13:56:30.066Z"
+  },
+  "claude-hud": {
+    "source": {
+      "source": "github",
+      "repo": "jarrodwatts/claude-hud"
+    },
+    "installLocation": "/home/rays/.claude/plugins/marketplaces/claude-hud",
+    "lastUpdated": "2026-04-05T13:56:34.257Z"
+  }
+}

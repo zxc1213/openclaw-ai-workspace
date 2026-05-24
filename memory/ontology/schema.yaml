@@ -1,0 +1,51 @@
+types:
+  Person:
+    required: [name]
+    optional: [email, phone, role, timezone, notes]
+  
+  Agent:
+    required: [name, agent_id]
+    optional: [model, role, emoji]
+  
+  Project:
+    required: [name]
+    optional: [status, description, repo, language, priority]
+    status_enum: [active, paused, archived]
+  
+  Task:
+    required: [title, status]
+    optional: [project, assignee, due, priority, description]
+    status_enum: [todo, in_progress, blocked, done]
+    priority_enum: [low, medium, high, critical]
+  
+  Skill:
+    required: [name]
+    optional: [status, description, category]
+    status_enum: [active, inactive, needs_config]
+
+relations:
+  has_owner:
+    from_types: [Project, Task]
+    to_types: [Person]
+    cardinality: many_to_one
+  
+  has_task:
+    from_types: [Project]
+    to_types: [Task]
+    cardinality: one_to_many
+  
+  manages:
+    from_types: [Person]
+    to_types: [Project]
+    cardinality: many_to_many
+  
+  assigned_to:
+    from_types: [Agent]
+    to_types: [Task, Project]
+    cardinality: many_to_many
+  
+  depends_on:
+    from_types: [Project, Task]
+    to_types: [Project, Task]
+    cardinality: many_to_many
+    acyclic: true

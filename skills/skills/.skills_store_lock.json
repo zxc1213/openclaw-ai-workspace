@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "vibe-coding": {
+      "name": "Vibe Coding",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=vibe-coding",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "browser-use": {
+      "name": "Browser Use",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=browser-use",
+      "source": "skillhub",
+      "version": "1.0.2"
+    },
+    "pls-audit-website": {
+      "name": "PLS Website Audit",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=pls-audit-website",
+      "source": "skillhub",
+      "version": "1.0.0"
+    }
+  }
+}

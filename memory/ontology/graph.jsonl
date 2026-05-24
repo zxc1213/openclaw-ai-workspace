@@ -1,0 +1,12 @@
+{"op":"create","entity":{"id":"person_ray","type":"Person","properties":{"name":"Ray","role":"程序员","timezone":"Asia/Shanghai","city":"广州"}}}
+{"op":"create","entity":{"id":"agent_main","type":"Agent","properties":{"name":"念念","agent_id":"main","model":"GLM-5-Turbo","role":"主协调员","emoji":"🌙"}}}
+{"op":"create","entity":{"id":"agent_coder","type":"Agent","properties":{"name":"码农1号","agent_id":"coder","model":"GLM-5","role":"编程","emoji":"💻"}}}
+{"op":"create","entity":{"id":"agent_reviewer","type":"Agent","properties":{"name":"评审员","agent_id":"reviewer","model":"GLM-5","role":"代码评审","emoji":"🔍"}}}
+{"op":"create","entity":{"id":"agent_research","type":"Agent","properties":{"name":"调研员","agent_id":"research","model":"GLM-5-Turbo","role":"调研分析","emoji":"🔬"}}}
+{"op":"create","entity":{"id":"agent_writer","type":"Agent","properties":{"name":"文案","agent_id":"writer","model":"GLM-5-Turbo","role":"文案撰写","emoji":"📝"}}}
+{"op":"create","entity":{"id":"agent_analyst","type":"Agent","properties":{"name":"分析师","agent_id":"analyst","model":"GLM-5-Turbo","role":"数据分析","emoji":"📊"}}}
+{"op":"create","entity":{"id":"agent_cron","type":"Agent","properties":{"name":"定时任务","agent_id":"cron-worker","model":"GLM-5-Turbo","role":"定时执行","emoji":"⏰"}}}
+{"op":"create","entity":{"id":"proj_dashboard","type":"Project","properties":{"name":"OpenClaw 团队监控","status":"active","description":"团队监控 Dashboard，展示 agent 状态、任务历史、成本分析、实时日志","language":"JavaScript/Node.js","priority":"high"}}}
+{"op":"create","entity":{"id":"proj_openclaw","type":"Project","properties":{"name":"OpenClaw 个人配置","status":"active","description":"多 agent 配置、skills 管理、heartbeat、systemd 服务","priority":"high"}}}
+{"op":"relate","from":"person_ray","rel":"manages","to":"proj_dashboard"}
+{"op":"relate","from":"person_ray","rel":"manages","to":"proj_openclaw"}

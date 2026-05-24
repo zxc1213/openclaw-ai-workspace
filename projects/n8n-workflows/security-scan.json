@@ -1,0 +1,203 @@
+{
+  "name": "安全漏洞扫描",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "每天9点触发",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=#!/bin/bash\n\n# ===== 系统安全更新检查 =====\necho '=== 系统安全更新 ==='\napt list --upgradable 2>/dev/null | grep -i security || echo '无安全更新'\necho ''\n\n# ===== npm 依赖漏洞检查 =====\necho '=== npm 依赖漏洞 ==='\nfor dir in /home/rays/.openclaw/workspace; do\n  if [ -f \"$dir/package.json\" ]; then\n    echo \"--- $dir ---\"\n    cd \"$dir\" && npm audit --json 2>/dev/null | jq -r '.vulnerabilities | to_entries[] | \"  [\\(.value.severity)] \\(.key): \\(.value.via[0].title // .value.via[0])\"' 2>/dev/null || echo '  检查失败'\n    echo ''\n  fi\ndone\n\n# ===== Docker 镜像漏洞 =====\nif command -v trivy &>/dev/null; then\n  echo '=== Docker 镜像漏洞 ==='\n  docker ps --format '{{.Image}}' 2>/dev/null | while read img; do\n    echo \"--- $img ---\"\n    trivy image --severity HIGH,CRITICAL --no-progress --format table \"$img\" 2>/dev/null | head -20\n    echo ''\n  done\nelse\n  echo '=== Docker 镜像漏洞 ==='\n  echo 'trivy 未安装，跳过'\nfi\n\n# ===== 系统基本信息 =====\necho '=== 系统信息 ==='\necho \"主机名: $(hostname)\"\necho \"内核: $(uname -r)\"\necho \"运行时间: $(uptime -p)\"\necho \"扫描时间: $(date '+%Y-%m-%d %H:%M:%S')\"",
+        "options": {}
+      },
+      "id": "run-scan",
+      "name": "执行安全扫描",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $input.first().json.stdout || $input.first().json.stderr || '无输出';\n\nconst hasCritical = output.includes('CRITICAL');\nconst hasHigh = output.includes('HIGH');\nconst hasVulnerabilities = hasCritical || hasHigh;\n\nconst summary = hasVulnerabilities\n  ? '⚠️ 发现安全漏洞！有 CRITICAL/HIGH 级别问题需要关注。'\n  : '✅ 安全检查通过，未发现高危漏洞。';\n\nreturn [{\n  json: {\n    fullReport: output,\n    summary: summary,\n    hasVulnerabilities: hasVulnerabilities,\n    hasCritical: hasCritical,\n    hasHigh: hasHigh\n  }\n}];"
+      },
+      "id": "parse-results",
+      "name": "解析扫描结果",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.hasVulnerabilities }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "check-vulns",
+      "name": "有漏洞?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.telegram.org/bot8605406886:AAHEP6qIxpBYkhtwt7YNMh96lVg5w8EZ770/sendMessage",
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "5246148209"
+            },
+            {
+              "name": "parse_mode",
+              "value": "Markdown"
+            },
+            {
+              "name": "text",
+              "value": "=🔍 *安全扫描报告*\n\n{{ $json.summary }}\n\n```\n{{ $json.fullReport }}\n```"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "telegram-notify",
+      "name": "Telegram 通知",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:18788/api/chat.send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 94ff63452d8e07a11f2ca75ebf7a02742361307b"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "=🔍 安全扫描报告\n\n{{ $json.summary }}\n\n{{ $json.fullReport }}"
+            },
+            {
+              "name": "target",
+              "value": "main"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "webhook-notify",
+      "name": "Webhook 推送 OpenClaw",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        100
+      ]
+    }
+  ],
+  "connections": {
+    "每天9点触发": {
+      "main": [
+        [
+          {
+            "node": "执行安全扫描",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "执行安全扫描": {
+      "main": [
+        [
+          {
+            "node": "解析扫描结果",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "解析扫描结果": {
+      "main": [
+        [
+          {
+            "node": "有漏洞?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "有漏洞?": {
+      "main": [
+        [
+          {
+            "node": "Telegram 通知",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Webhook 推送 OpenClaw",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "安全"
+    }
+  ],
+  "id": "ebae720a-9a04-4183-807a-a0468be8e9fa"
+}

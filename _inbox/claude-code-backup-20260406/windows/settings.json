@@ -1,0 +1,107 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "GLM-4.7",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "GLM-5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "GLM-5.1",
+    "ANTHROPIC_AUTH_TOKEN": "ea051c328132474292b58ff1587a36a9.SfxnOUW6JOh4DnKA"
+  },
+  "permissions": {
+    "allow": [
+      "Skill(glm-plan-usage:usage-query)",
+      "Skill(glm-plan-usage:usage-query-skill)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  },
+  "model": "opus[1m]",
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "glm-plan-bug@zai-coding-plugins": true,
+    "glm-plan-usage@zai-coding-plugins": true,
+    "planning-with-files@planning-with-files": true,
+    "playwright@claude-plugins-official": true,
+    "superpowers-developing-for-claude-code@superpowers-marketplace": false,
+    "superpowers@claude-plugins-official": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "everything-claude-code@everything-claude-code": true,
+    "claude-mem@thedotmack": true,
+    "codex@openai-codex": true,
+    "skill-creator@claude-plugins-official": true,
+    "claude-hud@claude-hud": true
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "claude-hud": {
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud"
+      }
+    }
+  },
+  "language": "zh-CN",
+  "autoUpdatesChannel": "latest",
+  "skipDangerousModePermissionPrompt": true,
+  "mcpServers": {
+    "zai-mcp-server": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@z_ai/mcp-server"
+      ],
+      "env": {
+        "Z_AI_MODE": "ZHIPU",
+        "Z_AI_API_KEY": "19fab61153d54e4991671d86248f191a.Of3A6bB0CDkwgyoW"
+      }
+    },
+    "web-search-prime": {
+      "type": "http",
+      "url": "https://open.bigmodel.cn/api/mcp/web_search_prime/mcp",
+      "headers": {
+        "Authorization": "Bearer 19fab61153d54e4991671d86248f191a.Of3A6bB0CDkwgyoW"
+      }
+    },
+    "web-reader": {
+      "type": "http",
+      "url": "https://open.bigmodel.cn/api/mcp/web_reader/mcp",
+      "headers": {
+        "Authorization": "Bearer 19fab61153d54e4991671d86248f191a.Of3A6bB0CDkwgyoW"
+      }
+    },
+    "zread": {
+      "type": "http",
+      "url": "https://open.bigmodel.cn/api/mcp/zread/mcp",
+      "headers": {
+        "Authorization": "Bearer 19fab61153d54e4991671d86248f191a.Of3A6bB0CDkwgyoW"
+      }
+    },
+    "codex": {
+      "type": "stdio",
+      "command": "codex",
+      "args": [
+        "-m",
+        "gpt-5.3-codex",
+        "-c",
+        "model_reasoning_effort=high",
+        "mcp-server"
+      ],
+      "env": {}
+    }
+  },
+  "disabledMcpServers": [],
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'plugin_dir=$(ls -d \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print \\$(NF-1) \"\\t\" \\$(0) }'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); exec \"/d/Develop/node/nodejs/node\" \"${plugin_dir}dist/index.js\"'"
+  }
+}

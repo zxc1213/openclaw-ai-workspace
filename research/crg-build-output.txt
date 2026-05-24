@@ -1,0 +1,46 @@
+# code-review-graph 安装与构建报告
+
+## 安装信息
+- 版本: code-review-graph 2.3.1
+- Python: 3.10.12
+- 安装方式: pip3 install --user
+- 安装日期: 2026-04-14
+
+## Build 输出
+```
+INFO: Schema version 1 -> 6: running migrations
+INFO: Running migration v2
+INFO: Migration v2: added 'signature' column to nodes
+INFO: Running migration v3
+INFO: Migration v3: created flows and flow_memberships tables
+INFO: Running migration v4
+INFO: Migration v4: added 'community_id' column to nodes
+INFO: Migration v4: created communities tables
+INFO: Running migration v5
+INFO: Migration v5: created nodes_fts FTS5 virtual table
+INFO: Running migration v6
+INFO: Migration v6: created summary tables (community_summaries, flow_snapshots, risk_index)
+INFO: Migrations complete, now at schema version 6
+INFO: Progress: 200/598 files parsed
+INFO: Progress: 400/598 files parsed
+INFO: Progress: 598/598 files parsed
+INFO: FTS index rebuilt: 4493 rows indexed
+INFO: Loading nodes from 598 files...
+INFO: Loaded 4493 unique nodes, 40086 edges
+INFO: igraph not available, using file-based community detection
+Full build: 598 files, 4677 nodes, 40612 edges (postprocess=full)
+```
+
+## Status 输出
+```
+Nodes: 4493
+Edges: 40086
+Files: 598
+Languages: javascript, typescript, vue, python, bash, tsx
+Last updated: 2026-04-14T10:16:21
+```
+
+## 备注
+- igraph 未安装，使用了 file-based community detection（非关键）
+- 涵盖 6 种语言：javascript, typescript, vue, python, bash, tsx
+- 图数据库文件位于: /home/rays/.openclaw/workspace/.code-review-graph/

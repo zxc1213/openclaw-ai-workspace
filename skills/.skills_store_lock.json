@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "skills": {
+    "tavily-search": {
+      "name": "Tavily Web Search",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=tavily-search",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "self-improving-agent": {
+      "name": "self-improving-agent",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=self-improving-agent",
+      "source": "skillhub",
+      "version": "1.0.11"
+    },
+    "agent-browser": {
+      "name": "Agent Browser",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=agent-browser",
+      "source": "skillhub",
+      "version": "0.2.0"
+    },
+    "summarize": {
+      "name": "Summarize",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=summarize",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "github": {
+      "name": "Github",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=github",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "ontology": {
+      "name": "Ontology",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=ontology",
+      "source": "skillhub",
+      "version": "0.1.2"
+    },
+    "proactive-agent": {
+      "name": "Proactive Agent",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=proactive-agent",
+      "source": "skillhub",
+      "version": "3.1.0"
+    },
+    "openclaw-dashboard": {
+      "name": "openclaw-dashboard",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=openclaw-dashboard",
+      "source": "skillhub",
+      "version": "1.7.3"
+    },
+    "agent-dashboard": {
+      "name": "Agent Dashboard",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=agent-dashboard",
+      "source": "skillhub",
+      "version": "1.0.4"
+    },
+    "mcp": {
+      "name": "mcp",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=mcp",
+      "source": "skillhub",
+      "version": ""
+    },
+    "imbeasting-mcp-builder": {
+      "name": "mcp-builder",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=imbeasting-mcp-builder",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "model-usage-monitor": {
+      "name": "OpenClaw 模型用量监控",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=model-usage-monitor",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "firecrawl-scrape-cn": {
+      "name": "Firecrawl Scrape Cn",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=firecrawl-scrape-cn",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "daily-hot-news": {
+      "name": "每日热榜",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=daily-hot-news",
+      "source": "skillhub",
+      "version": "1.0.1"
+    },
+    "bb-browser": {
+      "name": "bb-browser",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=bb-browser",
+      "source": "skillhub",
+      "version": "0.6.0"
+    },
+    "hf-papers": {
+      "name": "HF Papers",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=hf-papers",
+      "source": "skillhub",
+      "version": "1.0.3"
+    },
+    "arxiv": {
+      "name": "arXiv Research Assistant",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=arxiv",
+      "source": "skillhub",
+      "version": "1.0.4"
+    }
+  }
+}

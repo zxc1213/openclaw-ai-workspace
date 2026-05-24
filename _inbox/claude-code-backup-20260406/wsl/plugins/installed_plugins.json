@@ -1,0 +1,175 @@
+{
+  "version": 2,
+  "plugins": {
+    "glm-plan-usage@zai-coding-plugins": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/zai-coding-plugins/glm-plan-usage/0.0.1",
+        "version": "0.0.1",
+        "installedAt": "2026-02-08T15:52:07.888Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "glm-plan-bug@zai-coding-plugins": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/zai-coding-plugins/glm-plan-bug/0.0.1",
+        "version": "0.0.1",
+        "installedAt": "2026-02-08T15:52:16.036Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-plugins-official/superpowers/4.2.0",
+        "version": "4.2.0",
+        "installedAt": "2026-02-08T15:58:46.504Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "a98c5dfc9de0df5318f4980d91d24780a566ee60",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "firecrawl@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-plugins-official/firecrawl/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-02-08T16:00:17.289Z",
+        "lastUpdated": "2026-02-08T16:00:17.289Z",
+        "gitCommitSha": "2bb144069554eae20aca06f175b3ab681b86b0a4"
+      }
+    ],
+    "context7@claude-plugins-official": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-plugins-official/context7/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-02-08T16:10:03.779Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-plugins-official/code-review/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-02-08T16:11:19.249Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "document-skills@anthropic-agent-skills": [
+      {
+        "scope": "user",
+        "installPath": "/home/rays/.claude/plugins/cache/anthropic-agent-skills/document-skills/1ed29a03dc85",
+        "version": "1ed29a03dc85",
+        "installedAt": "2026-02-08T16:12:59.332Z",
+        "lastUpdated": "2026-02-08T16:12:59.332Z",
+        "gitCommitSha": "1ed29a03dc852d30fa6ef2ca53a67dc2c2c2c563"
+      }
+    ],
+    "planning-with-files@planning-with-files": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/planning-with-files/planning-with-files/2.11.0",
+        "version": "2.11.0",
+        "installedAt": "2026-02-08T16:20:14.511Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "cb5f10ba5f4cbab5d102ca7565e84f8216306d22",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "elements-of-style@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/home/rays/.claude/plugins/cache/superpowers-marketplace/elements-of-style/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-02-08T16:21:52.161Z",
+        "lastUpdated": "2026-02-08T16:21:52.161Z",
+        "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c"
+      }
+    ],
+    "superpowers-developing-for-claude-code@superpowers-marketplace": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/superpowers-marketplace/superpowers-developing-for-claude-code/0.3.1",
+        "version": "0.3.1",
+        "installedAt": "2026-02-08T16:21:59.821Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "74afe935da49efe782907e837a27ce618498099a",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "claude-code-memory-plugin@openviking-plugin": [
+      {
+        "scope": "user",
+        "installPath": "/home/rays/.claude/plugins/cache/openviking-plugin/claude-code-memory-plugin/0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2026-04-02T15:15:15.292Z",
+        "lastUpdated": "2026-04-02T15:15:15.292Z",
+        "gitCommitSha": "2e1a394331112b52cd77c481d7ca2fab0a276dc0"
+      }
+    ],
+    "code-simplifier@claude-plugins-official": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-plugins-official/code-simplifier/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-04-05T13:56:23.355Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "commit-commands@claude-plugins-official": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-plugins-official/commit-commands/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-04-05T13:56:23.355Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "playwright@claude-plugins-official": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-plugins-official/playwright/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-04-05T13:56:23.355Z",
+        "lastUpdated": "2026-04-05T13:56:23.355Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "codex@openai-codex": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/openai-codex/codex/1.0.2",
+        "version": "1.0.2",
+        "installedAt": "2026-04-05T13:56:30.115Z",
+        "lastUpdated": "2026-04-05T13:56:30.115Z",
+        "gitCommitSha": "8e403f9d4b496b0b0aff50fa3673f889f6a22cb1",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ],
+    "claude-hud@claude-hud": [
+      {
+        "scope": "project",
+        "installPath": "/home/rays/.claude/plugins/cache/claude-hud/claude-hud/0.0.12",
+        "version": "0.0.12",
+        "installedAt": "2026-04-05T13:56:34.354Z",
+        "lastUpdated": "2026-04-05T13:56:34.354Z",
+        "gitCommitSha": "bfde7cfd9689faa35fca1aacb08960de3c837ffc",
+        "projectPath": "/mnt/c/Users/19944"
+      }
+    ]
+  }
+}
