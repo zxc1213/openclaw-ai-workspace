@@ -119,7 +119,10 @@ curl -X POST "${EXECUTOR_URL}/api/v1/executor/batch" \
 1. Navigate to login page
 2. Get accessibility snapshot to find RefIDs
 3. Type username: `@e2`
+<<<<<<< HEAD
 4. Type password: `@e3`
+=======
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 5. Click login button: `@e1`
 6. Wait for success indicator
 

@@ -37,10 +37,17 @@ lark-cli mail user_mailbox.drafts send --params '{"user_mailbox_id":"me","draft_
 lark-cli mail +reply-all --message-id <邮件ID> --body '<p><b>已完成</b>，详见下方说明。</p>'
 
 # 回复全部并追加收件人/抄送（草稿）
+<<<<<<< HEAD
 lark-cli mail +reply-all --message-id <邮件ID> --body '<p>同步更新</p>' --to lead@example.com --cc pm@example.com
 
 # 从回复名单中排除某些地址（草稿）
 lark-cli mail +reply-all --message-id <邮件ID> --body '<p>见上</p>' --remove bot@example.com,noreply@example.com
+=======
+lark-cli mail +reply-all --message-id <邮件ID> --body '<p>同步更新</p>' --to user@example.com --cc user@example.com
+
+# 从回复名单中排除某些地址（草稿）
+lark-cli mail +reply-all --message-id <邮件ID> --body '<p>见上</p>' --remove user@example.com,user@example.com
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 # 回复全部时插入内嵌图片（CID 为唯一标识符，可用随机字符串）
 lark-cli mail +reply-all --message-id <邮件ID> --body '<img src="cid:a1b2c3d4e5f6a7b8c9d0"> 详见图示。' --inline '[{"cid":"a1b2c3d4e5f6a7b8c9d0","file_path":"./logo.png"}]'

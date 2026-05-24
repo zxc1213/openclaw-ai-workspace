@@ -2,5 +2,9 @@
   "ownerId": "kn72ce44tqw8bnnnewrn1s5x3s7yz7sq",
   "slug": "agent-browser",
   "version": "0.2.0",
+<<<<<<< HEAD
   "publishedAt": 1768882342488
+=======
+  "publishedAt": 1380000000088
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 }

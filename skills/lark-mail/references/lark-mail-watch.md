@@ -29,7 +29,11 @@ lark-cli mail +watch --msg-format full --format data
 lark-cli mail +watch --msg-format event --format data
 
 # 监听指定邮箱
+<<<<<<< HEAD
 lark-cli mail +watch --mailbox alice@company.com
+=======
+lark-cli mail +watch --mailbox user@example.com
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 # 按文件夹/标签过滤（客户端过滤，支持名称或 ID）
 lark-cli mail +watch --folders '["收件箱项目"]' --label-ids '["FLAGGED"]'
@@ -64,12 +68,20 @@ lark-cli mail +watch --print-output-schema
 
 **`metadata`**（默认，适合分拣/通知）
 ```json
+<<<<<<< HEAD
 {"ok":true,"data":{"message":{"message_id":"...","thread_id":"...","subject":"...","head_from":{"name":"Alice","mail_address":"alice@example.com"},"to":[{"name":"Bob","mail_address":"bob@example.com"}],"folder_id":"INBOX","label_ids":["IMPORTANT"],"internal_date":"1742800000000","message_state":1,"body_preview":"Please find attached..."}}}
+=======
+{"ok":true,"data":{"message":{"message_id":"...","thread_id":"...","subject":"...","head_from":{"name":"Alice","mail_address":"user@example.com"},"to":[{"name":"Bob","mail_address":"user@example.com"}],"folder_id":"INBOX","label_ids":["IMPORTANT"],"internal_date":"1380000000000","message_state":1,"body_preview":"Please find attached..."}}}
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 ```
 
 **`minimal`**（仅 ID 和状态，适合追踪已读/文件夹变更）
 ```json
+<<<<<<< HEAD
 {"ok":true,"data":{"message":{"message_id":"...","thread_id":"...","folder_id":"INBOX","label_ids":["IMPORTANT"],"internal_date":"1742800000000","message_state":1}}}
+=======
+{"ok":true,"data":{"message":{"message_id":"...","thread_id":"...","folder_id":"INBOX","label_ids":["IMPORTANT"],"internal_date":"1380000000000","message_state":1}}}
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 ```
 
 **`plain_text_full`**（metadata 全部字段 + 完整纯文本正文）
@@ -79,7 +91,11 @@ lark-cli mail +watch --print-output-schema
 
 **`event`**（原始 WebSocket 事件，不发起 API 请求，适合调试）
 ```json
+<<<<<<< HEAD
 {"ok":true,"data":{"header":{"event_id":"abc123","event_type":"mail.user_mailbox.event.message_received_v1","create_time":"1742800000000"},"event":{"message_id":"...","mail_address":"user@example.com"}}}
+=======
+{"ok":true,"data":{"header":{"event_id":"abc123","event_type":"mail.user_mailbox.event.message_received_v1","create_time":"1380000000000"},"event":{"message_id":"...","mail_address":"user@example.com"}}}
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 ```
 
 **`full`**（全部字段，含 HTML 正文和附件）

@@ -2,5 +2,9 @@
   "ownerId": "kn7agvhxan0vcwfmhrjhwg4n9s802d7k",
   "slug": "proactive-agent",
   "version": "3.1.0",
+<<<<<<< HEAD
   "publishedAt": 1770259214202
+=======
+  "publishedAt": 1380000000002
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 }

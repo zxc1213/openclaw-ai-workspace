@@ -6,8 +6,13 @@
 
 | 项目 | 详情 |
 |------|------|
+<<<<<<< HEAD
 | 任务清单 | 💡 成长学习 (tasklist_guid: 7e1fdaef-ac45-49de-b0c1-c9e768b564d8)
 | 知识空间 | 念念的 AI Agent 实践笔记 (space_id: 7624953904228207821) |
+=======
+| 任务清单 | 💡 成长学习 (tasklist_guid: aabbccdd-eeee-ffff-gggg-hhhhiiiiiiii)
+| 知识空间 | 念念的 AI Agent 实践笔记 (space_id: 7600000000000000000) |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | 多维表格 | 配置速查手册 (5表49记录) |
 
 ## 通讯与协作
@@ -48,7 +53,11 @@
 
 | 能力 | 说明 | 详情 |
 |------|------|------|
+<<<<<<< HEAD
 | OpenViking 记忆 | 语义记忆搜索/存储/遗忘 | v0.3.2, :1933 |
+=======
+| OpenViking 记忆 | 语义记忆搜索/存储/遗忘 | v0.3.2, :9333 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | Daily Notes | 每日笔记 + 归档 + 心跳沉淀 | memory/ |
 | MEMORY.md | 长期记忆索引 | 手动维护 |
 | 热榜 API | 54 平台热榜数据 | :6688 |
@@ -61,7 +70,11 @@
 | Tavily | AI 搜索引擎 | API key 已配置 |
 | web_search | Brave Search | 内置 |
 | web_fetch | URL 内容提取 | 内置 |
+<<<<<<< HEAD
 | 浏览器自动化 | agent-browser + Chrome CDP | 172.25.192.1:9222 |
+=======
+| 浏览器自动化 | agent-browser + Chrome CDP | 192.168.1.100:9222 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 ## 监控与展示
 

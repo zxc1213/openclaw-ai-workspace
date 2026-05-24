@@ -18,7 +18,11 @@ lark-cli mail +triage --filter '{"folder":"inbox","is_unread":true}'
 lark-cli mail +triage --query "合同审批"
 
 # 按发件人 / 主题搜索
+<<<<<<< HEAD
 lark-cli mail +triage --filter '{"from":["boss@example.com"],"subject":"季度报告"}'
+=======
+lark-cli mail +triage --filter '{"from":["user@example.com"],"subject":"季度报告"}'
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 # 按时间范围搜索（如"上周的邮件"）
 lark-cli mail +triage --query "项目评审" --filter '{"time_range":{"start_time":"2026-03-16T00:00:00+08:00","end_time":"2026-03-22T23:59:59+08:00"}}'
@@ -73,7 +77,11 @@ lark-cli mail +triage --format data | jq '.[].subject'
   {
     "message_id": "SEU2...",
     "date": "Fri, 21 Mar 2026 11:40:00 +0800",
+<<<<<<< HEAD
     "from": "Alice <alice@example.com>",
+=======
+    "from": "Alice <user@example.com>",
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
     "subject": "Weekly update",
     "labels": "INBOX,UNREAD"
   }

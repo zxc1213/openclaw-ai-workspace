@@ -18,12 +18,21 @@
 ### 基础设施
 - **OpenClaw**: systemd, SIGUSR1 热重启, drop-in 改环境变量
 - **模型**: GLM-5/5.1/5-Turbo/4.7/4.7-Flash/4.7-FlashX/5V-Turbo (智谱, 204K ctx)
+<<<<<<< HEAD
 - **OpenViking**: v0.3.2, embedding-3 2048维, :1933
 - **WSL2**: 172.25.192.2, systemd
 - **浏览器**: agent-browser + Chrome CDP (172.25.192.1:9222)
 
 ### 飞书
 - 知识空间 ID: 7624953904228207821
+=======
+- **OpenViking**: v0.3.2, embedding-3 2048维, :9333
+- **WSL2**: 192.168.1.101, systemd
+- **浏览器**: agent-browser + Chrome CDP (192.168.1.100:9222)
+
+### 飞书
+- 知识空间 ID: 7600000000000000000
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 - 任务清单: 88a75c8d-...
 - 多维表格: 配置速查手册 (5表49记录)
 
@@ -97,9 +106,13 @@
 ## Promoted From Short-Term Memory (2026-05-19)
 
 <!-- openclaw-memory-promotion:memory:memory/archive/2026-05-06.md:1:22 -->
+<<<<<<< HEAD
 - # 2026-05-06 Daily Notes ## 心跳记录 (08:59) - 依赖: 全部健康 ✅ (OpenViking :1933, Team Dashboard :18788) - daily notes: 7 文件 (04-29~05-05), 无 >7 天需归档 - events/: 0 文件 - reflections.md: Claude Code Hooks 停滞 >30天, "反思没有带来行动" 停滞 >27天 (均已知低优先级) - MEMORY.md L1/L2 内容与当前状态一致, 无需更新 - workspace 根目录: 干净 (仅标准 .md 文件) - memory/ 根目录: 无碎片 - 无新增需同步到 MEMORY.md 的信息 - 无新的 skill-candidate 或 skill-improvement 需求 ## 心跳记录 (12:49) - 依赖: 全部健康 ✅ (OpenViking :1933, Team Dashboard :18788) - MEMORY.md L1/L2: 无需更新 - 05-03 skill-candidate (学习工作流 Skill 增强): 已标记完成, 不需创建新草稿 - skill 使用: 近3天无 skill-improvement 需求 - events/: 0 文件 - workspace 根目录: 标准文件, 无散落 - OpenViking: healthy v0.3.2 (stats endpoint N/A, 非阻塞) [score=0.891 recalls=3 avg=1.000 source=memory/archive/2026-05-06.md:1-22]
 
 ## Promoted From Short-Term Memory (2026-05-24)
 
 <!-- openclaw-memory-promotion:memory:memory/archive/2026-04-01.md:50:75 -->
 - | analyst 📊 | 安全漏洞分析+优先级框架+技术栈 | Ray信息+项目安全背景 | 职责+工作流程+简报格式 | 删了 BOOTSTRAP/HEARTBEAT | | cron-worker ⏰ | 安静执行者 | Ray基本信息 | 职责+行为规则 | | ### Agent 分工 | Agent | 职责 | 常驻场景 | |-------|------|---------| | main (念念) | 总调度、日常对话、协调 | webchat/微信 | | coder | 写代码、修 bug、实现功能 | subagent | | reviewer | 代码审查、PR review、安全扫描 | subagent | | research | 技术调研、资料收集 | subagent | | writer | 文档撰写、简报生成 | subagent | | analyst | 安全漏洞分析、统计报告 | cron + subagent | | cron-worker | 通用定时任务执行 | cron only | ### 参考 - 多 Agent 配置文档：https://openclawgithub.cc/guide/agents/ ## n8n HTTP Request "connection was aborted" 修复 ### 问题 n8n 2.14.2 (Node v24.14.1) 的 HTTP Request 节点请求外部 HTTPS 网站全部失败，报 "The connection was aborted, perhaps the server is offline"，精确在 30 秒超时。但 curl 和 Node.js 原生 fetch/undici 直接请求同样 URL 都正常。 ### 根因 WSL2 环境下 Node.js 默认 DNS 解析优先 IPv6，而 WSL2 的 IPv6 网络栈对外部 HTTPS 连接不稳定，导致 n8n HTTP Request 节点的 undici 客户端连接中断。 ### 修复 [score=0.903 recalls=3 avg=1.000 source=memory/archive/2026-04-01.md:50-75]
+=======
+- # 2026-05-06 Daily Notes ## 心跳记录 (08:59) - 依赖: 全部健康 ✅ (OpenViking :9333, Team Dashboard :18788) - daily notes: 7 文件 (04-29~05-05), 无 >7 天需归档 - events/: 0 文件 - reflections.md: Claude Code Hooks 停滞 >30天, "反思没有带来行动" 停滞 >27天 (均已知低优先级) - MEMORY.md L1/L2 内容与当前状态一致, 无需更新 - workspace 根目录: 干净 (仅标准 .md 文件) - memory/ 根目录: 无碎片 - 无新增需同步到 MEMORY.md 的信息 - 无新的 skill-candidate 或 skill-improvement 需求 ## 心跳记录 (12:49) - 依赖: 全部健康 ✅ (OpenViking :9333, Team Dashboard :18788) - MEMORY.md L1/L2: 无需更新 - 05-03 skill-candidate (学习工作流 Skill 增强): 已标记完成, 不需创建新草稿 - skill 使用: 近3天无 skill-improvement 需求 - events/: 0 文件 - workspace 根目录: 标准文件, 无散落 - OpenViking: healthy v0.3.2 (stats endpoint N/A, 非阻塞) [score=0.891 recalls=3 avg=1.000 source=memory/archive/2026-05-06.md:1-22]
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264

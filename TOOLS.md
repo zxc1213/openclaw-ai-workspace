@@ -33,12 +33,21 @@ Things like:
 
 ## 实际配置
 
+<<<<<<< HEAD
 - **代理:** 172.25.192.1 — HTTP: 7899 / SOCKS5: 7898 / Mixed: 7890
 
 ## API Keys
 
 - **Firecrawl:** `fc-570698e27dcb435199f004f0c94f4f41`（网页爬取 API，https://firecrawl.dev）
 - **Tavily:** `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`（AI 搜索 API）
+=======
+- **代理:** 192.168.1.100 — HTTP: 8080 / SOCKS5: 8081 / Mixed: 7890
+
+## API Keys
+
+- **Firecrawl:** `fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`（网页爬取 API，https://firecrawl.dev）
+- **Tavily:** `tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`（AI 搜索 API）
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 ## Why Separate?
 

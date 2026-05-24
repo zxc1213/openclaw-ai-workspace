@@ -8,7 +8,11 @@ set -euo pipefail
 CHROME_EXE='C:\Program Files\Google\Chrome\Application\chrome.exe'
 PROFILE_DIR='D:\Temp\chrome-profile-debug'
 CDP_PORT=9222
+<<<<<<< HEAD
 WIN_HOST="172.25.192.1"
+=======
+WIN_HOST="192.168.1.100"
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 URL="${1:-about:blank}"
 
 check_cdp() {

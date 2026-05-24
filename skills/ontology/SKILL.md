@@ -81,7 +81,11 @@ When working with existing ontology data or schema, **append/merge** changes ins
 ### Create Entity
 
 ```bash
+<<<<<<< HEAD
 python3 scripts/ontology.py create --type Person --props '{"name":"Alice","email":"alice@example.com"}'
+=======
+python3 scripts/ontology.py create --type Person --props '{"name":"Alice","email":"user@example.com"}'
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 ```
 
 ### Query

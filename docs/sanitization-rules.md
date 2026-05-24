@@ -115,9 +115,15 @@
 | # | 描述 | 正则模式 | 风险 | 来源 |
 |---|------|----------|------|------|
 | 1 | MongoDB Connection URI | `mongodb(?:\+srv)?://[^:]+:[^@]+@[a-zA-Z0-9.-]+` | P0 | 通用 |
+<<<<<<< HEAD
 | 2 | MySQL Connection String | `mysql://[^:]+:[^@]+@[a-zA-Z0-9.-]+` | P0 | 通用 |
 | 3 | PostgreSQL Connection String | `postgres(?:ql)?://[^:]+:[^@]+@[a-zA-Z0-9.-]+` | P0 | 通用 |
 | 4 | Redis Connection URI | `redis://(?:[^:]+:)?[^@]+@[a-zA-Z0-9.-]+` | P0 | 通用 |
+=======
+| 2 | MySQL Connection String | `mysql://[^:****@]+@[a-zA-Z0-9.-]+` | P0 | 通用 |
+| 3 | PostgreSQL Connection String | `postgres(?:ql)?://[^:]+:[^@]+@[a-zA-Z0-9.-]+` | P0 | 通用 |
+| 4 | Redis Connection URI | `redis://(?:****@]+@[a-zA-Z0-9.-]+` | P0 | 通用 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | 5 | Database URL (generic) | `(?:DB|DATABASE)_URL\s*=\s*['"][^'"]+:\/\/[^:]+:[^@]+@` | P0 | 通用 |
 | 6 | JDBC Connection String | `jdbc:(?:mysql|postgresql|oracle|sqlserver)://[^:]+:[^@]+@` | P0 | 通用 |
 | 7 | ClickHouse Cloud API Secret | `4b1d[A-Za-z0-9]{38}` | P1 | gitleaks |
@@ -183,7 +189,11 @@
 | 1 | 内网 IP 地址 | `(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3})\|(?:172\.(?:1[6-9]\|2\d\|3[01])\.\d{1,3}\.\d{1,3})\|(?:192\.168\.\d{1,3}\.\d{1,3})\|(?:172\.25\.\d{1,3}\.\d{1,3})` | P2 | 自定义 |
 | 2 | WSL2 特殊 IP | `172\.25\.192\.\d{1,3}` | P2 | 自定义 |
 | 3 | 非标准服务端口 | 单独出现的 5 位数端口号（需上下文判断） | P2 | 自定义 |
+<<<<<<< HEAD
 | 4 | 代理端口 | `(?:7899\|7898\|7890)` (在 proxy/clash 上下文中) | P2 | 自定义 |
+=======
+| 4 | 代理端口 | `(?:8080\|8081\|7890)` (在 proxy/clash 上下文中) | P2 | 自定义 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | 5 | 数据库端口 | `(?:3306\|5432\|6379\|27017\|1433\|1521)` (裸端口暴露) | P2 | 自定义 |
 | 6 | 域名 / Hostname | `(?i)[a-z0-9][-a-z0-9]*(?:\.[a-z]{2,}){1,}` (内部域名) | P2 | 通用 |
 | 7 | 内部服务 URL | `https?://(?:localhost\|127\.0\.0\.1\|0\.0\.0\.0\|10\.\d+\.\d+\.\d+):[0-9]+` | P2 | 通用 |
@@ -230,7 +240,10 @@
 
 | # | 描述 | 正则模式 | 风险 | 来源 |
 |---|------|----------|------|------|
+<<<<<<< HEAD
 | 1 | 密码行 (password:) | `(?i)password['":\s]*[^\s'"`,;]{8,}` (排除占位符) | P0 | 自定义 |
+=======
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | 2 | 密码行 (passwd:) | `(?i)passwd['":\s]*[^\s'"`,;]{8,}` (排除占位符) | P0 | 自定义 |
 | 3 | 密码行 (secret:) | `(?i)secret['":\s]*[^\s'"`,;]{8,}` (排除占位符) | P0 | 自定义 |
 | 4 | 密码行 (token:) | `(?i)token['":\s]*[^\s'"`,;]{8,}` (排除占位符) | P0 | 自定义 |
@@ -257,23 +270,39 @@
 
 | # | 描述 | 真实值模式 | 替换为 | 风险 |
 |---|------|-----------|--------|------|
+<<<<<<< HEAD
 | 1 | Firecrawl API Key | `fc-570698e27dcb435199f004f0c94f4f41` | `fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` | P0 |
 | 2 | Tavily API Key | `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` | `tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` | P0 |
+=======
+| 1 | Firecrawl API Key | `fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` | `fc-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` | P0 |
+| 2 | Tavily API Key | `tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` | `tvly-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` | P0 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 ### B2. 网络地址
 
 | # | 描述 | 真实值模式 | 替换为 | 风险 |
 |---|------|-----------|--------|------|
+<<<<<<< HEAD
 | 1 | WSL2 Host IP (Windows) | `172.25.192.1` | `192.168.1.100` | P2 |
 | 2 | WSL2 Guest IP (Linux) | `172.25.192.2` | `192.168.1.101` | P2 |
+=======
+| 1 | WSL2 Host IP (Windows) | `192.168.1.100` | `192.168.1.100` | P2 |
+| 2 | WSL2 Guest IP (Linux) | `192.168.1.101` | `192.168.1.101` | P2 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 ### B3. 飞书标识符
 
 | # | 描述 | 真实值模式 | 替换为 | 风险 |
 |---|------|-----------|--------|------|
+<<<<<<< HEAD
 | 1 | 知识空间 ID (space_id) | `7624953904228207821` | `7600000000000000000` | P2 |
 | 2 | 备用空间 ID | `6946843325487906839` | `7600000000000000000` | P2 |
 | 3 | 用户 open_id | `ou_dfe4cec8ab70368885235d951a935ccd` | `ou_aabbccddeeff00112233445566778899` | P2 |
+=======
+| 1 | 知识空间 ID (space_id) | `7600000000000000000` | `7600000000000000000` | P2 |
+| 2 | 备用空间 ID | `7600000000000000000` | `7600000000000000000` | P2 |
+| 3 | 用户 open_id | `ou_aabbccddeeff00112233445566778899` | `ou_aabbccddeeff00112233445566778899` | P2 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | 4 | 群聊 chat_id (oc_前缀) | `oc_[a-f0-9]{20,}` | `oc_aabbccddeeff00112233` | P2 |
 | 5 | 应用 app_id (cli_前缀) | `cli_[a-f0-9]{20,}` | `cli_aabbccddeeff00112233` | P2 |
 | 6 | 任务 GUID (UUID格式) | `[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}` | `aabbccdd-eeee-ffff-gggg-hhhhiiiiiiii` | P2 |
@@ -282,26 +311,43 @@
 
 | # | 描述 | 真实值 | 替换为 | 风险 |
 |---|------|--------|--------|------|
+<<<<<<< HEAD
 | 1 | OpenClaw 服务端口 | `18789` | `18080` | P2 |
 | 2 | HTTP 代理端口 | `7899` | `8080` | P2 |
 | 3 | SOCKS5 代理端口 | `7898` | `8081` | P2 |
 | 4 | OpenViking 端口 | `:1933` | `:9333` | P2 |
+=======
+| 1 | OpenClaw 服务端口 | `18080` | `18080` | P2 |
+| 2 | HTTP 代理端口 | `8080` | `8080` | P2 |
+| 3 | SOCKS5 代理端口 | `8081` | `8081` | P2 |
+| 4 | OpenViking 端口 | `:9333` | `:9333` | P2 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | 5 | Mixed 代理端口 | `7890` | 保持不变（Clash 默认，过于常见） | P2 |
 
 ### B5. 第三方平台 ID
 
 | # | 描述 | 真实值 | 替换为 | 风险 |
 |---|------|--------|--------|------|
+<<<<<<< HEAD
 | 1 | Telegram 用户 ID | `5246148209` | `1234567890` | P2 |
 | 2 | QQ AppId #1 | `1903739267` | `1000000001` | P2 |
 | 3 | QQ AppId #2 | `1903748277` | `1000000002` | P2 |
 | 4 | QQ AppId #3 | `1903747429` | `1000000003` | P2 |
+=======
+| 1 | Telegram 用户 ID | `1234567890` | `1234567890` | P2 |
+| 2 | QQ AppId #1 | `1000000001` | `1000000001` | P2 |
+| 3 | QQ AppId #2 | `1000000002` | `1000000002` | P2 |
+| 4 | QQ AppId #3 | `1000000003` | `1000000003` | P2 |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 ### B6. 密码行
 
 | # | 描述 | 模式 | 处置 | 风险 |
 |---|------|------|------|------|
+<<<<<<< HEAD
 | 1 | 含真实密码的行 | `password:.*` (非 REDACTED/placeholder/xxx/例) | 整行删除 | P0 |
+=======
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 
 ---
 

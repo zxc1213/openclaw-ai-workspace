@@ -13,7 +13,11 @@ Browser automation through HTTP APIs — navigate, interact, extract, and analyz
 
 - **Environment Variable:** `BROWSERWING_EXECUTOR_URL`
 - **Default:** `http://127.0.0.1:8080`
+<<<<<<< HEAD
 - **Auth:** `X-BrowserWing-Key: <api-key>` header or `Authorization: Bearer <token>` if required
+=======
+- **Auth:** `X-BrowserWing-Key: <api-key>` header or `Authorization: Bearer SANITIZED_TOKEN<token>` if required
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 - **Base URL:** `${BROWSERWING_EXECUTOR_URL}/api/v1/executor`
 
 **In shell:** `EXECUTOR_URL="${BROWSERWING_EXECUTOR_URL:-http://127.0.0.1:8080}"`

@@ -69,7 +69,11 @@ Block 的 `data_config` 字段因 `type` 不同而变化。本文档描述所有
 | 数字 | number | is, isNot, isGreater, isGreaterEqual, isLess, isLessEqual, isEmpty, isNotEmpty | `{"field_name":"金额","operator":"isGreater","value":0}` |
 | 单选 | string（选项名） | is, isNot, isEmpty, isNotEmpty | `{"field_name":"状态","operator":"is","value":"已完成"}` |
 | 多选 | string 或 string[] | is, isNot, contains, doesNotContain, isEmpty, isNotEmpty | `{"field_name":"标签","operator":"contains","value":["紧急","重要"]}` |
+<<<<<<< HEAD
 | 日期时间 / 创建时间 / 修改时间 | number（毫秒时间戳） | is, isGreater, isGreaterEqual, isLess, isLessEqual, isEmpty, isNotEmpty | `{"field_name":"创建日期","operator":"isGreater","value":1711209600000}` |
+=======
+| 日期时间 / 创建时间 / 修改时间 | number（毫秒时间戳） | is, isGreater, isGreaterEqual, isLess, isLessEqual, isEmpty, isNotEmpty | `{"field_name":"创建日期","operator":"isGreater","value":1380000000000}` |
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 | 复选框 | boolean | is | `{"field_name":"已审核","operator":"is","value":true}` |
 | 人员 / 创建人 / 修改人 | string 或 string[]（用户 ID） | is, isNot, isEmpty, isNotEmpty | `{"field_name":"负责人","operator":"is","value":"user_id_xxx"}` |
 | 所有类型（为空/不为空） | 不需要 value | isEmpty, isNotEmpty | `{"field_name":"备注","operator":"isEmpty"}` |

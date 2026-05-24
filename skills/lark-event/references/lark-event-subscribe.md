@@ -71,7 +71,11 @@ lark-cli event +subscribe --dry-run
 One event per line, all fields included:
 
 ```json
+<<<<<<< HEAD
 {"schema":"2.0","header":{"event_id":"xxx","event_type":"im.message.receive_v1","create_time":"1773491924409","app_id":"cli_xxx"},"event":{"message":{"chat_id":"oc_xxx","content":"{\"text\":\"Hello\"}","message_id":"om_xxx","message_type":"text"},"sender":{"sender_id":{"open_id":"ou_xxx"},"sender_type":"user"}}}
+=======
+{"schema":"2.0","header":{"event_id":"xxx","event_type":"im.message.receive_v1","create_time":"1380000000009","app_id":"cli_xxx"},"event":{"message":{"chat_id":"oc_xxx","content":"{\"text\":\"Hello\"}","message_id":"om_xxx","message_type":"text"},"sender":{"sender_id":{"open_id":"ou_xxx"},"sender_type":"user"}}}
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 ```
 
 ### `--compact` (agent-friendly)
@@ -81,7 +85,11 @@ Flattened key-value output with semantic fields. The exact fields depend on the 
 **IM message events** (`im.message.receive_v1`) have deep compact processing:
 
 ```json
+<<<<<<< HEAD
 {"type":"im.message.receive_v1","id":"om_xxx","message_id":"om_xxx","chat_id":"oc_xxx","chat_type":"p2p","message_type":"text","content":"Hello","sender_id":"ou_xxx","create_time":"1773491924409","timestamp":"1773491924409"}
+=======
+{"type":"im.message.receive_v1","id":"om_xxx","message_id":"om_xxx","chat_id":"oc_xxx","chat_type":"p2p","message_type":"text","content":"Hello","sender_id":"ou_xxx","create_time":"1380000000009","timestamp":"1380000000009"}
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 ```
 
 - `event.message.content` (double-encoded JSON like `"{\"text\":\"Hello\"}"`) is parsed and converted to human-readable text via convertlib → output as `content`

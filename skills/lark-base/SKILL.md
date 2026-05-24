@@ -227,7 +227,11 @@ lark-cli wiki spaces get_node --params '{"token":"Pgrr***************UnRb"}'
     "obj_token": "UAJ***************E9nic",
     "title": "ai friendly 测试 - 1 副本",
     "node_type": "origin",
+<<<<<<< HEAD
     "space_id": "6946843325487906839"
+=======
+    "space_id": "7600000000000000000"
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
   }
 }
 ```

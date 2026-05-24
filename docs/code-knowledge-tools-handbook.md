@@ -259,7 +259,11 @@ OpenClaw 已内置集成，无需额外安装：
 ```bash
 # 确认运行状态
 openclaw status
+<<<<<<< HEAD
 # OpenViking 默认运行在 :1933 端口
+=======
+# OpenViking 默认运行在 :9333 端口
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 ```
 
 当前配置：v0.3.2，embedding-3 2048 维。

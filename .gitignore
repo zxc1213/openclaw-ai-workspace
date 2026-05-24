@@ -1,0 +1,13 @@
+node_modules/
+TOOLS.md
+USER.md
+MEMORY.md
+SAFETY.md
+*.backup
+memory/
+_inbox/
+events/
+agents/
+projects/
+research/
+.clawhub/

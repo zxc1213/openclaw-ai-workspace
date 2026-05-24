@@ -1,7 +1,12 @@
 # Session: 2026-05-03 16:32:31 GMT+8
 
+<<<<<<< HEAD
 - **Session Key**: agent:main:feishu:direct:ou_dfe4cec8ab70368885235d951a935ccd
 - **Session ID**: 2e70dca3-86fa-4242-ac8e-1da767f00c9c
+=======
+- **Session Key**: agent:main:feishu:direct:ou_aabbccddeeff00112233445566778899
+- **Session ID**: aabbccdd-eeee-ffff-gggg-hhhhiiiiiiii
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 - **Source**: feishu
 
 ## Conversation Summary

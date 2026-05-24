@@ -4,7 +4,11 @@
   "summary": "Search, download, and summarize academic papers from arXiv. Built for AI/ML researchers. Find papers by query, author, or category.",
   "description": "Search, download, and summarize academic papers from arXiv. Built for AI/ML researchers. Find papers by query, author, or category.",
   "shortDescription": "Search, download, and summarize academic papers from arXiv. Built for AI/ML researchers.",
+<<<<<<< HEAD
   "author": "Ractor <ractor.alpha@gmail.com>",
+=======
+  "author": "Ractor <user@example.com>",
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
   "repository": "https://github.com/Ractorrr/openclaw-skills",
   "keywords": [
     "arxiv",

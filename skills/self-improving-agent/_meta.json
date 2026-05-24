@@ -2,5 +2,9 @@
   "ownerId": "kn70cjr952qdec1nx70zs6wefn7ynq2t",
   "slug": "self-improving-agent",
   "version": "3.0.1",
+<<<<<<< HEAD
   "publishedAt": 1773230308177
+=======
+  "publishedAt": 1380000000077
+>>>>>>> 0b16965cf9e8ed0cbfb77a2dd281c8c04f090264
 }
